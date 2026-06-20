@@ -1,0 +1,531 @@
+/* styles.css */
+
+/* Base Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-subtle {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes pulse-slow {
+
+    0%,
+    100% {
+        opacity: 0.1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes bounce-subtle {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Animation Classes */
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-pulse-subtle {
+    animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+/* Stagger Children */
+.stagger-children>* {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.stagger-children>*:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.stagger-children>*:nth-child(2) {
+    animation-delay: 100ms;
+}
+
+.stagger-children>*:nth-child(3) {
+    animation-delay: 200ms;
+}
+
+.stagger-children>*:nth-child(4) {
+    animation-delay: 300ms;
+}
+
+/* Delay Utilities */
+.delay-100 {
+    animation-delay: 100ms !important;
+}
+
+.delay-200 {
+    animation-delay: 200ms !important;
+}
+
+.delay-300 {
+    animation-delay: 300ms !important;
+}
+
+.delay-400 {
+    animation-delay: 400ms !important;
+}
+
+.delay-500 {
+    animation-delay: 500ms !important;
+}
+
+/* Scroll Reveal Base States */
+.scroll-reveal,
+.scroll-reveal-text,
+.scroll-reveal-left,
+.scroll-reveal-right,
+.scroll-reveal-up,
+.scroll-reveal-scale,
+.service-card,
+.feature-item,
+.stat-item,
+.scroll-reveal-form,
+.form-field {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-reveal.visible,
+.scroll-reveal-text.visible,
+.scroll-reveal-left.visible,
+.scroll-reveal-right.visible,
+.scroll-reveal-up.visible,
+.scroll-reveal-scale.visible,
+.scroll-reveal-form.visible,
+.service-card.visible,
+.feature-item.visible,
+.stat-item.visible,
+.form-field.visible {
+    opacity: 1;
+    transform: translate(0) scale(1);
+}
+
+.scroll-reveal {
+    transform: translateY(30px);
+}
+
+.scroll-reveal-text {
+    transform: translateY(20px);
+    display: block;
+}
+
+.scroll-reveal-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-reveal-left {
+    transform: translateX(-50px);
+}
+
+.scroll-reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-reveal-right {
+    transform: translateX(50px);
+}
+
+.scroll-reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-reveal-up {
+    transform: translateY(40px);
+}
+
+.scroll-reveal-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-reveal-scale {
+    transform: scale(0.95);
+}
+
+.scroll-reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Service Cards Stagger */
+.service-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card {
+    transform: translateY(40px);
+}
+
+.service-card[data-index="0"] {
+    transition-delay: 0ms;
+}
+
+.service-card[data-index="1"] {
+    transition-delay: 100ms;
+}
+
+.service-card[data-index="2"] {
+    transition-delay: 200ms;
+}
+
+.service-card[data-index="3"] {
+    transition-delay: 300ms;
+}
+
+.service-card[data-index="4"] {
+    transition-delay: 400ms;
+}
+
+.service-card[data-index="5"] {
+    transition-delay: 500ms;
+}
+
+/* Feature Items */
+.feature-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.feature-item[data-index="0"] {
+    transition-delay: 0ms;
+}
+
+.feature-item[data-index="1"] {
+    transition-delay: 150ms;
+}
+
+.feature-item[data-index="2"] {
+    transition-delay: 300ms;
+}
+
+/* Stat Items */
+.stat-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stat-item[data-index="0"] {
+    transition-delay: 0ms;
+}
+
+.stat-item[data-index="1"] {
+    transition-delay: 100ms;
+}
+
+.stat-item[data-index="2"] {
+    transition-delay: 200ms;
+}
+
+.stat-item[data-index="3"] {
+    transition-delay: 300ms;
+}
+
+/* Form Fields */
+.form-field.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Parallax Background */
+.parallax-bg {
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+/* Hero Background Blur */
+.hero-bg-blur {
+    filter: blur(4px);
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+/* Hero Form Card — mobile scroll safety */
+@media (max-height: 700px) {
+    .hero-form-card {
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+    }
+}
+
+/* Pulse Motif Enhancement */
+.pulse-motif {
+    position: relative;
+}
+
+.pulse-motif::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    border: 2px solid #b7102a;
+    animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+/* Diagonal Background */
+.diagonal-bg {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+}
+
+/* Card Accent Animation */
+.service-card:hover .card-accent {
+    height: 100% !important;
+}
+
+/* Map Marker Hover Effects */
+.map-marker:hover div:last-child {
+    opacity: 1 !important;
+    transform: translateX(-50%) translateY(0) !important;
+}
+
+/* Material Symbols Configuration */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    transition: all 0.3s ease;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection Styling */
+::selection {
+    background: #b7102a;
+    color: white;
+}
+
+/* Focus Visible for Accessibility */
+:focus-visible {
+    outline: 2px solid #b7102a;
+    outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .parallax-bg {
+        transform: none !important;
+    }
+}
+
+/* Mobile Specific Adjustments */
+@media (max-width: 768px) {
+    .diagonal-bg {
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
+        height: 24px;
+    }
+
+    .scroll-reveal,
+    .scroll-reveal-left,
+    .scroll-reveal-right {
+        transform: translateY(30px);
+    }
+
+    .pulse-motif::after {
+        animation: none;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00355f;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b7102a;
+}
+
+/* Form Focus States */
+input:focus,
+select:focus {
+    box-shadow: 0 0 0 3px rgba(183, 16, 42, 0.1);
+}
+
+/* Emergency Button Special */
+button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+/* Image Loading State */
+img {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+img[src] {
+    animation: none;
+    background: transparent;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+
+
+/* FAQ Accordion Styles */
+.faq-item.active {
+    border-color: #b7102a;
+    box-shadow: 0 4px 12px rgba(183, 16, 42, 0.05);
+}
+
+.faq-item.active button span:last-child {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Carousel Styles */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.carousel-dot.active {
+    background-color: #b7102a;
+    width: 1.5rem;
+}
+
