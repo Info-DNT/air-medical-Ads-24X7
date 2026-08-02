@@ -1,0 +1,3 @@
+[submodule "uae-only-deploy"]
+	path = uae-only-deploy
+	url = https://github.com/Info-DNT/uae-air-ambulance-adpage.git
