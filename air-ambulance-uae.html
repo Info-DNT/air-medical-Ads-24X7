@@ -172,11 +172,12 @@
             </a>
 
             <div class="flex items-center gap-3 md:gap-5 animate-fade-in-down">
-                <!-- Translation Selector -->
-                <div class="flex items-center gap-1.5 bg-slate-50/50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800/60 rounded-xl px-2.5 py-1.5 shadow-sm">
-                    <span class="material-symbols-outlined text-slate-500 text-sm md:text-base">language</span>
-                    <div id="google_translate_element"></div>
+                <!-- Custom Translation Selector (Hiding Google Dropdown) -->
+                <div class="flex items-center gap-1 bg-slate-50/50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800/60 rounded-xl p-1 shadow-sm text-xs font-bold">
+                    <button id="lang-en-btn" onclick="switchLanguage('en')" class="px-2.5 py-1 rounded-lg transition-all hover:bg-slate-100 dark:hover:bg-slate-800 text-primary dark:text-white bg-white dark:bg-slate-800 shadow-sm">EN</button>
+                    <button id="lang-ar-btn" onclick="switchLanguage('ar')" class="px-2.5 py-1 rounded-lg transition-all hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white">العربية</button>
                 </div>
+                <div id="google_translate_element" style="display: none !important;"></div>
 
                 <!-- Mobile & Desktop Persistent Emergency Button -->
                 <a href="tel:+9718000160098" onclick="return gtag_report_phone_conversion(this.href);"
@@ -6942,6 +6943,53 @@
                 }
             } catch (e) {
                 console.error("Auto-translation error:", e);
+            }
+        })();
+
+        function switchLanguage(lang) {
+            try {
+                if (lang === 'ar') {
+                    document.cookie = "googtrans=/en/ar; path=/";
+                    const host = window.location.hostname;
+                    document.cookie = "googtrans=/en/ar; path=/; domain=" + host;
+                    document.cookie = "googtrans=/en/ar; path=/; domain=." + host;
+                } else {
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    const host = window.location.hostname;
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + host;
+                    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=." + host;
+                }
+                window.location.reload();
+            } catch (e) {
+                console.error("Error switching language:", e);
+            }
+        }
+
+        // Apply active styles to custom EN/AR switch buttons based on translation cookie
+        (function() {
+            function updateLanguageButtons() {
+                const cookies = document.cookie.split(';');
+                const isArabic = cookies.some(c => c.trim().startsWith('googtrans=/en/ar'));
+                
+                const enBtn = document.getElementById('lang-en-btn');
+                const arBtn = document.getElementById('lang-ar-btn');
+                
+                if (isArabic) {
+                    if (enBtn && arBtn) {
+                        enBtn.className = "px-2.5 py-1 rounded-lg transition-all hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white";
+                        arBtn.className = "px-2.5 py-1 rounded-lg transition-all hover:bg-slate-100 dark:hover:bg-slate-800 text-primary dark:text-white bg-white dark:bg-slate-800 shadow-sm";
+                    }
+                } else {
+                    if (enBtn && arBtn) {
+                        enBtn.className = "px-2.5 py-1 rounded-lg transition-all hover:bg-slate-100 dark:hover:bg-slate-800 text-primary dark:text-white bg-white dark:bg-slate-800 shadow-sm";
+                        arBtn.className = "px-2.5 py-1 rounded-lg transition-all hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white";
+                    }
+                }
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateLanguageButtons);
+            } else {
+                updateLanguageButtons();
             }
         })();
 
