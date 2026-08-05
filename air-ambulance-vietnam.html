@@ -142,7 +142,7 @@
                     class="flex items-center gap-1.5 md:gap-2 font-headline font-extrabold text-primary hover:text-secondary transition-all hover:scale-105 active:scale-95">
                     <span class="material-symbols-outlined text-[#ff1744] text-lg md:text-2xl"
                         style="font-variation-settings: 'FILL' 0, 'wght' 800;">call</span>
-                    <span class="text-base font-extrabold tracking-tight">+84 1203 2123</span>
+                    <span class="font-extrabold tracking-tight" style="font-size: calc(1rem + 5pt);">+84 1203 2123</span>
                 </a>
             </div>
         </div>
@@ -150,7 +150,7 @@
 
     <!-- Hero -->
     <header
-        class="relative min-h-screen flex items-center justify-center pt-24 pb-8 overflow-hidden bg-primary-container"
+        class="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-8 overflow-hidden bg-primary-container"
         id="home">
 
         <!-- Background Image with Subtle Blur -->
@@ -160,6 +160,13 @@
 
         <!-- Dark gradient overlay -->
         <div class="absolute inset-0 bg-primary/75"></div>
+        <!-- Mobile Ticker Carousel (End-to-End) -->
+        <div class="lg:hidden w-full overflow-hidden bg-[#b7102a] text-white py-2.5 z-20 relative mb-6">
+            <div class="flex whitespace-nowrap animate-marquee text-[12px] font-black uppercase tracking-wide">
+                <span class="px-4 flex items-center gap-2">✓ ISO Certified | ✓ 17,000+ Patients Assisted | ✓ 193+ Countries Served | ✓ 24/7 Emergency Response</span>
+                <span class="px-4 flex items-center gap-2">✓ ISO Certified | ✓ 17,000+ Patients Assisted | ✓ 193+ Countries Served | ✓ 24/7 Emergency Response</span>
+            </div>
+        </div>
 
         <!-- Centered 2-Panel Form Card -->
         <div class="container mx-auto px-4 md:px-8 relative z-10 w-full">
@@ -1791,47 +1798,75 @@
             <div class="scroll-reveal-up delay-100 flex flex-col items-center">
                 <h5 class="text-sm font-black uppercase tracking-[0.2em] mb-4 text-white w-full text-center">
                     Global Helpline Numbers</h5>
-                <div class="inline-flex flex-col gap-2.5 text-[13px] font-semibold">
-                    <a href="tel:0008000504740"
+                                <div class="inline-flex flex-col gap-2.5 text-[13px] font-semibold">
+                    <a href="tel:+18335186535" onclick="return gtag_report_phone_conversion(this.href);"
                         class="text-white hover:text-secondary transition-colors flex items-center gap-4">
-                        <span class="w-16 inline-block text-white font-normal text-left">India</span>
-                        <span class="font-mono text-[13px] tracking-wide">000-800-0504740</span>
-                    </a>
-                    <a href="tel:+18335186535"
-                        class="text-white hover:text-secondary transition-colors flex items-center gap-4">
-                        <span class="w-16 inline-block text-white font-normal text-left">USA</span>
+                        <span class="w-24 inline-block text-white font-normal text-left">USA</span>
                         <span class="font-mono text-[13px] tracking-wide">+1 833-518-6535</span>
                     </a>
-                    <a href="tel:+448002294751"
+                    <a href="tel:+448002294751" onclick="return gtag_report_phone_conversion(this.href);"
                         class="text-white hover:text-secondary transition-colors flex items-center gap-4">
-                        <span class="w-16 inline-block text-white font-normal text-left">UK</span>
+                        <span class="w-24 inline-block text-white font-normal text-left">UK</span>
                         <span class="font-mono text-[13px] tracking-wide">+44 800 229 4751</span>
                     </a>
-                    <a href="tel:+18337257598"
+                    <a href="tel:+9718000160098" onclick="return gtag_report_phone_conversion(this.href);"
                         class="text-white hover:text-secondary transition-colors flex items-center gap-4">
-                        <span class="w-16 inline-block text-white font-normal text-left">Canada</span>
+                        <span class="w-24 inline-block text-white font-normal text-left">UAE</span>
+                        <span class="font-mono text-[13px] tracking-wide">+971 800 0160098</span>
+                    </a>
+                    <a href="tel:0008000504740" onclick="return gtag_report_phone_conversion(this.href);"
+                        class="text-white hover:text-secondary transition-colors flex items-center gap-4">
+                        <span class="w-24 inline-block text-white font-normal text-left">India</span>
+                        <span class="font-mono text-[13px] tracking-wide">000-800-0504740</span>
+                    </a>
+                    <a href="tel:+18337257598" onclick="return gtag_report_phone_conversion(this.href);"
+                        class="text-white hover:text-secondary transition-colors flex items-center gap-4">
+                        <span class="w-24 inline-block text-white font-normal text-left">Canada</span>
                         <span class="font-mono text-[13px] tracking-wide">+1 833-725-7598</span>
                     </a>
-                    <a href="tel:+8412032123"
+                    <a href="tel:+63180015500181" onclick="return gtag_report_phone_conversion(this.href);"
                         class="text-white hover:text-secondary transition-colors flex items-center gap-4">
-                        <span class="w-16 inline-block text-white font-normal text-left">Vietnam</span>
-                        <span class="font-mono text-[13px] tracking-wide">+84 1203 2123</span>
+                        <span class="w-24 inline-block text-white font-normal text-left">Philippines</span>
+                        <span class="font-mono text-[13px] tracking-wide">+63 1800 1550 0181</span>
                     </a>
-                    <a href="tel:+2484632054"
+                    <a href="tel:+2484632054" onclick="return gtag_report_phone_conversion(this.href);"
                         class="text-white hover:text-secondary transition-colors flex items-center gap-4">
-                        <span class="w-16 inline-block text-white font-normal text-left">Seychelles</span>
+                        <span class="w-24 inline-block text-white font-normal text-left">Seychelles</span>
                         <span class="font-mono text-[13px] tracking-wide">+248 4 632 054</span>
+                    </a>
+                    <a href="tel:+27800010868" onclick="return gtag_report_phone_conversion(this.href);"
+                        class="text-white hover:text-secondary transition-colors flex items-center gap-4">
+                        <span class="w-24 inline-block text-white font-normal text-left">South Africa</span>
+                        <span class="font-mono text-[13px] tracking-wide">+27 80 001 0868</span>
+                    </a>
+                    <a href="tel:+255800120158" onclick="return gtag_report_phone_conversion(this.href);"
+                        class="text-white hover:text-secondary transition-colors flex items-center gap-4">
+                        <span class="w-24 inline-block text-white font-normal text-left">Tanzania</span>
+                        <span class="font-mono text-[13px] tracking-wide">+255 800 12 0158</span>
+                    </a>
+                    <a href="tel:+908006213131" onclick="return gtag_report_phone_conversion(this.href);"
+                        class="text-white hover:text-secondary transition-colors flex items-center gap-4">
+                        <span class="w-24 inline-block text-white font-normal text-left">Turkey</span>
+                        <span class="font-mono text-[13px] tracking-wide">+90 800 621 3131</span>
+                    </a>
+                    <a href="tel:+818001705180" onclick="return gtag_report_phone_conversion(this.href);"
+                        class="text-white hover:text-secondary transition-colors flex items-center gap-4">
+                        <span class="w-24 inline-block text-white font-normal text-left">Japan</span>
+                        <span class="font-mono text-[13px] tracking-wide">+81 800-170-5180</span>
+                    </a>
+                    <a href="tel:+254800230119" onclick="return gtag_report_phone_conversion(this.href);"
+                        class="text-white hover:text-secondary transition-colors flex items-center gap-4">
+                        <span class="w-24 inline-block text-white font-normal text-left">Kenya</span>
+                        <span class="font-mono text-[13px] tracking-wide">+254 800 230 119</span>
                     </a>
                 </div>
             </div>
 
             <!-- Column 3 (Right) -->
             <div class="scroll-reveal-up delay-200 text-center md:text-right">
-                <h5 class="text-sm md:text-base font-extrabold uppercase tracking-[0.2em] mb-4 text-white">24X7 UAE
-                    Emergency Helpline</h5>
+                <h5 class="text-sm md:text-base font-extrabold uppercase tracking-[0.2em] mb-4 text-white">24X7 Vietnam Emergency Helpline</h5>
                 <a href="tel:+8412032123"
-                    class="font-headline text-3xl font-black text-white hover:text-secondary mb-4 block tracking-tighter">+971
-                    800 0160098</a>
+                    class="font-headline text-3xl font-black text-white hover:text-secondary mb-4 block tracking-tighter">+84 1203 2123</a>
                 <div class="flex justify-center md:justify-end items-center gap-6 mt-6">
                     <!-- Social Media Links -->
                     <a href="https://www.facebook.com/airmedical24x7/"
