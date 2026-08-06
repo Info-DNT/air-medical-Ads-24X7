@@ -392,8 +392,8 @@ with open("air-ambulance-delhi.html", "w", encoding="utf-8") as f:
 print("Saved air-ambulance-delhi.html")
 
 
-# ----------------- 2. Process Andaman Page (air-ambulance-port-blair-andaman-nicobar.html) -----------------
-with open("air-ambulance-port-blair-andaman-nicobar.html", "r", encoding="utf-8") as f:
+# ----------------- 2. Process Andaman Page (air-ambulance-portblair.html) -----------------
+with open("air-ambulance-portblair.html", "r", encoding="utf-8") as f:
     andaman_src_html = f.read()
 andaman_cards = parse_route_cards(andaman_src_html)
 
@@ -414,7 +414,7 @@ html_andaman = html_andaman.replace(
 )
 html_andaman = html_andaman.replace(
     '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-uk" />',
-    '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-port-blair-andaman-nicobar" />'
+    '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-portblair" />'
 )
 
 # Localize Schema
@@ -423,7 +423,7 @@ andaman_schema = """    <script type="application/ld+json">
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "MedicalOrganization"],
       "name": "Air Medical 24X7",
-      "url": "https://airmedical24x7.com/air-ambulance-port-blair-andaman-nicobar",
+      "url": "https://airmedical24x7.com/air-ambulance-portblair",
       "telephone": "+919217710155",
       "address": {
         "@type": "PostalAddress",
@@ -550,7 +550,7 @@ html_andaman = html_andaman.replace('Our UK operations team coordinates', 'Our o
 # Localize Footer UK helpline
 html_andaman = html_andaman.replace('24X7 UK Emergency Helpline', '24X7 India Emergency Helpline')
 
-# Save Andaman page (overwriting air-ambulance-port-blair-andaman-nicobar.html)
-with open("air-ambulance-port-blair-andaman-nicobar.html", "w", encoding="utf-8") as f:
+# Save Andaman page (overwriting air-ambulance-portblair.html)
+with open("air-ambulance-portblair.html", "w", encoding="utf-8") as f:
     f.write(html_andaman)
-print("Saved air-ambulance-port-blair-andaman-nicobar.html")
+print("Saved air-ambulance-portblair.html")
