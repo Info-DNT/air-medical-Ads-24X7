@@ -14,6 +14,21 @@ for temp_file in ["air-ambulance-new-delhi.html", "air-ambulance-new-andaman-nic
 with open("air-ambulance-uk.html", "r", encoding="utf-8") as f:
     template = f.read()
 
+# Helper to make all resource/script/style paths relative for national subfolder
+def make_paths_relative(html_content):
+    # Convert absolute ads paths to relative paths
+    html_content = html_content.replace('href="/ads/styles.css"', 'href="../styles.css"')
+    html_content = html_content.replace('href="styles.css"', 'href="../styles.css"')
+    html_content = html_content.replace('href="/ads/assets/', 'href="../assets/')
+    html_content = html_content.replace('src="/ads/assets/', 'src="../assets/')
+    html_content = html_content.replace('href="assets/', 'href="../assets/')
+    html_content = html_content.replace('src="assets/', 'src="../assets/')
+    html_content = html_content.replace('src="/ads/supabase-config.js"', 'src="../supabase-config.js"')
+    html_content = html_content.replace('src="/ads/script.js"', 'src="../script.js"')
+    html_content = html_content.replace('src="supabase-config.js"', 'src="../supabase-config.js"')
+    html_content = html_content.replace('src="script.js"', 'src="../script.js"')
+    return html_content
+
 # Helper to parse routes from a source file
 def parse_route_cards(html_content):
     segments = html_content.split('<!-- Route Card:')
@@ -70,6 +85,9 @@ def generate_uk_style_route_card(card):
     if "Port Blair" in card['origin']:
         origin_html = """<span class="leading-tight text-sm font-extrabold">Port Blair</span>
                                     <span class="text-xs text-primary font-bold mt-0.5">(Andaman & Nicobar)</span>"""
+    elif card['origin'] in ["Srinagar", "Jammu"]:
+        origin_html = f"""<span class="leading-tight text-sm font-extrabold">{card['origin']}</span>
+                                    <span class="text-xs text-primary font-bold mt-0.5">(Jammu & Kashmir)</span>"""
     else:
         origin_html = f"""<span class="leading-tight text-sm font-extrabold">{card['origin']}</span>"""
         
@@ -103,7 +121,7 @@ def generate_uk_style_route_card(card):
                     </div>"""
 
 # ----------------- 1. Process Delhi Page (air-ambulance-delhi.html) -----------------
-with open("air-ambulance-delhi.html", "r", encoding="utf-8") as f:
+with open("national/air-ambulance-delhi.html", "r", encoding="utf-8") as f:
     delhi_src_html = f.read()
 delhi_cards = parse_route_cards(delhi_src_html)
 
@@ -367,8 +385,8 @@ new_routes_section = f"""    <section id="routes-section"
     </section>"""
 
 # Replace the routes section
-routes_section_regex_template = r'<section id="routes-section".*?<!-- Testimonials Section -->'
-html_delhi = re.sub(routes_section_regex_template, new_routes_section + "\n\n    <!-- Testimonials Section -->", html_delhi, flags=re.DOTALL)
+routes_section_regex_template = r'<section id="routes-section".*?(?=<section id="services"|<!-- Services Grid -->)'
+html_delhi = re.sub(routes_section_regex_template, new_routes_section + "\n\n", html_delhi, flags=re.DOTALL)
 
 # Localize FAQs
 html_delhi = html_delhi.replace('insurance coordination for UK', 'insurance coordination for India')
@@ -386,14 +404,24 @@ html_delhi = html_delhi.replace('Our UK operations team coordinates', 'Our opera
 # Localize Footer UK helpline
 html_delhi = html_delhi.replace('24X7 UK Emergency Helpline', '24X7 India Emergency Helpline')
 
+# Localize Why Families Section
+html_delhi = html_delhi.replace('<!-- Why Families in UK Rely on Air Medical 24X7 -->', '<!-- Why Families in India Rely on Air Medical 24X7 -->')
+html_delhi = html_delhi.replace('Why Families in the UK Rely on Air Medical 24X7', 'Why Families in India Rely on Air Medical 24X7')
+html_delhi = html_delhi.replace('thousands of UK families', 'thousands of families in India')
+html_delhi = html_delhi.replace('UK Operations &mdash; Rapid Local Response', 'India Operations &mdash; Rapid Response')
+html_delhi = html_delhi.replace('Our UK desk handles\n                                    NHS hospital liaisons, London airport clearances (Heathrow, Gatwick, Stansted), and ground ambulance dispatch &mdash; ensuring swift response across England, Scotland, Wales, and Northern Ireland.',
+                                'Our local operations coordinate ground ambulance dispatch, airport coordination, and flight logistics &mdash; ensuring the fastest possible response across all major cities and regions in India.')
+html_delhi = html_delhi.replace('across all\n                                    UK departures.', 'across all\n                                    departures from India.')
+
 # Save Delhi page (overwriting air-ambulance-delhi.html)
-with open("air-ambulance-delhi.html", "w", encoding="utf-8") as f:
+html_delhi = make_paths_relative(html_delhi)
+with open("national/air-ambulance-delhi.html", "w", encoding="utf-8") as f:
     f.write(html_delhi)
-print("Saved air-ambulance-delhi.html")
+print("Saved national/air-ambulance-delhi.html")
 
 
 # ----------------- 2. Process Andaman Page (air-ambulance-portblair.html) -----------------
-with open("air-ambulance-portblair.html", "r", encoding="utf-8") as f:
+with open("national/air-ambulance-portblair.html", "r", encoding="utf-8") as f:
     andaman_src_html = f.read()
 andaman_cards = parse_route_cards(andaman_src_html)
 
@@ -532,7 +560,7 @@ new_andaman_routes_section = f"""    <section id="routes-section"
         </div>
     </section>"""
 
-html_andaman = re.sub(routes_section_regex_template, new_andaman_routes_section + "\n\n    <!-- Testimonials Section -->", html_andaman, flags=re.DOTALL)
+html_andaman = re.sub(routes_section_regex_template, new_andaman_routes_section + "\n\n", html_andaman, flags=re.DOTALL)
 
 # Localize FAQs
 html_andaman = html_andaman.replace('insurance coordination for UK', 'insurance coordination for India')
@@ -550,7 +578,325 @@ html_andaman = html_andaman.replace('Our UK operations team coordinates', 'Our o
 # Localize Footer UK helpline
 html_andaman = html_andaman.replace('24X7 UK Emergency Helpline', '24X7 India Emergency Helpline')
 
+# Localize Why Families Section
+html_andaman = html_andaman.replace('<!-- Why Families in UK Rely on Air Medical 24X7 -->', '<!-- Why Families in Andaman and Nicobar Rely on Air Medical 24X7 -->')
+html_andaman = html_andaman.replace('Why Families in the UK Rely on Air Medical 24X7', 'Why Families in Andaman and Nicobar Rely on Air Medical 24X7')
+html_andaman = html_andaman.replace('thousands of UK families', 'thousands of families in India')
+html_andaman = html_andaman.replace('UK Operations &mdash; Rapid Local Response', 'India Operations &mdash; Rapid Response')
+html_andaman = html_andaman.replace('Our UK desk handles\n                                    NHS hospital liaisons, London airport clearances (Heathrow, Gatwick, Stansted), and ground ambulance dispatch &mdash; ensuring swift response across England, Scotland, Wales, and Northern Ireland.',
+                                     'Our local operations coordinate ground ambulance dispatch, airport coordination, and flight logistics &mdash; ensuring the fastest possible response across all major cities and regions in India.')
+html_andaman = html_andaman.replace('across all\n                                    UK departures.', 'across all\n                                    departures from India.')
+
 # Save Andaman page (overwriting air-ambulance-portblair.html)
-with open("air-ambulance-portblair.html", "w", encoding="utf-8") as f:
+html_andaman = make_paths_relative(html_andaman)
+with open("national/air-ambulance-portblair.html", "w", encoding="utf-8") as f:
     f.write(html_andaman)
-print("Saved air-ambulance-portblair.html")
+print("Saved national/air-ambulance-portblair.html")
+
+
+# ----------------- 3. Process Jammu & Kashmir Page (air-ambulance-jammu-kashmir.html) -----------------
+with open("national/air-ambulance-jammu-kashmir.html", "r", encoding="utf-8") as f:
+    jk_src_html = f.read()
+
+jk_all_cards = parse_route_cards(jk_src_html)
+
+# Get unique cards
+seen = set()
+jk_cards = []
+for c in jk_all_cards:
+    key = (c['origin'].strip(), c['destination'].strip())
+    if key not in seen:
+        seen.add(key)
+        jk_cards.append(c)
+
+def find_card(cards, origin, dest):
+    for c in cards:
+        if c['origin'].strip() == origin and c['destination'].strip() == dest:
+            return c
+    # Fallback if card is missing
+    return {
+        'title': f"{origin} to {dest}",
+        'origin': origin,
+        'destination': dest,
+        'description': f"Emergency ICU medical flights and patient transfer from {origin} to {dest}, connecting you to top hospitals for specialized treatments.",
+        'wa_link': f"https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer%20from%20{origin}%20to%20{dest}.%20Please%20Assist!"
+    }
+
+html_jk = template
+
+# Replace Title, Meta Description, Keywords, Canonical Link
+html_jk = html_jk.replace(
+    '<title>Air Ambulance Service UK &ndash; 24X7 ICU Patient Repatriation</title>',
+    '<title>Air Ambulance Services in Jammu & Kashmir | Srinagar & Jammu ICU Medical Evacuation 24X7</title>'
+)
+html_jk = html_jk.replace(
+    '<meta name="description"\n        content="Emergency Air Ambulance &amp; Medical Repatriation UK. Rapid response medical flights, commercial airline stretcher, and bed-to-bed patient transfer from UK to anywhere globally." />',
+    '<meta name="description" content="24/7 Air Ambulance Services and ICU medical flights from Srinagar, Jammu and Jammu & Kashmir to Delhi, Mumbai, and worldwide. Patient transfers, commercial airline stretchers, and medical escorts. Get a quote within 30 minutes." />'
+)
+html_jk = html_jk.replace(
+    '<meta name="keywords"\n        content="Air Ambulance Services UK, Air Ambulance UK, Emergency Air Ambulance UK, Medical Evacuation UK, Air Ambulance UK to India, Air Ambulance UK to USA, Airline Stretcher UK, Flight Medical Escort UK" />',
+    '<meta name="keywords" content="Air Ambulance Jammu Kashmir, Air Ambulance Srinagar, Air Ambulance Jammu, Medical Evacuation Srinagar, Emergency Flight Srinagar, ICU Air Ambulance Jammu, Airline Stretcher Jammu, Flight Medical Escort Srinagar, Patient Transfer Jammu Kashmir" />'
+)
+html_jk = html_jk.replace(
+    '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-uk" />',
+    '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-jammu-kashmir" />'
+)
+
+# Localize Schema
+jk_schema = """    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "MedicalOrganization"],
+      "name": "Air Medical 24X7 Jammu & Kashmir",
+      "url": "https://airmedical24x7.com/air-ambulance-jammu-kashmir",
+      "telephone": "+919217710155",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Srinagar & Jammu",
+        "addressRegion": "Jammu & Kashmir",
+        "addressCountry": "IN"
+      },
+      "description": "24X7 Air Ambulance and Medical Evacuation Services from Srinagar, Jammu and Jammu & Kashmir to major hospitals (Delhi, Mumbai, Chandigarh) and worldwide.",
+      "areaServed": "Srinagar, Jammu, Leh, Anantnag, Baramulla, Kathua, Samba, Udhampur, Poonch, Kupwara, Pulwama, Sopore",
+      "medicalSpecialty": "Emergency Medicine",
+      "availableService": "Air Ambulance",
+      "openingHours": "Mo-Su 00:00-24:00"
+    }
+    </script>"""
+
+html_jk = html_jk.replace(old_schema, jk_schema)
+
+# Localize Header persistent phone link
+html_jk = html_jk.replace('href="tel:+448002294751"', 'href="tel:+919217710155"')
+html_jk = html_jk.replace('+44 800 229 4751', '+91 92177 10155')
+
+# Localize Hero Left Panel Header & Description
+hero_title_jk = '24/7 ICU Air Ambulance &amp; Medical Evacuation from Jammu &amp; Kashmir'
+hero_desc_jk = 'Emergency medical repatriation from anywhere in Jammu & Kashmir, including Srinagar, Jammu, Leh, Anantnag, Baramulla, Kathua, Samba, Udhampur, Poonch, Kupwara, Pulwama, and Sopore, to destinations worldwide. Rapid dispatch with a fully equipped medical crew, providing safe and reliable transfers from Srinagar or Jammu to anywhere in the world.'
+html_jk = html_jk.replace(hero_title_uk, hero_title_jk)
+html_jk = html_jk.replace(hero_desc_uk, hero_desc_jk)
+
+# Replace Form placeholders in J&K
+html_jk = html_jk.replace('placeholder="e.g. London, Birmingham"', 'placeholder="e.g. Srinagar, Jammu, Leh"')
+html_jk = html_jk.replace('placeholder="e.g. Delhi, Mumbai, Dubai"', 'placeholder="e.g. New Delhi, Mumbai, Chandigarh"')
+
+# Replace sidebar destinations grid
+jk_sidebar_html = """<!-- Destinations Grid — 3 columns -->
+                            <div class="space-y-2 mb-5">
+                                <div>
+                                    <h2 class="text-[8px] font-black uppercase tracking-[0.18em] text-white mb-2">Mainland Evacuation Corridors</h2>
+                                    <ul class="grid grid-cols-3 gap-x-2 gap-y-1 text-[10px] text-slate-200 font-bold">
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to New Delhi</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Chandigarh</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Amritsar</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Mumbai</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Hyderabad</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Bengaluru</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Chennai</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Kolkata</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Ahmedabad</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Lucknow</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Jaipur</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Pune</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Kochi</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Dehradun</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Gurugram</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Noida</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Ludhiana</li>
+                                        <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0"></span>Jammu & Kashmir to Jalandhar</li>
+                                    </ul>
+                                </div>
+                            </div>"""
+
+new_left_panel_jk = f"""<!-- Left Panel: Navy / Info -->
+                    <div
+                        class="bg-primary p-8 md:p-10 text-white hidden lg:flex flex-col justify-center relative overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        </div>
+                        <div class="relative z-10">
+                            <h1 class="font-headline text-xl font-extrabold leading-tight mb-3">
+                                {hero_title_jk}
+                            </h1>
+                            <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+                                {hero_desc_jk}
+                            </p>
+                            {jk_sidebar_html}
+                        </div>
+                        <!-- Decorative icon -->
+                        <div
+                            class="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-20 transition-opacity duration-500 group-hover:scale-110 transform">
+                            <span class="material-symbols-outlined text-[200px]">support_agent</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel: White / Quote Form -->"""
+
+html_jk = re.sub(left_panel_regex, new_left_panel_jk, html_jk, flags=re.DOTALL)
+
+# Stats section
+html_jk = html_jk.replace('UK Command Center', 'Jammu & Kashmir Operations Command Center')
+
+# Cost section
+html_jk = html_jk.replace('Air Ambulance &amp; Airline Stretcher Costs from UK', 'Air Ambulance &amp; Airline Stretcher Costs from Jammu & Kashmir')
+html_jk = html_jk.replace('repatriation from the UK', 'repatriation from Jammu & Kashmir')
+html_jk = html_jk.replace('evacuations from the UK', 'evacuations from Jammu & Kashmir')
+html_jk = html_jk.replace('Call UK Emergency Desk', 'Call India Emergency Desk')
+html_jk = html_jk.replace(
+    'We provide medical transfers from major UK cities, including <strong>London, Edinburgh, Manchester, Birmingham, and Glasgow</strong>, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.',
+    'We provide medical transfers from all major locations in Jammu & Kashmir, including Srinagar, Jammu, and Leh, to leading super-specialty hospitals in Delhi NCR, Mumbai, and worldwide, ensuring seamless bedside-to-bedside patient transportation.'
+)
+html_jk = html_jk.replace('src="assets/air-ambulance-uk.jfif" alt="Air Ambulance UK London Pricing"', 'src="../assets/airport_jammu_jk.jpg.jpg" alt="Air Ambulance Cost from Jammu & Kashmir"')
+
+# Build 24 Most Requested routes cards
+req_dests = ['New Delhi', 'Mumbai', 'Hyderabad', 'Bengaluru', 'Chennai', 'Kolkata', 'Ahmedabad', 'Lucknow', 'Jaipur', 'Chandigarh', 'Amritsar']
+most_requested_cards = []
+
+for d in req_dests + ['Jammu']:
+    card = find_card(jk_cards, "Srinagar", d)
+    most_requested_cards.append(generate_uk_style_route_card(card))
+    
+for d in req_dests + ['Srinagar']:
+    card = find_card(jk_cards, "Jammu", d)
+    most_requested_cards.append(generate_uk_style_route_card(card))
+    
+most_requested_grid_html = "\n".join(most_requested_cards)
+
+# Build collapsible regions (accordions)
+regions_data = {
+    'north-india': {
+        'title': 'North India',
+        'routes': [
+            ("Srinagar", "New Delhi"), ("Srinagar", "Noida"), ("Srinagar", "Gurugram"), ("Srinagar", "Ghaziabad"), ("Srinagar", "Faridabad"), 
+            ("Srinagar", "Chandigarh"), ("Srinagar", "Amritsar"), ("Srinagar", "Ludhiana"), ("Srinagar", "Jalandhar"), ("Srinagar", "Jaipur"), 
+            ("Srinagar", "Lucknow"), ("Srinagar", "Kanpur"), ("Srinagar", "Dehradun"), ("Srinagar", "Varanasi"), ("Srinagar", "Jammu"), ("Srinagar", "Leh"),
+            ("Jammu", "New Delhi"), ("Jammu", "Noida"), ("Jammu", "Gurugram"), ("Jammu", "Ghaziabad"), ("Jammu", "Faridabad"), 
+            ("Jammu", "Chandigarh"), ("Jammu", "Amritsar"), ("Jammu", "Ludhiana"), ("Jammu", "Jalandhar"), ("Jammu", "Jaipur"), 
+            ("Jammu", "Lucknow"), ("Jammu", "Kanpur"), ("Jammu", "Dehradun"), ("Jammu", "Varanasi"), ("Jammu", "Srinagar"), ("Jammu", "Leh")
+        ]
+    },
+    'south-india': {
+        'title': 'South India',
+        'routes': [
+            ("Srinagar", "Chennai"), ("Srinagar", "Bengaluru"), ("Srinagar", "Hyderabad"), ("Srinagar", "Kochi"), ("Srinagar", "Coimbatore"), 
+            ("Srinagar", "Thiruvananthapuram"), ("Srinagar", "Visakhapatnam"),
+            ("Jammu", "Chennai"), ("Jammu", "Bengaluru"), ("Jammu", "Hyderabad"), ("Jammu", "Kochi")
+        ]
+    },
+    'west-india': {
+        'title': 'West India',
+        'routes': [
+            ("Srinagar", "Mumbai"), ("Srinagar", "Pune"), ("Srinagar", "Ahmedabad"), ("Srinagar", "Goa"),
+            ("Jammu", "Mumbai"), ("Jammu", "Pune"), ("Jammu", "Ahmedabad"), ("Jammu", "Goa")
+        ]
+    },
+    'central-india': {
+        'title': 'Central India',
+        'routes': [
+            ("Srinagar", "Nagpur"), ("Srinagar", "Indore"), ("Srinagar", "Bhopal"), ("Srinagar", "Raipur"),
+            ("Jammu", "Nagpur"), ("Jammu", "Indore"), ("Jammu", "Bhopal")
+        ]
+    },
+    'east-india': {
+        'title': 'East India',
+        'routes': [
+            ("Srinagar", "Kolkata"), ("Srinagar", "Bhubaneswar"), ("Srinagar", "Ranchi"), ("Srinagar", "Patna"),
+            ("Jammu", "Kolkata"), ("Jammu", "Bhubaneswar"), ("Jammu", "Ranchi"), ("Jammu", "Patna")
+        ]
+    },
+    'northeast-india': {
+        'title': 'North-East India',
+        'routes': [
+            ("Srinagar", "Guwahati"),
+            ("Jammu", "Guwahati")
+        ]
+    }
+}
+
+accordions = []
+for r_key, r_info in regions_data.items():
+    r_cards = []
+    for origin, dest in r_info['routes']:
+        card = find_card(jk_cards, origin, dest)
+        r_cards.append(generate_uk_style_route_card(card))
+        
+    r_cards_html = "\n".join(r_cards)
+    
+    accordion = f"""            <!-- Region: {r_info['title']} -->
+            <div class="border border-outline-variant/10 rounded-2xl overflow-hidden bg-white shadow-sm transition-all duration-300">
+                <button class="w-full flex justify-between items-center p-6 text-left font-headline font-bold text-primary hover:text-secondary transition-colors" onclick="toggleRegion('{r_key}')">
+                    <span>{r_info['title']}</span>
+                    <span class="material-symbols-outlined text-secondary text-2xl transform transition-transform duration-300 ease-in-out" id="icon-region-{r_key}">keyboard_arrow_down</span>
+                </button>
+                <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-{r_key}">
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+{r_cards_html}
+                        </div>
+                    </div>
+                </div>
+            </div>"""
+    accordions.append(accordion)
+    
+accordions_html = "\n".join(accordions)
+
+new_jk_routes_section = f"""    <section id="routes-section" class="py-16 bg-surface-container-low/40 border-b border-outline-variant/10 relative overflow-hidden">
+        <div class="container mx-auto px-6 md:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tighter">
+                    Critical Evacuation Routes from Jammu & Kashmir
+                </h2>
+                <p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                    Providing dedicated bed-to-bed ICU air ambulance and commercial airline stretcher services, serving patients from Srinagar, Jammu, Leh and the surrounding Jammu & Kashmir regions with seamless end-to-end medical transportation.
+                </p>
+            </div>
+
+            <!-- Most Requested Transfer Routes -->
+            <div id="popular-routes" class="mb-14">
+                <h3 class="font-headline text-lg font-extrabold uppercase tracking-widest text-primary mb-6 border-l-4 border-secondary pl-3">
+                    Most Requested Transfer Routes
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+{most_requested_grid_html}
+                </div>
+            </div>
+
+            <!-- Collapsible Region Groups -->
+            <div class="space-y-4 max-w-6xl mx-auto mt-12">
+{accordions_html}
+            </div>
+        </div>
+    </section>"""
+
+html_jk = re.sub(routes_section_regex_template, new_jk_routes_section + "\n\n", html_jk, flags=re.DOTALL)
+
+# Localize Why Families Section
+html_jk = html_jk.replace('<!-- Why Families in UK Rely on Air Medical 24X7 -->', '<!-- Why Families in Jammu Kashmir Rely on Air Medical 24X7 -->')
+html_jk = html_jk.replace('Why Families in the UK Rely on Air Medical 24X7', 'Why Families in Jammu Kashmir Rely on Air Medical 24X7')
+html_jk = html_jk.replace('thousands of UK families', 'thousands of families in India')
+html_jk = html_jk.replace('UK Operations &mdash; Rapid Local Response', 'India Operations &mdash; Rapid Response')
+html_jk = html_jk.replace('Our UK desk handles\n                                    NHS hospital liaisons, London airport clearances (Heathrow, Gatwick, Stansted), and ground ambulance dispatch &mdash; ensuring swift response across England, Scotland, Wales, and Northern Ireland.',
+                          'Our local operations coordinate ground ambulance dispatch, airport coordination, and flight logistics &mdash; ensuring the fastest possible response across all major cities and regions in India.')
+html_jk = html_jk.replace('across all\n                                    UK departures.', 'across all\n                                    departures from India.')
+
+# Localize FAQs
+html_jk = html_jk.replace('insurance coordination for UK', 'insurance coordination for India')
+html_jk = html_jk.replace('How much does an Air Ambulance Cost from the UK?', 'How much does an Air Ambulance Cost from Jammu & Kashmir?')
+html_jk = html_jk.replace('air ambulance cost from the UK', 'air ambulance cost from Jammu & Kashmir')
+html_jk = html_jk.replace('regions in the UK do you cover', 'regions in Jammu & Kashmir do you cover')
+html_jk = html_jk.replace('managed by our UK operations team', 'managed by our operations team')
+html_jk = html_jk.replace('air ambulance be arranged from UK?', 'air ambulance be arranged from Jammu & Kashmir?')
+html_jk = html_jk.replace('Our UK team responds to', 'Our operations team responds to')
+html_jk = html_jk.replace('services from UK?', 'services from Jammu & Kashmir?')
+html_jk = html_jk.replace('Many UK health insurance', 'Many Indian health insurance')
+html_jk = html_jk.replace('ground ambulance in UK coordinated', 'ground ambulance in Jammu & Kashmir coordinated')
+html_jk = html_jk.replace('Our UK operations team coordinates', 'Our operations team coordinates')
+
+# Localize Footer UK helpline
+html_jk = html_jk.replace('24X7 UK Emergency Helpline', '24X7 India Emergency Helpline')
+
+# Save Jammu & Kashmir page
+html_jk = make_paths_relative(html_jk)
+with open("national/air-ambulance-jammu-kashmir.html", "w", encoding="utf-8") as f:
+    f.write(html_jk)
+print("Saved national/air-ambulance-jammu-kashmir.html")
