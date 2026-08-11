@@ -518,10 +518,14 @@
 
                     <!-- Right Panel: White / Quote Form -->
                     <div class="p-5 md:p-10 bg-white">
-                        <h3
-                            class="font-headline text-lg sm:text-xl font-extrabold text-primary mb-5 flex items-center justify-center gap-3 text-center">
-                            Get a Quotation in 30 minutes
-                        </h3>
+                        <div class="mb-5 text-center">
+                            <h3 class="font-headline text-lg sm:text-xl font-extrabold text-primary mb-1">
+                                Request an Air Ambulance Quote
+                            </h3>
+                            <p class="text-slate-500 text-[10px] sm:text-[11px] font-semibold leading-normal">
+                                No obligation &bull; Confidential assessment &bull; Response within 30 minutes
+                            </p>
+                        </div>
                         <form class="space-y-4" id="quote-form">
                             <div class="animate-fade-in-up delay-100">
                                 <label
@@ -598,7 +602,7 @@
                                 <button
                                     class="w-full bg-secondary text-white py-4 rounded-lg font-headline font-black uppercase tracking-[0.2em] text-xs hover:bg-primary transition-all duration-300 shadow-xl shadow-secondary/20 pulse-motif relative overflow-hidden group"
                                     type="submit">
-                                    <span class="relative z-10">REQUEST CALLBACK</span>
+                                    <span class="relative z-10">REQUEST QUOTE</span>
                                     <div
                                         class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                                     </div>
@@ -706,6 +710,86 @@
                     <div class="font-headline text-2xl md:text-4xl font-black text-primary mb-1"><span
                             class="stat-number" data-target="100">0</span>+</div>
                     <p class="text-on-surface-variant text-xs font-black uppercase tracking-widest">Countries Covered</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Transfer Your Loved Ones Section -->
+    <section id="how-we-transfer-section" class="py-16 bg-surface-container-low/40 border-b border-outline-variant/10 relative overflow-hidden">
+        <div class="container mx-auto px-6 md:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-14 scroll-reveal">
+                <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-3 tracking-tighter uppercase">
+                    How We Transfer Your Loved Ones
+                </h2>
+                <p class="text-on-surface-variant font-body text-sm leading-relaxed mb-4">
+                    A simple, transparent, and clinical-first process to reduce anxiety and ensure a safe, bed-to-bed journey.
+                </p>
+                <div class="w-16 h-1 bg-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Timeline & Cards Container -->
+            <div class="relative max-w-6xl mx-auto">
+                <!-- Timeline Connecting Line (Desktop Only) -->
+                <div class="hidden lg:block absolute top-[50px] left-[8%] right-[8%] h-0.5 bg-outline-variant/20 z-0"></div>
+
+                <!-- 5 Steps Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-full bg-primary text-white font-headline font-black text-base flex items-center justify-center mb-4 shadow-lg shadow-primary/20 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                            1
+                        </div>
+                        <h4 class="font-headline font-bold text-primary text-base mb-2">Emergency Call</h4>
+                        <p class="text-on-surface-variant font-body text-xs leading-relaxed">
+                            Contact our 24X7 hotline. Speak directly to a medical coordinator.
+                        </p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-full bg-primary text-white font-headline font-black text-base flex items-center justify-center mb-4 shadow-lg shadow-primary/20 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                            2
+                        </div>
+                        <h4 class="font-headline font-bold text-primary text-base mb-2">Medical Assessment</h4>
+                        <p class="text-on-surface-variant font-body text-xs leading-relaxed">
+                            Our clinical team reviews the patient's condition and flight needs within minutes.
+                        </p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-full bg-primary text-white font-headline font-black text-base flex items-center justify-center mb-4 shadow-lg shadow-primary/20 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                            3
+                        </div>
+                        <h4 class="font-headline font-bold text-primary text-base mb-2">Clearance &amp; Coordination</h4>
+                        <p class="text-on-surface-variant font-body text-xs leading-relaxed">
+                            We secure fast permits, international clearances, and coordinate hospital beds.
+                        </p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-full bg-primary text-white font-headline font-black text-base flex items-center justify-center mb-4 shadow-lg shadow-primary/20 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                            4
+                        </div>
+                        <h4 class="font-headline font-bold text-primary text-base mb-2">Bed-to-Bed Transfer</h4>
+                        <p class="text-on-surface-variant font-body text-xs leading-relaxed">
+                            ICU flight transfer and fully managed medical ground ambulance supervision.
+                        </p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center group">
+                        <div class="w-12 h-12 rounded-full bg-primary text-white font-headline font-black text-base flex items-center justify-center mb-4 shadow-lg shadow-primary/20 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                            5
+                        </div>
+                        <h4 class="font-headline font-bold text-primary text-base mb-2">Safe Arrival</h4>
+                        <p class="text-on-surface-variant font-body text-xs leading-relaxed">
+                            Direct handover of the patient to the receiving hospital's medical team.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
