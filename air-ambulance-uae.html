@@ -858,7 +858,7 @@
         <div class="container mx-auto px-6 md:px-8 relative z-10">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-14 scroll-reveal">
-                <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-3 tracking-tighter uppercase">
+                <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-3 tracking-tighter">
                     How We Transfer Your Loved Ones
                 </h2>
                 <p class="text-on-surface-variant font-body text-sm leading-relaxed mb-4">
@@ -16218,82 +16218,6 @@
         <span
             class="absolute inset-0 rounded-[9999px] bg-[#25D366]/30 animate-ping group-hover:animate-none -z-10"></span>
     </a>
-
-    <!-- Google Translate Auto IP Geolocation Script -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const queryLang = urlParams.get('lang');
-
-            // Add hidden Google Translate container to body
-            const gtDiv = document.createElement('div');
-            gtDiv.id = 'google_translate_element';
-            gtDiv.style.display = 'none';
-            document.body.appendChild(gtDiv);
-
-            function initGoogleTranslate(targetLang) {
-                // Set the googtrans cookie to trigger translation
-                if (targetLang && targetLang !== 'en') {
-                    document.cookie = `googtrans=/en/${targetLang}; path=/; domain=${window.location.hostname}`;
-                    document.cookie = `googtrans=/en/${targetLang}; path=/`;
-                }
-
-                // Load Google Translate script dynamically
-                const script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-                document.head.appendChild(script);
-            }
-
-            if (queryLang) {
-                console.log(`[Google Translate] Using query parameter language: ${queryLang}`);
-                initGoogleTranslate(queryLang);
-            } else {
-                // Fetch visitor's country based on IP (Primary API: freeipapi.com)
-                fetch('https://freeipapi.com/api/json')
-                    .then(res => res.json())
-                    .then(data => {
-                        const countryCode = data.countryCode;
-                        const countryToLang = {
-                            'AE': 'ar', 'SA': 'ar', 'EG': 'ar', 'DZ': 'ar', 'MA': 'ar', 'SD': 'ar', 'IQ': 'ar', 'YE': 'ar',
-                            'JO': 'ar', 'SY': 'ar', 'LB': 'ar', 'LY': 'ar', 'OM': 'ar', 'QA': 'ar', 'BH': 'ar', 'KW': 'ar',
-                            'TR': 'tr', 'JP': 'ja', 'TZ': 'sw', 'PH': 'tl', 'DE': 'de', 'FR': 'fr', 'ES': 'es', 'IT': 'it', 'IN': 'hi',
-                            'RU': 'ru', 'CN': 'zh-CN', 'KR': 'ko'
-                        };
-                        const targetLang = countryToLang[countryCode] || 'en';
-                        initGoogleTranslate(targetLang);
-                    })
-                    .catch(err => {
-                        console.warn('[Google Translate] Primary Geo-IP API failed, trying fallback...', err);
-                        // Fallback API: ipapi.co
-                        fetch('https://ipapi.co/json/')
-                            .then(res => res.json())
-                            .then(data => {
-                                const countryCode = data.country_code;
-                                const countryToLang = {
-                                    'AE': 'ar', 'SA': 'ar', 'EG': 'ar', 'DZ': 'ar', 'MA': 'ar', 'SD': 'ar', 'IQ': 'ar', 'YE': 'ar',
-                                    'JO': 'ar', 'SY': 'ar', 'LB': 'ar', 'LY': 'ar', 'OM': 'ar', 'QA': 'ar', 'BH': 'ar', 'KW': 'ar',
-                                    'TR': 'tr', 'JP': 'ja', 'TZ': 'sw', 'PH': 'tl', 'DE': 'de', 'FR': 'fr', 'ES': 'es', 'IT': 'it', 'IN': 'hi',
-                                    'RU': 'ru', 'CN': 'zh-CN', 'KR': 'ko'
-                                };
-                                const targetLang = countryToLang[countryCode] || 'en';
-                                initGoogleTranslate(targetLang);
-                            })
-                            .catch(fallbackErr => {
-                                console.error('[Google Translate] Fallback Geolocation failed:', fallbackErr);
-                                initGoogleTranslate('en');
-                            });
-                    });
-            }
-        });
-    </script>
 
 </body>
 
