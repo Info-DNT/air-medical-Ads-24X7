@@ -33,35 +33,35 @@ def generate_card(origin, destination):
                         </div>
                     </div>"""
 
-def replace_accordion_grid(content, region_id, next_accordion_marker, cards_html):
-    # Find start of region accordion
-    start_pos = content.find(f'id="{region_id}"')
-    if start_pos == -1:
-        start_pos = content.find(f"id='{region_id}'")
-        
-    if start_pos == -1:
-        raise ValueError(f"Could not find accordion container with ID {region_id}")
-        
-    # Find grid start marker after start_pos
-    grid_marker = '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">'
-    grid_start = content.find(grid_marker, start_pos)
-    if grid_start == -1:
-        raise ValueError(f"Could not find grid marker in accordion {region_id}")
-        
-    # Find next accordion marker
-    end_pos = content.find(next_accordion_marker, grid_start)
-    if end_pos == -1:
-        raise ValueError(f"Could not find next marker {next_accordion_marker} after accordion {region_id}")
-        
-    # Find the last </div> before end_pos which closes the grid
-    last_div = content.rfind('</div>', grid_start, end_pos)
-    if last_div == -1:
-        raise ValueError(f"Could not find closing grid div in accordion {region_id}")
-        
-    # Slice out the old cards and replace with cards_html
-    before_grid = content[:grid_start + len(grid_marker)]
-    after_grid = content[last_div:]
-    return before_grid + '\n' + cards_html + '\n' + after_grid
+def build_accordion(region_id, title, destinations, origin):
+    """Build a complete accordion section exactly matching the UK page structure."""
+    cards = '\n'.join([generate_card(origin, dest) for dest in destinations])
+    return f"""            <!-- Region Accordion: {title} -->
+            <div id="region-{region_id}"
+                class="mb-6 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden bg-white shadow-sm transition-all duration-300">
+                <!-- Accordion Header Button -->
+                <button
+                    class="w-full px-6 py-5 flex items-center justify-between bg-slate-50/50 hover:bg-slate-50 transition-colors text-left focus:outline-none group"
+                    onclick="toggleRegion('{region_id}')">
+                    <span
+                        class="font-headline text-base md:text-lg font-black text-primary uppercase tracking-wide">{title}</span>
+                    <span
+                        class="material-symbols-outlined text-secondary text-2xl transform transition-transform duration-300 ease-in-out"
+                        id="icon-region-{region_id}">keyboard_arrow_down</span>
+                </button>
+                <!-- Accordion Content (Collapsed by Default) -->
+                <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100"
+                    id="content-region-{region_id}">
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+{cards}
+                        </div>
+                    </div>
+                </div>
+            </div>
+"""
+
+
 
 def main():
     template_path = 'air-ambulance-dummy.html'
@@ -380,38 +380,58 @@ def main():
                     </div>"""
         content = content[:faq_1_start] + faq_accordions_html + content[faq_end_pos:]
 
-    # 9. Populate "Most Requested Transfer Routes" Grid
+    # 9. Build and inject the entire routes section (popular-routes grid + 5 accordions)
+    origin = 'Victoria / Mahé'
     requested_dests = ['Mumbai', 'Dubai', 'Abu Dhabi', 'Doha', 'Colombo', 'Johannesburg', 'Nairobi', 'Addis Ababa', 'Istanbul', 'Frankfurt', 'Zurich', 'Paris', 'Moscow', 'Tel Aviv', 'Mauritius', 'Antananarivo', 'Saint-Denis', 'Dar es Salaam']
-    popular_cards = '\n'.join([generate_card('Victoria / Mahé', dest) for dest in requested_dests])
+    popular_cards = '\n'.join([generate_card(origin, dest) for dest in requested_dests])
 
-    # Replace in popular-routes grid
-    grid_start_idx = content.find('id="popular-routes"')
-    grid_div_marker = '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">'
-    grid_div_idx = content.find(grid_div_marker, grid_start_idx)
-    grid_end_marker = '<!-- Region Accordion: Asia & Subcontinent Routes -->'
-    grid_end_idx = content.find(grid_end_marker, grid_div_idx)
-    last_grid_div_idx = content.rfind('</div>', grid_div_idx, grid_end_idx)
-
-    content = content[:grid_div_idx + len(grid_div_marker)] + '\n' + popular_cards + '\n' + content[last_grid_div_idx:]
-
-    # 10. Populate Regional Accordions
     asia_dests = ['Mumbai', 'Colombo', 'Chennai', 'New Delhi', 'Bengaluru', 'Hyderabad', 'Kochi', 'Singapore', 'Kuala Lumpur', 'Bangkok', 'Manila', 'Jakarta', 'Hong Kong', 'Beijing', 'Shanghai', 'Tokyo', 'Seoul', 'Dhaka', 'Kathmandu', 'Malé', 'Lahore', 'Karachi', 'Islamabad']
     mideast_dests = ['Dubai', 'Abu Dhabi', 'Doha', 'Istanbul', 'Tel Aviv', 'Muscat', 'Kuwait City', 'Manama', 'Riyadh', 'Jeddah', 'Cairo']
     europe_dests = ['Frankfurt', 'Zurich', 'Paris', 'Moscow', 'London', 'Manchester', 'Amsterdam', 'Brussels', 'Rome', 'Milan', 'Madrid', 'Barcelona', 'Vienna', 'Athens', 'Lisbon', 'Copenhagen', 'Stockholm', 'Oslo', 'Helsinki', 'Geneva', 'New York', 'Washington, D.C.', 'Toronto', 'Montreal']
     oceania_dests = ['Sydney', 'Melbourne', 'Auckland']
     africa_dests = ['Johannesburg', 'Nairobi', 'Addis Ababa', 'Mauritius', 'Antananarivo', 'Saint-Denis', 'Dar es Salaam', 'Casablanca', 'Tunis', 'Algiers', 'Lagos', 'Accra', 'Entebbe', 'Kigali', 'Maputo', 'Lusaka', 'Harare', 'Cape Town']
 
-    asia_cards = '\n'.join([generate_card('Victoria / Mahé', dest) for dest in asia_dests])
-    mideast_cards = '\n'.join([generate_card('Victoria / Mahé', dest) for dest in mideast_dests])
-    europe_cards = '\n'.join([generate_card('Victoria / Mahé', dest) for dest in europe_dests])
-    oceania_cards = '\n'.join([generate_card('Victoria / Mahé', dest) for dest in oceania_dests])
-    africa_cards = '\n'.join([generate_card('Victoria / Mahé', dest) for dest in africa_dests])
+    routes_section_html = f"""<!-- SECTION START: Critical Global Transfer Routes -->
+    <!-- Critical Global Transfer Routes from Seychelles Section -->
+    <section id="routes-section"
+        class="py-16 bg-surface-container-low/40 border-b border-outline-variant/10 relative overflow-hidden">
+        <div class="container mx-auto px-6 md:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tighter">
+                    Critical Global Transfer Routes from Seychelles
+                </h2>
+                <p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                    Providing dedicated bed-to-bed ICU air ambulance and commercial airline stretcher services across all major international medical corridors, serving patients from Seychelles with seamless end-to-end medical transportation.
+                </p>
+            </div>
 
-    content = replace_accordion_grid(content, 'region-asia', '<!-- Region Accordion: Middle East & Central Asia Routes -->', asia_cards)
-    content = replace_accordion_grid(content, 'region-middle-east', '<!-- Region Accordion: USA, Canada & Europe Routes -->', mideast_cards)
-    content = replace_accordion_grid(content, 'region-europe-usa', '<!-- Region Accordion: Oceania Routes -->', europe_cards)
-    content = replace_accordion_grid(content, 'region-oceania', '<!-- Region Accordion: Africa Routes -->', oceania_cards)
-    content = replace_accordion_grid(content, 'region-africa', '<!-- SECTION END: Critical Global Transfer Routes -->', africa_cards)
+            <!-- Popular Routes Sub-Section -->
+            <div id="popular-routes" class="mb-14">
+                <h3 class="font-headline text-lg font-black text-primary mb-6 uppercase tracking-wider">Most Requested
+                    Transfer Routes</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+{popular_cards}
+                </div>
+            </div>
+
+{build_accordion('asia', 'Asia & Subcontinent Routes', asia_dests, origin)}
+{build_accordion('middle-east', 'Middle East & Central Asia Routes', mideast_dests, origin)}
+{build_accordion('europe-usa', 'USA, Canada, Europe & UK Routes', europe_dests, origin)}
+{build_accordion('oceania', 'Oceania Routes', oceania_dests, origin)}
+{build_accordion('africa', 'Africa Routes', africa_dests, origin)}
+        </div>
+    </section>
+<!-- SECTION END: Critical Global Transfer Routes -->"""
+
+    # Find the old routes section and replace it entirely
+    routes_start_marker = '<!-- SECTION START: Critical Global Transfer Routes'
+    routes_end_marker = '<!-- SECTION END: Critical Global Transfer Routes -->'
+    rs = content.find(routes_start_marker)
+    re_end = content.find(routes_end_marker)
+    if rs == -1 or re_end == -1:
+        raise ValueError('Could not find routes section markers in template')
+    re_end += len(routes_end_marker)
+    content = content[:rs] + routes_section_html + content[re_end:]
 
     # 11. Create Root File (All relative asset paths)
     root_content = content
