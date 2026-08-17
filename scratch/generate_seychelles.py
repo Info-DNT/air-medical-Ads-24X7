@@ -92,6 +92,9 @@ def main():
     for placeholder, val in replacements.items():
         content = content.replace(placeholder, val)
 
+    # Replace the placeholder cost section image with the actual seychelles-country.jfif image
+    content = content.replace('air-ambulance-seychelles.jfif', 'seychelles-country.jfif')
+
     # 2. Update canonical links to be pointing to root page url (without /ads/ prefix)
     content = re.sub(
         r'<!-- TEMPLATE_PLACEHOLDER: CANONICAL_URL.*?-->\s*<link rel="canonical" href="[^"]+" />',
