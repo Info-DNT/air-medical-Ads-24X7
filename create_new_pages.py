@@ -10,8 +10,8 @@ for temp_file in ["air-ambulance-new-delhi.html", "air-ambulance-new-andaman-nic
         except Exception as e:
             print(f"Error deleting {temp_file}: {e}")
 
-# Load template (UK page)
-with open("air-ambulance-uk.html", "r", encoding="utf-8") as f:
+# Load template (Dummy page)
+with open("air-ambulance-dummy.html", "r", encoding="utf-8") as f:
     template = f.read()
 
 # Helper to make all resource/script/style paths relative for national subfolder
@@ -121,27 +121,35 @@ def generate_uk_style_route_card(card):
                     </div>"""
 
 # ----------------- 1. Process Delhi Page (air-ambulance-delhi.html) -----------------
-with open("national/air-ambulance-delhi.html", "r", encoding="utf-8") as f:
-    delhi_src_html = f.read()
-delhi_cards = parse_route_cards(delhi_src_html)
+try:
+    with open("national/air-ambulance-delhi.html", "r", encoding="utf-8") as f:
+        delhi_src_html = f.read()
+    delhi_cards = parse_route_cards(delhi_src_html)
+except FileNotFoundError:
+    delhi_cards = None
+    print("Skipping Delhi page — source file not found.")
 
-html_delhi = template
+if delhi_cards is not None:
+  html_delhi = template
 
-# Replace Title, Meta Description, Keywords, Canonical Link
-html_delhi = html_delhi.replace(
-    '<title>Air Ambulance Service UK &ndash; 24X7 ICU Patient Repatriation</title>',
+if delhi_cards is None:
+    pass
+else:
+ # Replace Title, Meta Description, Keywords, Canonical Link
+ html_delhi = html_delhi.replace(
+    '<title>Air Ambulance Services [COUNTRY/REGION] | ICU Medical Evacuation 24X7</title>',
     '<title>Air Ambulance Service in Delhi NCR – 24X7 ICU Transport</title>'
 )
 html_delhi = html_delhi.replace(
-    '<meta name="description"\n        content="Emergency Air Ambulance &amp; Medical Repatriation UK. Rapid response medical flights, commercial airline stretcher, and bed-to-bed patient transfer from UK to anywhere globally." />',
+    '<meta name="description"\n        content="24×7 Emergency Air Ambulance Services across [COUNTRY/REGION]. ICU medical evacuation, Repatriation, patient transfer, stretcher, and medical escort services. Quote in 30 minutes." />',
     '<meta name="description" content="Emergency Air Ambulance in Delhi NCR. Rapid response medical flights, commercial airline stretcher, and bed-to-bed patient transfer from Delhi NCR to destinations worldwide." />'
 )
 html_delhi = html_delhi.replace(
-    '<meta name="keywords"\n        content="Air Ambulance Services UK, Air Ambulance UK, Emergency Air Ambulance UK, Medical Evacuation UK, Air Ambulance UK to India, Air Ambulance UK to USA, Airline Stretcher UK, Flight Medical Escort UK" />',
+    '<meta name="keywords"\n        content="Air Ambulance [COUNTRY/REGION], air ambulance cost [COUNTRY/REGION], Air Ambulance [CITY/CAPITAL], private air ambulance [COUNTRY/REGION], Medical Evacuation [COUNTRY/REGION], Emergency Air Ambulance [COUNTRY/REGION], ICU Air Ambulance [COUNTRY/REGION], Air Ambulance [COUNTRY/REGION] to India, Flight Medical Escort [COUNTRY/REGION], Airline Stretcher [COUNTRY/REGION], ECMO Transfer [COUNTRY/REGION], Medical Repatriation [COUNTRY/REGION], Patient Transfer [COUNTRY/REGION], Critical Care Transport [COUNTRY/REGION]">',
     '<meta name="keywords" content="Air Ambulance Services in Delhi, Air Ambulance Delhi, Emergency Air Ambulance Delhi NCR, Medical Evacuation Delhi, Air Ambulance Delhi to Patna, Air Ambulance Delhi to Mumbai, Airline Stretcher Delhi, Flight Medical Escort Delhi" />'
 )
 html_delhi = html_delhi.replace(
-    '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-uk" />',
+    '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-[SLUG]" />',
     '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-delhi" />'
 )
 
@@ -151,16 +159,16 @@ old_schema = """    <script type="application/ld+json">
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "MedicalOrganization"],
       "name": "Air Medical 24X7",
-      "url": "https://airmedical24x7.com/air-ambulance-uk",
-      "telephone": "+448002294751",
+      "url": "https://airmedical24x7.com/air-ambulance-[SLUG]",
+      "telephone": "[PHONE_RAW]",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "London",
-        "addressRegion": "England",
-        "addressCountry": "GB"
+        "addressLocality": "[CITY]",
+        "addressRegion": "[REGION]",
+        "addressCountry": "[COUNTRY_CODE]"
       },
-      "description": "Emergency Air Ambulance & Medical Repatriation UK. Rapid response medical flights, commercial airline stretcher, and bed-to-bed patient transfer from UK to anywhere globally.",
-      "areaServed": "United Kingdom",
+      "description": "24X7 Air Ambulance Services across [COUNTRY/REGION] — [CITIES]. ICU-equipped medical evacuation to India and worldwide.",
+      "areaServed": "[COUNTRY/REGION] — [CITIES]",
       "medicalSpecialty": "Emergency Medicine",
       "availableService": "Air Ambulance",
       "openingHours": "Mo-Su 00:00-24:00"
@@ -191,21 +199,22 @@ delhi_schema = """    <script type="application/ld+json">
 html_delhi = html_delhi.replace(old_schema, delhi_schema)
 
 # Localize Header persistent phone link
-html_delhi = html_delhi.replace('href="tel:+448002294751"', 'href="tel:+919217710155"')
-html_delhi = html_delhi.replace('+44 800 229 4751', '+91 92177 10155')
+html_delhi = html_delhi.replace('[PHONE_RAW]', '+919217710155')
+html_delhi = html_delhi.replace('[PHONE_DISPLAY]', '+91 92177 10155')
 
 # Localize Hero Left Panel Header & Description
-hero_title_uk = '24/7 ICU Air Ambulance &amp; Medical Evacuation from the UK'
+hero_title_dummy = '24/7 ICU Air Ambulance & Medical Evacuation from [COUNTRY/REGION]'
 hero_title_delhi = '24/7 ICU Air Ambulance &amp; Medical Evacuation from Delhi NCR'
-html_delhi = html_delhi.replace(hero_title_uk, hero_title_delhi)
+html_delhi = html_delhi.replace(hero_title_dummy, hero_title_delhi)
 
-hero_desc_uk = 'Global bed-to-bed medical repatriation from anywhere in the UK, including London, Edinburgh, Manchester, Birmingham, and Glasgow, to destinations worldwide. Rapid dispatch with a fully equipped medical crew, providing safe and reliable transfers from the UK to anywhere in the world.'
+hero_desc_dummy = 'Global bed-to-bed medical repatriation from anywhere in [COUNTRY/REGION], including [CITIES], to destinations worldwide. Rapid dispatch with a fully equipped medical crew, providing safe and reliable transfers from [COUNTRY/REGION] to anywhere in the world.'
 hero_desc_delhi = 'Global bed-to-bed medical repatriation from anywhere in Delhi NCR, including Central Delhi, South Delhi, Gurugram, Noida, and Ghaziabad, to destinations worldwide. Rapid dispatch with a fully equipped medical crew, providing safe and reliable transfers from Delhi to anywhere in the world.'
-html_delhi = html_delhi.replace(hero_desc_uk, hero_desc_delhi)
+html_delhi = html_delhi.replace(hero_desc_dummy, hero_desc_delhi)
 
 # Replace Form placeholders in Delhi
-html_delhi = html_delhi.replace('placeholder="e.g. London, Birmingham"', 'placeholder="e.g. Delhi NCR, Noida, Gurugram"')
-html_delhi = html_delhi.replace('placeholder="e.g. Delhi, Mumbai, Dubai"', 'placeholder="e.g. Patna, Mumbai, Kolkata"')
+html_delhi = html_delhi.replace('placeholder="[PHONE_PREFIX] Enter your number"', 'placeholder="+91 Enter your number"')
+html_delhi = html_delhi.replace('placeholder="e.g. [CITY_1], [CITY_2]"', 'placeholder="e.g. Delhi NCR, Noida, Gurugram"')
+html_delhi = html_delhi.replace('placeholder="e.g. [DEST_1], [DEST_2]"', 'placeholder="e.g. Patna, Mumbai, Kolkata"')
 
 # Replace Left Panel Sidebar content
 delhi_sidebar_html = """<!-- Destinations Grid by Region — 3 columns, no scroll -->
@@ -283,18 +292,18 @@ new_left_panel_delhi = f"""<!-- Left Panel: Navy / Info -->
 html_delhi = re.sub(left_panel_regex, new_left_panel_delhi, html_delhi, flags=re.DOTALL)
 
 # Stats section
-html_delhi = html_delhi.replace('UK Command Center', 'Delhi NCR Command Center')
+html_delhi = html_delhi.replace('[COUNTRY/REGION] Command Center', 'Delhi NCR Command Center')
 
 # Cost section
-html_delhi = html_delhi.replace('Air Ambulance &amp; Airline Stretcher Costs from UK', 'Air Ambulance &amp; Airline Stretcher Costs from Delhi NCR')
-html_delhi = html_delhi.replace('repatriation from the UK', 'repatriation from Delhi NCR')
-html_delhi = html_delhi.replace('evacuations from the UK', 'evacuations from Delhi NCR')
-html_delhi = html_delhi.replace('Call UK Emergency Desk', 'Call India Emergency Desk')
+html_delhi = html_delhi.replace('Air Ambulance &amp; Airline Stretcher Costs from [COUNTRY/REGION]', 'Air Ambulance &amp; Airline Stretcher Costs from Delhi NCR')
+html_delhi = html_delhi.replace('repatriation from [COUNTRY/REGION]', 'repatriation from Delhi NCR')
+html_delhi = html_delhi.replace('evacuations from [COUNTRY/REGION]', 'evacuations from Delhi NCR')
+html_delhi = html_delhi.replace('Call [COUNTRY/REGION] Emergency Desk', 'Call India Emergency Desk')
 html_delhi = html_delhi.replace(
-    'We provide medical transfers from major UK cities, including <strong>London, Edinburgh, Manchester, Birmingham, and Glasgow</strong>, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.',
+    'We provide medical transfers from major cities in [COUNTRY/REGION], including <strong>[CITIES]</strong>, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.',
     'We provide medical transfers from all major areas of Delhi NCR, including Noida, Gurugram, Ghaziabad, and Faridabad, to destinations across India and worldwide, ensuring seamless bedside-to-bedside patient transportation.'
 )
-html_delhi = html_delhi.replace('src="assets/air-ambulance-uk.jfif" alt="Air Ambulance UK London Pricing"', 'src="assets/Delhi_airport.jfif" alt="Air Ambulance Delhi Airport Pricing"')
+html_delhi = html_delhi.replace('src="/ads/assets/air-ambulance-[SLUG].jfif" alt="Air Ambulance [COUNTRY/REGION] Cost"', 'src="assets/Delhi_airport.jfif" alt="Air Ambulance Delhi Airport Pricing"')
 
 # Group Delhi routes into 5 regions
 regions = {
@@ -357,7 +366,7 @@ for r_key, r_info in regions.items():
                 </button>
                 <!-- Accordion Content (Collapsed by Default) -->
                 <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100"
-                    id="content-region-{r_key}">
+                     id="content-region-{r_key}">
                     <div class="p-6">
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 {region_cards_html}
@@ -389,59 +398,77 @@ routes_section_regex_template = r'<section id="routes-section".*?(?=<section id=
 html_delhi = re.sub(routes_section_regex_template, new_routes_section + "\n\n", html_delhi, flags=re.DOTALL)
 
 # Localize FAQs
-html_delhi = html_delhi.replace('insurance coordination for UK', 'insurance coordination for India')
-html_delhi = html_delhi.replace('How much does an Air Ambulance Cost from the UK?', 'How much does an Air Ambulance Cost from Delhi NCR?')
-html_delhi = html_delhi.replace('air ambulance cost from the UK', 'air ambulance cost from Delhi NCR')
-html_delhi = html_delhi.replace('regions in the UK do you cover', 'regions in Delhi NCR do you cover')
-html_delhi = html_delhi.replace('managed by our UK operations team', 'managed by our operations team')
-html_delhi = html_delhi.replace('air ambulance be arranged from UK?', 'air ambulance be arranged from Delhi NCR?')
-html_delhi = html_delhi.replace('Our UK team responds to', 'Our operations team responds to')
-html_delhi = html_delhi.replace('services from UK?', 'services from Delhi NCR?')
-html_delhi = html_delhi.replace('Many UK health insurance', 'Many Indian health insurance')
-html_delhi = html_delhi.replace('ground ambulance in UK coordinated', 'ground ambulance in Delhi NCR coordinated')
-html_delhi = html_delhi.replace('Our UK operations team coordinates', 'Our operations team coordinates')
+html_delhi = html_delhi.replace('insurance coordination for [COUNTRY/REGION]', 'insurance coordination for India')
+html_delhi = html_delhi.replace('How much does an air ambulance from [COUNTRY/REGION] to India cost?', 'How much does an Air Ambulance Cost from Delhi NCR?')
+html_delhi = html_delhi.replace(
+    'The cost of an air ambulance from [COUNTRY/REGION] to India depends on the departure city, destination in India, aircraft type, and the level of medical care required onboard. For stable patients, a commercial airline stretcher or flight medical escort is a more affordable option. Contact our team for a precise quote within 30 minutes.',
+    'The cost of an air ambulance from Delhi NCR depends on the destination city, aircraft type, and the level of medical care required onboard. For stable patients, a commercial airline stretcher or flight medical escort is a more affordable option. Contact our team for a precise quote within 30 minutes.'
+)
+html_delhi = html_delhi.replace('cities in [COUNTRY/REGION] do you cover for air ambulance services?', 'regions in Delhi NCR do you cover for air ambulance services?')
+html_delhi = html_delhi.replace(
+    'We cover all major cities in [COUNTRY/REGION] and regions including London, Manchester, Birmingham, Glasgow, Edinburgh, Leeds, Sheffield, Leicester, Bristol, and nationwide. Ground ambulance is coordinated from the patient\'s location to the nearest departure airport, with the full transfer managed by our operations team.',
+    'We cover all regions of Delhi NCR, including Gurgaon, Noida, Ghaziabad, Faridabad, and Greater Noida. Ground ambulance is coordinated from the patient\'s location to the nearest departure airport, with the full transfer managed by our operations team.'
+)
+html_delhi = html_delhi.replace('quickly can an air ambulance be arranged from [COUNTRY/REGION]?', 'quickly can an air ambulance be arranged from Delhi NCR?')
+html_delhi = html_delhi.replace('I use insurance for air ambulance services from [COUNTRY/REGION]?', 'I use insurance for air ambulance services from Delhi NCR?')
+html_delhi = html_delhi.replace('Is a flight medical escort sufficient or do I need a dedicated air ambulance from [COUNTRY/REGION]?', 'Is a flight medical escort sufficient or do I need a dedicated air ambulance from Delhi NCR?')
+html_delhi = html_delhi.replace('is ground ambulance in [COUNTRY/REGION] coordinated for air ambulance transfers?', 'is ground ambulance in Delhi NCR coordinated for air ambulance transfers?')
 
 # Localize Footer UK helpline
-html_delhi = html_delhi.replace('24X7 UK Emergency Helpline', '24X7 India Emergency Helpline')
+html_delhi = html_delhi.replace('24X7 [COUNTRY/REGION] Emergency Helpline', '24X7 India Emergency Helpline')
 
 # Localize Why Families Section
-html_delhi = html_delhi.replace('<!-- Why Families in UK Rely on Air Medical 24X7 -->', '<!-- Why Families in India Rely on Air Medical 24X7 -->')
-html_delhi = html_delhi.replace('Why Families in the UK Rely on Air Medical 24X7', 'Why Families in India Rely on Air Medical 24X7')
-html_delhi = html_delhi.replace('thousands of UK families', 'thousands of families in India')
-html_delhi = html_delhi.replace('UK Operations &mdash; Rapid Local Response', 'India Operations &mdash; Rapid Response')
-html_delhi = html_delhi.replace('Our UK desk handles\n                                    NHS hospital liaisons, London airport clearances (Heathrow, Gatwick, Stansted), and ground ambulance dispatch &mdash; ensuring swift response across England, Scotland, Wales, and Northern Ireland.',
-                                'Our local operations coordinate ground ambulance dispatch, airport coordination, and flight logistics &mdash; ensuring the fastest possible response across all major cities and regions in India.')
-html_delhi = html_delhi.replace('across all\n                                    UK departures.', 'across all\n                                    departures from India.')
+html_delhi = html_delhi.replace('<!-- Why Families in [COUNTRY/REGION] Rely on Air Medical 24X7 -->', '<!-- Why Families in India Rely on Air Medical 24X7 -->')
+html_delhi = html_delhi.replace('Why Families in [COUNTRY/REGION] Rely on Air Medical 24X7', 'Why Families in India Rely on Air Medical 24X7')
+html_delhi = html_delhi.replace('thousands of families in [COUNTRY/REGION]', 'thousands of families in India')
+html_delhi = html_delhi.replace('[COUNTRY/REGION] Operations &mdash; Rapid Local Response', 'India Operations &mdash; Rapid Response')
+html_delhi = html_delhi.replace(
+    'Our [COUNTRY/REGION] desk handles\n                                    NHS hospital liaisons, London airport clearances (Heathrow, Gatwick, Stansted), and ground ambulance dispatch &mdash; ensuring swift response across England, Scotland, Wales, and Northern Ireland.',
+    'Our local operations coordinate ground ambulance dispatch, airport coordination, and flight logistics &mdash; ensuring the fastest possible response across all major cities and regions in India.'
+)
+html_delhi = html_delhi.replace('across all\n                                    [COUNTRY/REGION] departures.', 'across all\n                                    departures from India.')
 
-# Save Delhi page (overwriting air-ambulance-delhi.html)
-html_delhi = make_paths_relative(html_delhi)
-with open("national/air-ambulance-delhi.html", "w", encoding="utf-8") as f:
-    f.write(html_delhi)
-print("Saved national/air-ambulance-delhi.html")
+# Global fallback replacements for any remaining placeholders
+html_delhi = html_delhi.replace('[COUNTRY/REGION]', 'Delhi NCR')
+html_delhi = html_delhi.replace('[SLUG]', 'delhi')
+
+  # Save Delhi page
+  html_delhi = make_paths_relative(html_delhi)
+  with open("national/air-ambulance-delhi.html", "w", encoding="utf-8") as f:
+      f.write(html_delhi)
+  print("Saved national/air-ambulance-delhi.html")
 
 
 # ----------------- 2. Process Andaman Page (air-ambulance-portblair.html) -----------------
-with open("national/air-ambulance-portblair.html", "r", encoding="utf-8") as f:
-    andaman_src_html = f.read()
-andaman_cards = parse_route_cards(andaman_src_html)
+try:
+    with open("national/air-ambulance-portblair.html", "r", encoding="utf-8") as f:
+        andaman_src_html = f.read()
+    andaman_cards = parse_route_cards(andaman_src_html)
+except FileNotFoundError:
+    andaman_cards = None
+    print("Skipping Andaman page — source file not found.")
 
-html_andaman = template
+if andaman_cards is not None:
+  html_andaman = template
 
-# Replace Title, Meta Description, Keywords, Canonical Link
-html_andaman = html_andaman.replace(
-    '<title>Air Ambulance Service UK &ndash; 24X7 ICU Patient Repatriation</title>',
+if andaman_cards is None:
+    pass
+else:
+ # Replace Title, Meta Description, Keywords, Canonical Link
+ html_andaman = html_andaman.replace(
+    '<title>Air Ambulance Services [COUNTRY/REGION] | ICU Medical Evacuation 24X7</title>',
     '<title>Air Ambulance Service in Port Blair, Andaman & Nicobar – 24X7 ICU Transport</title>'
 )
 html_andaman = html_andaman.replace(
-    '<meta name="description"\n        content="Emergency Air Ambulance &amp; Medical Repatriation UK. Rapid response medical flights, commercial airline stretcher, and bed-to-bed patient transfer from UK to anywhere globally." />',
+    '<meta name="description"\n        content="24×7 Emergency Air Ambulance Services across [COUNTRY/REGION]. ICU medical evacuation, Repatriation, patient transfer, stretcher, and medical escort services. Quote in 30 minutes." />',
     '<meta name="description" content="Emergency Air Ambulance in Andaman & Nicobar. Rapid response medical flights, commercial airline stretcher, and bed-to-bed patient transfer from Port Blair to destinations worldwide." />'
 )
 html_andaman = html_andaman.replace(
-    '<meta name="keywords"\n        content="Air Ambulance Services UK, Air Ambulance UK, Emergency Air Ambulance UK, Medical Evacuation UK, Air Ambulance UK to India, Air Ambulance UK to USA, Airline Stretcher UK, Flight Medical Escort UK" />',
+    '<meta name="keywords"\n        content="Air Ambulance [COUNTRY/REGION], air ambulance cost [COUNTRY/REGION], Air Ambulance [CITY/CAPITAL], private air ambulance [COUNTRY/REGION], Medical Evacuation [COUNTRY/REGION], Emergency Air Ambulance [COUNTRY/REGION], ICU Air Ambulance [COUNTRY/REGION], Air Ambulance [COUNTRY/REGION] to India, Flight Medical Escort [COUNTRY/REGION], Airline Stretcher [COUNTRY/REGION], ECMO Transfer [COUNTRY/REGION], Medical Repatriation [COUNTRY/REGION], Patient Transfer [COUNTRY/REGION], Critical Care Transport [COUNTRY/REGION]">',
     '<meta name="keywords" content="Air Ambulance Services in Andaman, Air Ambulance Port Blair, Emergency Air Ambulance Andaman & Nicobar, Medical Evacuation Andaman, Air Ambulance Port Blair to Chennai, Air Ambulance Port Blair to Kolkata, Airline Stretcher Port Blair, Flight Medical Escort Port Blair" />'
 )
 html_andaman = html_andaman.replace(
-    '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-uk" />',
+    '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-[SLUG]" />',
     '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-portblair" />'
 )
 
@@ -470,19 +497,20 @@ andaman_schema = """    <script type="application/ld+json">
 html_andaman = html_andaman.replace(old_schema, andaman_schema)
 
 # Localize Header persistent phone link
-html_andaman = html_andaman.replace('href="tel:+448002294751"', 'href="tel:+919217710155"')
-html_andaman = html_andaman.replace('+44 800 229 4751', '+91 92177 10155')
+html_andaman = html_andaman.replace('[PHONE_RAW]', '+919217710155')
+html_andaman = html_andaman.replace('[PHONE_DISPLAY]', '+91 92177 10155')
 
 # Localize Hero Left Panel Header & Description
 hero_title_andaman = '24/7 ICU Air Ambulance &amp; Medical Evacuation from Andaman &amp; Nicobar'
-html_andaman = html_andaman.replace(hero_title_uk, hero_title_andaman)
+html_andaman = html_andaman.replace(hero_title_dummy, hero_title_andaman)
 
 hero_desc_andaman = 'Global bed-to-bed medical repatriation from anywhere in Andaman & Nicobar, including Port Blair, Havelock Island, Neil Island, and Mayabunder, to destinations worldwide. Rapid dispatch with a fully equipped medical crew, providing safe and reliable transfers from Port Blair to anywhere in the world.'
-html_andaman = html_andaman.replace(hero_desc_uk, hero_desc_andaman)
+html_andaman = html_andaman.replace(hero_desc_dummy, hero_desc_andaman)
 
 # Replace Form placeholders in Andaman
-html_andaman = html_andaman.replace('placeholder="e.g. London, Birmingham"', 'placeholder="e.g. Port Blair, Havelock, Neil Island"')
-html_andaman = html_andaman.replace('placeholder="e.g. Delhi, Mumbai, Dubai"', 'placeholder="e.g. Chennai, Kolkata, Delhi"')
+html_andaman = html_andaman.replace('placeholder="[PHONE_PREFIX] Enter your number"', 'placeholder="+91 Enter your number"')
+html_andaman = html_andaman.replace('placeholder="e.g. [CITY_1], [CITY_2]"', 'placeholder="e.g. Port Blair, Havelock, Neil Island"')
+html_andaman = html_andaman.replace('placeholder="e.g. [DEST_1], [DEST_2]"', 'placeholder="e.g. Chennai, Kolkata, Delhi"')
 
 # Replace sidebar destinations grid
 andaman_sidebar_html = """<!-- Destinations Grid — 1 column list -->
@@ -526,18 +554,18 @@ new_left_panel_andaman = f"""<!-- Left Panel: Navy / Info -->
 html_andaman = re.sub(left_panel_regex, new_left_panel_andaman, html_andaman, flags=re.DOTALL)
 
 # Stats section
-html_andaman = html_andaman.replace('UK Command Center', 'Andaman Operations Command Center')
+html_andaman = html_andaman.replace('[COUNTRY/REGION] Command Center', 'Andaman Operations Command Center')
 
 # Cost section
-html_andaman = html_andaman.replace('Air Ambulance &amp; Airline Stretcher Costs from UK', 'Air Ambulance &amp; Airline Stretcher Costs from Andaman & Nicobar')
-html_andaman = html_andaman.replace('repatriation from the UK', 'repatriation from Andaman & Nicobar')
-html_andaman = html_andaman.replace('evacuations from the UK', 'evacuations from Andaman & Nicobar')
-html_andaman = html_andaman.replace('Call UK Emergency Desk', 'Call India Emergency Desk')
+html_andaman = html_andaman.replace('Air Ambulance &amp; Airline Stretcher Costs from [COUNTRY/REGION]', 'Air Ambulance &amp; Airline Stretcher Costs from Andaman & Nicobar')
+html_andaman = html_andaman.replace('repatriation from [COUNTRY/REGION]', 'repatriation from Andaman & Nicobar')
+html_andaman = html_andaman.replace('evacuations from [COUNTRY/REGION]', 'evacuations from Andaman & Nicobar')
+html_andaman = html_andaman.replace('Call [COUNTRY/REGION] Emergency Desk', 'Call India Emergency Desk')
 html_andaman = html_andaman.replace(
-    'We provide medical transfers from major UK cities, including <strong>London, Edinburgh, Manchester, Birmingham, and Glasgow</strong>, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.',
+    'We provide medical transfers from major cities in [COUNTRY/REGION], including <strong>[CITIES]</strong>, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.',
     'We provide medical transfers from all major locations in Andaman & Nicobar, including Port Blair, Havelock Island, Neil Island, and Mayabunder, to mainland Indian cities (Chennai, Delhi, Kolkata, Bengaluru, Hyderabad) and worldwide, ensuring seamless bedside-to-bedside patient transportation.'
 )
-html_andaman = html_andaman.replace('src="assets/air-ambulance-uk.jfif" alt="Air Ambulance UK London Pricing"', 'src="assets/airport_port_blair_andaman.jpg.jpg" alt="Air Ambulance Port Blair Airport Pricing"')
+html_andaman = html_andaman.replace('src="/ads/assets/air-ambulance-[SLUG].jfif" alt="Air Ambulance [COUNTRY/REGION] Cost"', 'src="assets/airport_port_blair_andaman.jpg.jpg" alt="Air Ambulance Port Blair Airport Pricing"')
 
 # Build Andaman routes section (clean grid list)
 andaman_cards_html = "\n".join([generate_uk_style_route_card(c) for c in andaman_cards])
@@ -563,47 +591,61 @@ new_andaman_routes_section = f"""    <section id="routes-section"
 html_andaman = re.sub(routes_section_regex_template, new_andaman_routes_section + "\n\n", html_andaman, flags=re.DOTALL)
 
 # Localize FAQs
-html_andaman = html_andaman.replace('insurance coordination for UK', 'insurance coordination for India')
-html_andaman = html_andaman.replace('How much does an Air Ambulance Cost from the UK?', 'How much does an Air Ambulance Cost from Andaman & Nicobar?')
-html_andaman = html_andaman.replace('air ambulance cost from the UK', 'air ambulance cost from Andaman & Nicobar')
-html_andaman = html_andaman.replace('regions in the UK do you cover', 'regions in Andaman & Nicobar do you cover')
-html_andaman = html_andaman.replace('managed by our UK operations team', 'managed by our operations team')
-html_andaman = html_andaman.replace('air ambulance be arranged from UK?', 'air ambulance be arranged from Andaman & Nicobar?')
-html_andaman = html_andaman.replace('Our UK team responds to', 'Our operations team responds to')
-html_andaman = html_andaman.replace('services from UK?', 'services from Andaman & Nicobar?')
-html_andaman = html_andaman.replace('Many UK health insurance', 'Many Indian health insurance')
-html_andaman = html_andaman.replace('ground ambulance in UK coordinated', 'ground ambulance in Andaman & Nicobar coordinated')
-html_andaman = html_andaman.replace('Our UK operations team coordinates', 'Our operations team coordinates')
+html_andaman = html_andaman.replace('insurance coordination for [COUNTRY/REGION]', 'insurance coordination for India')
+html_andaman = html_andaman.replace('How much does an air ambulance from [COUNTRY/REGION] to India cost?', 'How much does an Air Ambulance Cost from Andaman & Nicobar?')
+html_andaman = html_andaman.replace(
+    'The cost of an air ambulance from [COUNTRY/REGION] to India depends on the departure city, destination in India, aircraft type, and the level of medical care required onboard. For stable patients, a commercial airline stretcher or flight medical escort is a more affordable option. Contact our team for a precise quote within 30 minutes.',
+    'The cost of an air ambulance from Andaman & Nicobar depends on the destination city, aircraft type, and the level of medical care required onboard. For stable patients, a commercial airline stretcher or flight medical escort is a more affordable option. Contact our team for a precise quote within 30 minutes.'
+)
+html_andaman = html_andaman.replace('cities in [COUNTRY/REGION] do you cover for air ambulance services?', 'regions in Andaman & Nicobar do you cover for air ambulance services?')
+html_andaman = html_andaman.replace(
+    'We cover all major cities in [COUNTRY/REGION] and regions including London, Manchester, Birmingham, Glasgow, Edinburgh, Leeds, Sheffield, Leicester, Bristol, and nationwide. Ground ambulance is coordinated from the patient\'s location to the nearest departure airport, with the full transfer managed by our operations team.',
+    'We cover all regions of Andaman & Nicobar, including Port Blair, Havelock Island, Neil Island, and Mayabunder. Ground ambulance is coordinated from the patient\'s location to the nearest departure airport, with the full transfer managed by our operations team.'
+)
+html_andaman = html_andaman.replace('quickly can an air ambulance be arranged from [COUNTRY/REGION]?', 'quickly can an air ambulance be arranged from Andaman & Nicobar?')
+html_andaman = html_andaman.replace('I use insurance for air ambulance services from [COUNTRY/REGION]?', 'I use insurance for air ambulance services from Andaman & Nicobar?')
+html_andaman = html_andaman.replace('Is a flight medical escort sufficient or do I need a dedicated air ambulance from [COUNTRY/REGION]?', 'Is a flight medical escort sufficient or do I need a dedicated air ambulance from Andaman & Nicobar?')
+html_andaman = html_andaman.replace('is ground ambulance in [COUNTRY/REGION] coordinated for air ambulance transfers?', 'is ground ambulance in Andaman & Nicobar coordinated for air ambulance transfers?')
 
 # Localize Footer UK helpline
-html_andaman = html_andaman.replace('24X7 UK Emergency Helpline', '24X7 India Emergency Helpline')
+html_andaman = html_andaman.replace('24X7 [COUNTRY/REGION] Emergency Helpline', '24X7 India Emergency Helpline')
 
 # Localize Why Families Section
-html_andaman = html_andaman.replace('<!-- Why Families in UK Rely on Air Medical 24X7 -->', '<!-- Why Families in Andaman and Nicobar Rely on Air Medical 24X7 -->')
-html_andaman = html_andaman.replace('Why Families in the UK Rely on Air Medical 24X7', 'Why Families in Andaman and Nicobar Rely on Air Medical 24X7')
-html_andaman = html_andaman.replace('thousands of UK families', 'thousands of families in India')
-html_andaman = html_andaman.replace('UK Operations &mdash; Rapid Local Response', 'India Operations &mdash; Rapid Response')
-html_andaman = html_andaman.replace('Our UK desk handles\n                                    NHS hospital liaisons, London airport clearances (Heathrow, Gatwick, Stansted), and ground ambulance dispatch &mdash; ensuring swift response across England, Scotland, Wales, and Northern Ireland.',
-                                     'Our local operations coordinate ground ambulance dispatch, airport coordination, and flight logistics &mdash; ensuring the fastest possible response across all major cities and regions in India.')
-html_andaman = html_andaman.replace('across all\n                                    UK departures.', 'across all\n                                    departures from India.')
+html_andaman = html_andaman.replace('<!-- Why Families in [COUNTRY/REGION] Rely on Air Medical 24X7 -->', '<!-- Why Families in Andaman and Nicobar Rely on Air Medical 24X7 -->')
+html_andaman = html_andaman.replace('Why Families in [COUNTRY/REGION] Rely on Air Medical 24X7', 'Why Families in Andaman and Nicobar Rely on Air Medical 24X7')
+html_andaman = html_andaman.replace('thousands of families in [COUNTRY/REGION]', 'thousands of families in India')
+html_andaman = html_andaman.replace('[COUNTRY/REGION] Operations &mdash; Rapid Local Response', 'India Operations &mdash; Rapid Response')
+html_andaman = html_andaman.replace(
+    'Our [COUNTRY/REGION] desk handles\n                                    NHS hospital liaisons, London airport clearances (Heathrow, Gatwick, Stansted), and ground ambulance dispatch &mdash; ensuring swift response across England, Scotland, Wales, and Northern Ireland.',
+    'Our local operations coordinate ground ambulance dispatch, airport coordination, and flight logistics &mdash; ensuring the fastest possible response across all major cities and regions in India.'
+)
+html_andaman = html_andaman.replace('across all\n                                    [COUNTRY/REGION] departures.', 'across all\n                                    departures from India.')
 
-# Save Andaman page (overwriting air-ambulance-portblair.html)
-html_andaman = make_paths_relative(html_andaman)
-with open("national/air-ambulance-portblair.html", "w", encoding="utf-8") as f:
-    f.write(html_andaman)
-print("Saved national/air-ambulance-portblair.html")
+# Global fallback replacements for any remaining placeholders
+html_andaman = html_andaman.replace('[COUNTRY/REGION]', 'Andaman & Nicobar')
+html_andaman = html_andaman.replace('[SLUG]', 'portblair')
+
+  # Save Andaman page
+  html_andaman = make_paths_relative(html_andaman)
+  with open("national/air-ambulance-portblair.html", "w", encoding="utf-8") as f:
+      f.write(html_andaman)
+  print("Saved national/air-ambulance-portblair.html")
 
 
 # ----------------- 3. Process Jammu & Kashmir Page (air-ambulance-jammu-kashmir.html) -----------------
-with open("national/air-ambulance-jammu-kashmir.html", "r", encoding="utf-8") as f:
-    jk_src_html = f.read()
+try:
+    with open("national/air-ambulance-jammu-kashmir.html", "r", encoding="utf-8") as f:
+        jk_src_html = f.read()
+    jk_all_cards = parse_route_cards(jk_src_html)
+except FileNotFoundError:
+    jk_all_cards = None
+    print("Skipping J&K page — source file not found.")
 
-jk_all_cards = parse_route_cards(jk_src_html)
-
-# Get unique cards
-seen = set()
-jk_cards = []
-for c in jk_all_cards:
+if jk_all_cards is not None:
+ # Get unique cards
+ seen = set()
+ jk_cards = []
+ for c in jk_all_cards:
     key = (c['origin'].strip(), c['destination'].strip())
     if key not in seen:
         seen.add(key)
@@ -626,19 +668,19 @@ html_jk = template
 
 # Replace Title, Meta Description, Keywords, Canonical Link
 html_jk = html_jk.replace(
-    '<title>Air Ambulance Service UK &ndash; 24X7 ICU Patient Repatriation</title>',
+    '<title>Air Ambulance Services [COUNTRY/REGION] | ICU Medical Evacuation 24X7</title>',
     '<title>Air Ambulance Services in Jammu & Kashmir | Srinagar & Jammu ICU Medical Evacuation 24X7</title>'
 )
 html_jk = html_jk.replace(
-    '<meta name="description"\n        content="Emergency Air Ambulance &amp; Medical Repatriation UK. Rapid response medical flights, commercial airline stretcher, and bed-to-bed patient transfer from UK to anywhere globally." />',
-    '<meta name="description" content="24/7 Air Ambulance Services and ICU medical flights from Srinagar, Jammu and Jammu & Kashmir to Delhi, Mumbai, and worldwide. Patient transfers, commercial airline stretchers, and medical escorts. Get a quote within 30 minutes." />'
+    '<meta name="description"\n        content="24×7 Emergency Air Ambulance Services across [COUNTRY/REGION]. ICU medical evacuation, Repatriation, patient transfer, stretcher, and medical escort services. Quote in 30 minutes." />',
+    '<meta name="description" content="24/7 Air Ambulance Services and ICU medical flights from Srinagar, Jammu and Jammu & Kashmir to Delhi, and worldwide. Patient transfers, commercial airline stretchers, and medical escorts. Get a quote within 30 minutes." />'
 )
 html_jk = html_jk.replace(
-    '<meta name="keywords"\n        content="Air Ambulance Services UK, Air Ambulance UK, Emergency Air Ambulance UK, Medical Evacuation UK, Air Ambulance UK to India, Air Ambulance UK to USA, Airline Stretcher UK, Flight Medical Escort UK" />',
+    '<meta name="keywords"\n        content="Air Ambulance [COUNTRY/REGION], air ambulance cost [COUNTRY/REGION], Air Ambulance [CITY/CAPITAL], private air ambulance [COUNTRY/REGION], Medical Evacuation [COUNTRY/REGION], Emergency Air Ambulance [COUNTRY/REGION], ICU Air Ambulance [COUNTRY/REGION], Air Ambulance [COUNTRY/REGION] to India, Flight Medical Escort [COUNTRY/REGION], Airline Stretcher [COUNTRY/REGION], ECMO Transfer [COUNTRY/REGION], Medical Repatriation [COUNTRY/REGION], Patient Transfer [COUNTRY/REGION], Critical Care Transport [COUNTRY/REGION]">',
     '<meta name="keywords" content="Air Ambulance Jammu Kashmir, Air Ambulance Srinagar, Air Ambulance Jammu, Medical Evacuation Srinagar, Emergency Flight Srinagar, ICU Air Ambulance Jammu, Airline Stretcher Jammu, Flight Medical Escort Srinagar, Patient Transfer Jammu Kashmir" />'
 )
 html_jk = html_jk.replace(
-    '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-uk" />',
+    '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-[SLUG]" />',
     '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-jammu-kashmir" />'
 )
 
@@ -667,18 +709,19 @@ jk_schema = """    <script type="application/ld+json">
 html_jk = html_jk.replace(old_schema, jk_schema)
 
 # Localize Header persistent phone link
-html_jk = html_jk.replace('href="tel:+448002294751"', 'href="tel:+919217710155"')
-html_jk = html_jk.replace('+44 800 229 4751', '+91 92177 10155')
+html_jk = html_jk.replace('[PHONE_RAW]', '+919217710155')
+html_jk = html_jk.replace('[PHONE_DISPLAY]', '+91 92177 10155')
 
 # Localize Hero Left Panel Header & Description
 hero_title_jk = '24/7 ICU Air Ambulance &amp; Medical Evacuation from Jammu &amp; Kashmir'
 hero_desc_jk = 'Emergency medical repatriation from anywhere in Jammu & Kashmir, including Srinagar, Jammu, Leh, Anantnag, Baramulla, Kathua, Samba, Udhampur, Poonch, Kupwara, Pulwama, and Sopore, to destinations worldwide. Rapid dispatch with a fully equipped medical crew, providing safe and reliable transfers from Srinagar or Jammu to anywhere in the world.'
-html_jk = html_jk.replace(hero_title_uk, hero_title_jk)
-html_jk = html_jk.replace(hero_desc_uk, hero_desc_jk)
+html_jk = html_jk.replace(hero_title_dummy, hero_title_jk)
+html_jk = html_jk.replace(hero_desc_dummy, hero_desc_jk)
 
 # Replace Form placeholders in J&K
-html_jk = html_jk.replace('placeholder="e.g. London, Birmingham"', 'placeholder="e.g. Srinagar, Jammu, Leh"')
-html_jk = html_jk.replace('placeholder="e.g. Delhi, Mumbai, Dubai"', 'placeholder="e.g. New Delhi, Mumbai, Chandigarh"')
+html_jk = html_jk.replace('placeholder="[PHONE_PREFIX] Enter your number"', 'placeholder="+91 Enter your number"')
+html_jk = html_jk.replace('placeholder="e.g. [CITY_1], [CITY_2]"', 'placeholder="e.g. Srinagar, Jammu, Leh"')
+html_jk = html_jk.replace('placeholder="e.g. [DEST_1], [DEST_2]"', 'placeholder="e.g. New Delhi, Mumbai, Chandigarh"')
 
 # Replace sidebar destinations grid
 jk_sidebar_html = """<!-- Destinations Grid — 3 columns -->
@@ -735,18 +778,18 @@ new_left_panel_jk = f"""<!-- Left Panel: Navy / Info -->
 html_jk = re.sub(left_panel_regex, new_left_panel_jk, html_jk, flags=re.DOTALL)
 
 # Stats section
-html_jk = html_jk.replace('UK Command Center', 'Jammu & Kashmir Operations Command Center')
+html_jk = html_jk.replace('[COUNTRY/REGION] Command Center', 'Jammu & Kashmir Operations Command Center')
 
 # Cost section
-html_jk = html_jk.replace('Air Ambulance &amp; Airline Stretcher Costs from UK', 'Air Ambulance &amp; Airline Stretcher Costs from Jammu & Kashmir')
-html_jk = html_jk.replace('repatriation from the UK', 'repatriation from Jammu & Kashmir')
-html_jk = html_jk.replace('evacuations from the UK', 'evacuations from Jammu & Kashmir')
-html_jk = html_jk.replace('Call UK Emergency Desk', 'Call India Emergency Desk')
+html_jk = html_jk.replace('Air Ambulance &amp; Airline Stretcher Costs from [COUNTRY/REGION]', 'Air Ambulance &amp; Airline Stretcher Costs from Jammu & Kashmir')
+html_jk = html_jk.replace('repatriation from [COUNTRY/REGION]', 'repatriation from Jammu & Kashmir')
+html_jk = html_jk.replace('evacuations from [COUNTRY/REGION]', 'evacuations from Jammu & Kashmir')
+html_jk = html_jk.replace('Call [COUNTRY/REGION] Emergency Desk', 'Call India Emergency Desk')
 html_jk = html_jk.replace(
-    'We provide medical transfers from major UK cities, including <strong>London, Edinburgh, Manchester, Birmingham, and Glasgow</strong>, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.',
+    'We provide medical transfers from major cities in [COUNTRY/REGION], including <strong>[CITIES]</strong>, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.',
     'We provide medical transfers from all major locations in Jammu & Kashmir, including Srinagar, Jammu, and Leh, to leading super-specialty hospitals in Delhi NCR, Mumbai, and worldwide, ensuring seamless bedside-to-bedside patient transportation.'
 )
-html_jk = html_jk.replace('src="assets/air-ambulance-uk.jfif" alt="Air Ambulance UK London Pricing"', 'src="../assets/airport_jammu_jk.jpg.jpg" alt="Air Ambulance Cost from Jammu & Kashmir"')
+html_jk = html_jk.replace('src="/ads/assets/air-ambulance-[SLUG].jfif" alt="Air Ambulance [COUNTRY/REGION] Cost"', 'src="assets/airport_jammu_jk.jpg.jpg" alt="Air Ambulance Cost from Jammu & Kashmir"')
 
 # Build 24 Most Requested routes cards
 req_dests = ['New Delhi', 'Mumbai', 'Hyderabad', 'Bengaluru', 'Chennai', 'Kolkata', 'Ahmedabad', 'Lucknow', 'Jaipur', 'Chandigarh', 'Amritsar']
@@ -871,32 +914,374 @@ new_jk_routes_section = f"""    <section id="routes-section" class="py-16 bg-sur
 html_jk = re.sub(routes_section_regex_template, new_jk_routes_section + "\n\n", html_jk, flags=re.DOTALL)
 
 # Localize Why Families Section
-html_jk = html_jk.replace('<!-- Why Families in UK Rely on Air Medical 24X7 -->', '<!-- Why Families in Jammu Kashmir Rely on Air Medical 24X7 -->')
-html_jk = html_jk.replace('Why Families in the UK Rely on Air Medical 24X7', 'Why Families in Jammu Kashmir Rely on Air Medical 24X7')
-html_jk = html_jk.replace('thousands of UK families', 'thousands of families in India')
-html_jk = html_jk.replace('UK Operations &mdash; Rapid Local Response', 'India Operations &mdash; Rapid Response')
-html_jk = html_jk.replace('Our UK desk handles\n                                    NHS hospital liaisons, London airport clearances (Heathrow, Gatwick, Stansted), and ground ambulance dispatch &mdash; ensuring swift response across England, Scotland, Wales, and Northern Ireland.',
-                          'Our local operations coordinate ground ambulance dispatch, airport coordination, and flight logistics &mdash; ensuring the fastest possible response across all major cities and regions in India.')
-html_jk = html_jk.replace('across all\n                                    UK departures.', 'across all\n                                    departures from India.')
+html_jk = html_jk.replace('<!-- Why Families in [COUNTRY/REGION] Rely on Air Medical 24X7 -->', '<!-- Why Families in Jammu Kashmir Rely on Air Medical 24X7 -->')
+html_jk = html_jk.replace('Why Families in [COUNTRY/REGION] Rely on Air Medical 24X7', 'Why Families in Jammu Kashmir Rely on Air Medical 24X7')
+html_jk = html_jk.replace('thousands of families in [COUNTRY/REGION]', 'thousands of families in India')
+html_jk = html_jk.replace('[COUNTRY/REGION] Operations &mdash; Rapid Local Response', 'India Operations &mdash; Rapid Response')
+html_jk = html_jk.replace(
+    'Our [COUNTRY/REGION] desk handles\n                                    NHS hospital liaisons, London airport clearances (Heathrow, Gatwick, Stansted), and ground ambulance dispatch &mdash; ensuring swift response across England, Scotland, Wales, and Northern Ireland.',
+    'Our local operations coordinate ground ambulance dispatch, airport coordination, and flight logistics &mdash; ensuring the fastest possible response across all major cities and regions in India.'
+)
+html_jk = html_jk.replace('across all\n                                    [COUNTRY/REGION] departures.', 'across all\n                                    departures from India.')
 
 # Localize FAQs
-html_jk = html_jk.replace('insurance coordination for UK', 'insurance coordination for India')
-html_jk = html_jk.replace('How much does an Air Ambulance Cost from the UK?', 'How much does an Air Ambulance Cost from Jammu & Kashmir?')
-html_jk = html_jk.replace('air ambulance cost from the UK', 'air ambulance cost from Jammu & Kashmir')
-html_jk = html_jk.replace('regions in the UK do you cover', 'regions in Jammu & Kashmir do you cover')
-html_jk = html_jk.replace('managed by our UK operations team', 'managed by our operations team')
-html_jk = html_jk.replace('air ambulance be arranged from UK?', 'air ambulance be arranged from Jammu & Kashmir?')
-html_jk = html_jk.replace('Our UK team responds to', 'Our operations team responds to')
-html_jk = html_jk.replace('services from UK?', 'services from Jammu & Kashmir?')
-html_jk = html_jk.replace('Many UK health insurance', 'Many Indian health insurance')
-html_jk = html_jk.replace('ground ambulance in UK coordinated', 'ground ambulance in Jammu & Kashmir coordinated')
-html_jk = html_jk.replace('Our UK operations team coordinates', 'Our operations team coordinates')
+html_jk = html_jk.replace('insurance coordination for [COUNTRY/REGION]', 'insurance coordination for India')
+html_jk = html_jk.replace('How much does an air ambulance from [COUNTRY/REGION] to India cost?', 'How much does an Air Ambulance Cost from Jammu & Kashmir?')
+html_jk = html_jk.replace(
+    'The cost of an air ambulance from [COUNTRY/REGION] to India depends on the departure city, destination in India, aircraft type, and the level of medical care required onboard. For stable patients, a commercial airline stretcher or flight medical escort is a more affordable option. Contact our team for a precise quote within 30 minutes.',
+    'The cost of an air ambulance from Jammu & Kashmir depends on the destination city, aircraft type, and the level of medical care required onboard. For stable patients, a commercial airline stretcher or flight medical escort is a more affordable option. Contact our team for a precise quote within 30 minutes.'
+)
+html_jk = html_jk.replace('cities in [COUNTRY/REGION] do you cover for air ambulance services?', 'regions in Jammu & Kashmir do you cover for air ambulance services?')
+html_jk = html_jk.replace(
+    'We cover all major cities in [COUNTRY/REGION] and regions including London, Manchester, Birmingham, Glasgow, Edinburgh, Leeds, Sheffield, Leicester, Bristol, and nationwide. Ground ambulance is coordinated from the patient\'s location to the nearest departure airport, with the full transfer managed by our operations team.',
+    'We cover all regions of Jammu & Kashmir, including Srinagar, Jammu, Leh, Anantnag, Baramulla, Kathua, Samba, Udhampur, Poonch, Kupwara, Pulwama, and Sopore. Ground ambulance is coordinated from the patient\'s location to the nearest departure airport, with the full transfer managed by our operations team.'
+)
+html_jk = html_jk.replace('quickly can an air ambulance be arranged from [COUNTRY/REGION]?', 'quickly can an air ambulance be arranged from Jammu & Kashmir?')
+html_jk = html_jk.replace('I use insurance for air ambulance services from [COUNTRY/REGION]?', 'I use insurance for air ambulance services from Jammu & Kashmir?')
+html_jk = html_jk.replace('Is a flight medical escort sufficient or do I need a dedicated air ambulance from [COUNTRY/REGION]?', 'Is a flight medical escort sufficient or do I need a dedicated air ambulance from Jammu & Kashmir?')
+html_jk = html_jk.replace('is ground ambulance in [COUNTRY/REGION] coordinated for air ambulance transfers?', 'is ground ambulance in Jammu & Kashmir coordinated for air ambulance transfers?')
 
 # Localize Footer UK helpline
-html_jk = html_jk.replace('24X7 UK Emergency Helpline', '24X7 India Emergency Helpline')
+html_jk = html_jk.replace('24X7 [COUNTRY/REGION] Emergency Helpline', '24X7 India Emergency Helpline')
+
+# Global fallback replacements for any remaining placeholders
+html_jk = html_jk.replace('[COUNTRY/REGION]', 'Jammu & Kashmir')
+html_jk = html_jk.replace('[SLUG]', 'jammu-kashmir')
 
 # Save Jammu & Kashmir page
 html_jk = make_paths_relative(html_jk)
 with open("national/air-ambulance-jammu-kashmir.html", "w", encoding="utf-8") as f:
     f.write(html_jk)
 print("Saved national/air-ambulance-jammu-kashmir.html")
+
+
+# =================================================================================
+# INTERNATIONAL PAGES — Shared helper
+# =================================================================================
+
+def generate_international_route_card(origin, destination, description):
+    card = {
+        'origin': origin,
+        'destination': destination,
+        'description': description,
+        'wa_link': 'https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!'
+    }
+    return generate_uk_style_route_card(card)
+
+
+def build_intl_page(template, old_schema, cfg):
+    c     = cfg['country']
+    s     = cfg['slug']
+    pr    = cfg['phone_raw']
+    pd    = cfg['phone_display']
+    pp    = cfg['phone_prefix']
+    cap   = cfg['capital']
+    cities= cfg['cities']
+    cc    = cfg['country_code']
+    reg   = cfg.get('schema_region', cap)
+    cimg  = cfg['cost_image']
+    calt  = cfg['cost_image_alt']
+    c1,c2 = cfg['city_1'], cfg['city_2']
+    d1,d2 = cfg['dest_1'], cfg['dest_2']
+    cards = cfg['route_cards']
+
+    html = template
+
+    # head — title, meta, canonical
+    html = html.replace(
+        '<title>Air Ambulance Services [COUNTRY/REGION] | ICU Medical Evacuation 24X7</title>',
+        f'<title>Air Ambulance Services {c} | ICU Medical Evacuation 24X7</title>'
+    )
+    html = html.replace(
+        '<meta name="description"\n        content="24×7 Emergency Air Ambulance Services across [COUNTRY/REGION]. ICU medical evacuation, Repatriation, patient transfer, stretcher, and medical escort services. Quote in 30 minutes." />',
+        f'<meta name="description" content="24×7 Emergency Air Ambulance Services across {c}. ICU medical evacuation, Medical Repatriation, patient transfer, stretcher services, and flight medical escort. Quote within 30 minutes." />'
+    )
+    html = html.replace(
+        '<meta name="keywords"\n        content="Air Ambulance [COUNTRY/REGION], air ambulance cost [COUNTRY/REGION], Air Ambulance [CITY/CAPITAL], private air ambulance [COUNTRY/REGION], Medical Evacuation [COUNTRY/REGION], Emergency Air Ambulance [COUNTRY/REGION], ICU Air Ambulance [COUNTRY/REGION], Air Ambulance [COUNTRY/REGION] to India, Flight Medical Escort [COUNTRY/REGION], Airline Stretcher [COUNTRY/REGION], ECMO Transfer [COUNTRY/REGION], Medical Repatriation [COUNTRY/REGION], Patient Transfer [COUNTRY/REGION], Critical Care Transport [COUNTRY/REGION]">',
+        f'<meta name="keywords" content="Air Ambulance {c}, air ambulance cost {c}, Air Ambulance {cap}, private air ambulance {c}, Medical Evacuation {c}, Emergency Air Ambulance {c}, ICU Air Ambulance {c}, Air Ambulance {c} to India, Flight Medical Escort {c}, Airline Stretcher {c}, ECMO Transfer {c}, Medical Repatriation {c}, Patient Transfer {c}, Critical Care Transport {c}">'
+    )
+    html = html.replace(
+        '<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-[SLUG]" />',
+        f'<link rel="canonical" href="https://airmedical24x7.com/air-ambulance-{s}" />'
+    )
+
+    # LocalBusiness schema
+    new_schema = f"""    <script type="application/ld+json">
+    {{
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "MedicalOrganization"],
+      "name": "Air Medical 24X7",
+      "url": "https://airmedical24x7.com/air-ambulance-{s}",
+      "telephone": "{pr}",
+      "address": {{
+        "@type": "PostalAddress",
+        "addressLocality": "{cap}",
+        "addressRegion": "{reg}",
+        "addressCountry": "{cc}"
+      }},
+      "description": "24X7 Air Ambulance Services across {c} — {cities}. ICU-equipped medical evacuation to India and worldwide.",
+      "areaServed": "{c} — {cities}",
+      "medicalSpecialty": "Emergency Medicine",
+      "availableService": "Air Ambulance",
+      "openingHours": "Mo-Su 00:00-24:00"
+    }}
+    </script>"""
+    html = html.replace(old_schema, new_schema)
+
+    # FAQPage schema in head — replace generic placeholder with country name
+    html = html.replace(
+        '"name": "How much does an air ambulance from [COUNTRY/REGION] to India cost?"',
+        f'"name": "How much does an air ambulance from {c} to India cost?"'
+    )
+
+    # phone
+    html = html.replace('[PHONE_RAW]',     pr)
+    html = html.replace('[PHONE_DISPLAY]', pd)
+
+    # hero
+    html = html.replace(
+        '24/7 ICU Air Ambulance & Medical Evacuation from [COUNTRY/REGION]',
+        f'24/7 ICU Air Ambulance &amp; Medical Evacuation from {c}'
+    )
+    html = html.replace(
+        'Global bed-to-bed medical repatriation from anywhere in [COUNTRY/REGION], including [CITIES], to destinations worldwide. Rapid dispatch with a fully equipped medical crew, providing safe and reliable transfers from [COUNTRY/REGION] to anywhere in the world.',
+        f'Global bed-to-bed medical repatriation from anywhere in {c}, including {cities}, to destinations worldwide. Rapid dispatch with a fully equipped medical crew, providing safe and reliable transfers from {c} to anywhere in the world.'
+    )
+
+    # form placeholders
+    html = html.replace('placeholder="[PHONE_PREFIX] Enter your number"', f'placeholder="{pp} Enter your number"')
+    html = html.replace('placeholder="e.g. [CITY_1], [CITY_2]"',         f'placeholder="e.g. {c1}, {c2}"')
+    html = html.replace('placeholder="e.g. [DEST_1], [DEST_2]"',         f'placeholder="e.g. {d1}, {d2}"')
+
+    # stats
+    html = html.replace('[COUNTRY/REGION] Command Center', f'{c} Command Center')
+
+    # cost section
+    html = html.replace(
+        'Air Ambulance &amp; Airline Stretcher Costs from [COUNTRY/REGION]',
+        f'Air Ambulance &amp; Airline Stretcher Costs from {c}'
+    )
+    html = html.replace('repatriation from [COUNTRY/REGION]', f'repatriation from {c}')
+    html = html.replace('evacuations from [COUNTRY/REGION]',  f'evacuations from {c}')
+    html = html.replace('Call [COUNTRY/REGION] Emergency Desk', f'Call {c} Emergency Desk')
+    html = html.replace(
+        'We provide medical transfers from major cities in [COUNTRY/REGION], including <strong>[CITIES]</strong>, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.',
+        f'We provide medical transfers from major cities in {c}, including <strong>{cities}</strong>, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.'
+    )
+    html = html.replace(
+        'src="/ads/assets/air-ambulance-[SLUG].jfif" alt="Air Ambulance [COUNTRY/REGION] Cost"',
+        f'src="/ads/assets/{cimg}" alt="{calt}"'
+    )
+
+    # routes section — 6 cards simple grid
+    cards_html = "\n".join([generate_international_route_card(o, d, desc) for o, d, desc in cards])
+    new_routes = f"""    <section id="routes-section"
+        class="py-16 bg-surface-container-low/40 border-b border-outline-variant/10 relative overflow-hidden">
+        <div class="container mx-auto px-6 md:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tighter">
+                    Critical Global Transfer Routes from {c}
+                </h2>
+                <p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                    Providing dedicated bed-to-bed ICU air ambulance and commercial airline stretcher services across all major international medical corridors from {c} with seamless end-to-end medical transportation.
+                </p>
+            </div>
+            <div id="popular-routes">
+                <h3 class="font-headline text-lg font-black text-primary mb-6 uppercase tracking-wider">Most Requested Transfer Routes</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+{cards_html}
+                </div>
+            </div>
+        </div>
+    </section>"""
+    html = re.sub(routes_section_regex_template, new_routes + "\n\n", html, flags=re.DOTALL)
+
+    # FAQ accordion text
+    html = html.replace('insurance coordination for [COUNTRY/REGION]', f'insurance coordination for {c}')
+    html = html.replace('How much does an air ambulance from [COUNTRY/REGION] to India cost?', f'How much does an air ambulance from {c} to India cost?')
+    html = html.replace(
+        'The cost of an air ambulance from [COUNTRY/REGION] to India depends on the departure city, destination in India, aircraft type, and the level of medical care required onboard. For stable patients, a commercial airline stretcher or flight medical escort is a more affordable option. Contact our team for a precise quote within 30 minutes.',
+        f'The cost of an air ambulance from {c} to India depends on the departure city, aircraft type, and the level of medical care required onboard. For stable patients, a commercial airline stretcher or flight medical escort is a more affordable option. Contact our team for a precise quote within 30 minutes.'
+    )
+    html = html.replace('cities in [COUNTRY/REGION] do you cover for air ambulance services?', f'cities in {c} do you cover for air ambulance services?')
+    html = html.replace(
+        "We cover all major cities in [COUNTRY/REGION] and regions including London, Manchester, Birmingham, Glasgow, Edinburgh, Leeds, Sheffield, Leicester, Bristol, and nationwide. Ground ambulance is coordinated from the patient's location to the nearest departure airport, with the full transfer managed by our operations team.",
+        f"We cover all major cities in {c}, including {cities}. Ground ambulance is coordinated from the patient's location to the nearest departure airport, with the full transfer managed by our operations team."
+    )
+    html = html.replace('quickly can an air ambulance be arranged from [COUNTRY/REGION]?', f'quickly can an air ambulance be arranged from {c}?')
+    html = html.replace('I use insurance for air ambulance services from [COUNTRY/REGION]?', f'I use insurance for air ambulance services from {c}?')
+    html = html.replace('Is a flight medical escort sufficient or do I need a dedicated air ambulance from [COUNTRY/REGION]?', f'Is a flight medical escort sufficient or do I need a dedicated air ambulance from {c}?')
+    html = html.replace('is ground ambulance in [COUNTRY/REGION] coordinated for air ambulance transfers?', f'is ground ambulance in {c} coordinated for air ambulance transfers?')
+
+    # Footer helpline
+    html = html.replace('24X7 [COUNTRY/REGION] Emergency Helpline', f'24X7 {c} Emergency Helpline')
+
+    # Why Families section
+    html = html.replace('<!-- Why Families in [COUNTRY/REGION] Rely on Air Medical 24X7 -->', f'<!-- Why Families in {c} Rely on Air Medical 24X7 -->')
+    html = html.replace('Why Families in [COUNTRY/REGION] Rely on Air Medical 24X7', f'Why Families in {c} Rely on Air Medical 24X7')
+    html = html.replace('thousands of families in [COUNTRY/REGION]', f'thousands of families across {c}')
+    html = html.replace('[COUNTRY/REGION] Operations &mdash; Rapid Local Response', f'{c} Operations &mdash; Rapid Local Response')
+    html = html.replace(
+        'Our [COUNTRY/REGION] desk handles\n                                    NHS hospital liaisons, London airport clearances (Heathrow, Gatwick, Stansted), and ground ambulance dispatch &mdash; ensuring swift response across England, Scotland, Wales, and Northern Ireland.',
+        f'Our {c} operations desk coordinates international flight clearances, ground ambulance dispatch, and hospital liaisons &mdash; ensuring swift medical response across {cities}.'
+    )
+    html = html.replace(
+        'across all\n                                    [COUNTRY/REGION] departures.',
+        f'across all\n                                    {c} departures.'
+    )
+
+    # Global fallback for any remaining placeholders
+    html = html.replace('[COUNTRY/REGION]', c)
+    html = html.replace('[SLUG]',           s)
+    html = html.replace('[CITY/CAPITAL]',   cap)
+    html = html.replace('[CITIES]',         cities)
+    html = html.replace('[CITY]',           cap)
+    html = html.replace('[REGION]',         reg)
+    html = html.replace('[COUNTRY_CODE]',   cc)
+    html = html.replace('[PHONE_PREFIX]',   pp)
+    html = html.replace('[CITY_1]',         c1)
+    html = html.replace('[CITY_2]',         c2)
+    html = html.replace('[DEST_1]',         d1)
+    html = html.replace('[DEST_2]',         d2)
+
+    return html
+
+
+# =================================================================================
+# 4. Tanzania
+# =================================================================================
+tanzania_cfg = {
+    'country':       'Tanzania',
+    'slug':          'tanzania',
+    'phone_raw':     '+255800120158',
+    'phone_display': '+255 800 12 0158',
+    'phone_prefix':  '+255',
+    'capital':       'Dar es Salaam',
+    'cities':        'Dar es Salaam, Zanzibar, Arusha, Mwanza, Dodoma',
+    'country_code':  'TZ',
+    'schema_region': 'Dar es Salaam Region',
+    'cost_image':    'tanzania-country.jpeg',
+    'cost_image_alt':'Air Ambulance Tanzania Cost',
+    'city_1':        'Dar es Salaam',
+    'city_2':        'Zanzibar',
+    'dest_1':        'Mumbai, India',
+    'dest_2':        'Dubai, UAE',
+    'route_cards': [
+        ('Dar es Salaam', 'Mumbai',   'Dedicated ICU air ambulance and flight medical escort from Dar es Salaam to Mumbai, coordinating with leading Indian super-specialty hospitals for seamless bed-to-bed transfer.'),
+        ('Dar es Salaam', 'New Delhi','Critical care air ambulance transfers from Dar es Salaam to New Delhi, managing all international clearances, medical crew deployment, and ground ambulance logistics.'),
+        ('Dar es Salaam', 'Dubai',    'ICU-equipped air ambulance and commercial airline stretcher services from Dar es Salaam to Dubai, providing continuous patient monitoring and hospital coordination.'),
+        ('Zanzibar',      'Chennai',  'Emergency medical repatriation from Zanzibar to Chennai, India. Fully managed bed-to-bed transfer with specialised medical crew and rapid flight clearance.'),
+        ('Arusha',        'Singapore','Long-haul ICU air ambulance from Arusha to Singapore, coordinating with world-class specialist centres for complex medical cases requiring advanced treatment.'),
+        ('Dar es Salaam', 'London',   'International medical repatriation from Dar es Salaam to London, UK. Commercial airline stretcher and dedicated air ambulance options with full escort services.'),
+    ]
+}
+
+html_tanzania = build_intl_page(template, old_schema, tanzania_cfg)
+with open('air-ambulance-tanzania.html', 'w', encoding='utf-8') as f:
+    f.write(html_tanzania)
+print('Saved air-ambulance-tanzania.html')
+
+
+# =================================================================================
+# 5. Vietnam
+# =================================================================================
+vietnam_cfg = {
+    'country':       'Vietnam',
+    'slug':          'vietnam',
+    'phone_raw':     '+8412032123',
+    'phone_display': '+84 1203 2123',
+    'phone_prefix':  '+84',
+    'capital':       'Hanoi',
+    'cities':        'Ho Chi Minh City, Hanoi, Da Nang, Nha Trang, Hoi An',
+    'country_code':  'VN',
+    'schema_region': 'Ho Chi Minh City',
+    'cost_image':    'vietnam-country.jfif',
+    'cost_image_alt':'Air Ambulance Vietnam Cost',
+    'city_1':        'Ho Chi Minh City',
+    'city_2':        'Hanoi',
+    'dest_1':        'Mumbai, India',
+    'dest_2':        'Singapore',
+    'route_cards': [
+        ('Ho Chi Minh City', 'Mumbai',   'ICU air ambulance and medical escort from Ho Chi Minh City to Mumbai, India. Fully managed bed-to-bed transfer with specialised crew and continuous patient monitoring.'),
+        ('Hanoi',            'New Delhi','Critical care air ambulance transfers from Hanoi to New Delhi, coordinating international clearances, specialised medical crew deployment, and ground ambulance logistics.'),
+        ('Da Nang',          'Dubai',    'Emergency air ambulance from Da Nang to Dubai, UAE. ICU-equipped aircraft, flight medical escort, and full hospital coordination for seamless international transfer.'),
+        ('Ho Chi Minh City', 'Singapore','Short-haul ICU air ambulance from Ho Chi Minh City to Singapore, connecting patients to world-class medical facilities with rapid dispatch and flight clearance.'),
+        ('Hanoi',            'Bangkok',  'Medical repatriation from Hanoi to Bangkok, Thailand. Commercial airline stretcher or dedicated air ambulance options with certified medical escort personnel.'),
+        ('Ho Chi Minh City', 'Sydney',   'Long-haul international medical evacuation from Ho Chi Minh City to Sydney, Australia, with continuous ICU monitoring and full end-to-end care coordination.'),
+    ]
+}
+
+html_vietnam = build_intl_page(template, old_schema, vietnam_cfg)
+with open('air-ambulance-vietnam.html', 'w', encoding='utf-8') as f:
+    f.write(html_vietnam)
+print('Saved air-ambulance-vietnam.html')
+
+
+# =================================================================================
+# 6. Spain
+# =================================================================================
+spain_cfg = {
+    'country':       'Spain',
+    'slug':          'spain',
+    'phone_raw':     '+34900123456',
+    'phone_display': '+34 900 123 456',
+    'phone_prefix':  '+34',
+    'capital':       'Madrid',
+    'cities':        'Madrid, Barcelona, Valencia, Seville, Malaga, Bilbao',
+    'country_code':  'ES',
+    'schema_region': 'Comunidad de Madrid',
+    'cost_image':    'madrid-spain-country.jpeg',
+    'cost_image_alt':'Air Ambulance Spain Madrid Cost',
+    'city_1':        'Madrid',
+    'city_2':        'Barcelona',
+    'dest_1':        'Mumbai, India',
+    'dest_2':        'Dubai, UAE',
+    'route_cards': [
+        ('Madrid',    'Mumbai',   'Dedicated ICU air ambulance and medical escort services from Madrid to Mumbai, India, coordinating with leading super-specialty hospitals for seamless bed-to-bed patient transfer.'),
+        ('Barcelona', 'New Delhi','Critical care air ambulance transfers from Barcelona to New Delhi, managing all international clearances, specialised medical crew, and ground ambulance logistics.'),
+        ('Madrid',    'Dubai',    'ICU-equipped air ambulance and commercial airline stretcher services from Madrid to Dubai, UAE, with continuous patient monitoring and hospital coordination.'),
+        ('Seville',   'London',   'Medical repatriation from Seville to London, UK. Commercial airline stretcher and dedicated air ambulance options with certified medical escort personnel.'),
+        ('Madrid',    'New York', 'Transatlantic ICU air ambulance from Madrid to New York, USA, managing all flight clearances, medical crew deployment, and receiving hospital coordination.'),
+        ('Barcelona', 'Toronto',  'International medical evacuation from Barcelona to Toronto, Canada, with fully equipped ICU aircraft and seamless end-to-end patient care management.'),
+    ]
+}
+
+html_spain = build_intl_page(template, old_schema, spain_cfg)
+with open('air-ambulance-spain.html', 'w', encoding='utf-8') as f:
+    f.write(html_spain)
+print('Saved air-ambulance-spain.html')
+
+
+# =================================================================================
+# 7. Bangladesh
+# =================================================================================
+bangladesh_cfg = {
+    'country':       'Bangladesh',
+    'slug':          'bangladesh',
+    'phone_raw':     '+8801700123456',
+    'phone_display': '+880 1700 123456',
+    'phone_prefix':  '+880',
+    'capital':       'Dhaka',
+    'cities':        'Dhaka, Chittagong, Sylhet, Khulna, Rajshahi',
+    'country_code':  'BD',
+    'schema_region': 'Dhaka Division',
+    'cost_image':    'dhaka-bangladesh-country.jpeg',
+    'cost_image_alt':'Air Ambulance Bangladesh Dhaka Cost',
+    'city_1':        'Dhaka',
+    'city_2':        'Chittagong',
+    'dest_1':        'Kolkata, India',
+    'dest_2':        'Mumbai, India',
+    'route_cards': [
+        ('Dhaka',      'Kolkata',   'Rapid ICU air ambulance and medical escort from Dhaka to Kolkata, India. Nearest super-specialty corridor with fast clearance and bed-to-bed transfer management.'),
+        ('Dhaka',      'New Delhi', 'Critical care air ambulance from Dhaka to New Delhi, coordinating international clearances, specialised medical crew deployment, and ground ambulance logistics.'),
+        ('Chittagong', 'Chennai',   'Emergency medical repatriation from Chittagong to Chennai, India. Dedicated air ambulance or commercial airline stretcher with certified medical escort.'),
+        ('Dhaka',      'Dubai',     'ICU-equipped air ambulance and commercial airline stretcher services from Dhaka to Dubai, UAE, with continuous patient monitoring and hospital coordination.'),
+        ('Dhaka',      'London',    'International medical evacuation from Dhaka to London, UK. Fully managed bed-to-bed transfer with specialised crew and all flight clearance handling.'),
+        ('Sylhet',     'Singapore', 'Long-haul ICU air ambulance from Sylhet to Singapore, connecting patients to world-class medical facilities with rapid dispatch and seamless coordination.'),
+    ]
+}
+
+html_bangladesh = build_intl_page(template, old_schema, bangladesh_cfg)
+with open('air-ambulance-bangladesh.html', 'w', encoding='utf-8') as f:
+    f.write(html_bangladesh)
+print('Saved air-ambulance-bangladesh.html')
