@@ -57,17 +57,17 @@ def build_custom_accordion(acc):
         build_accordion_section("africa",      "Africa Routes",                     "africa",      acc["africa"]),
     ])
 
-def _li(dest, anchor):
+def _li(dest, anchor, country="Vietnam"):
     return (
         f'                                        <li class="flex items-center gap-1">'
         f'<span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span>'
-        f'<a href="#{anchor}" class="hover:text-secondary hover:underline transition-all">Vietnam to {dest}</a></li>'
+        f'<a href="#{anchor}" class="hover:text-secondary hover:underline transition-all">{country} to {dest}</a></li>'
     )
 
-def build_custom_sidebar(groups):
+def build_custom_sidebar(groups, country="Vietnam"):
     divs = []
     for label, anchor, dests in groups:
-        items = "\n".join(_li(d, anchor) for d in dests)
+        items = "\n".join(_li(d, anchor, country) for d in dests)
         divs.append(
             f'                                <!-- {label} -->\n'
             f'                                <div>\n'

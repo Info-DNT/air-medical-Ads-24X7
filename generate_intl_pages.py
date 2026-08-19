@@ -3,6 +3,7 @@ import os
 from vietnam_routes import (VIETNAM_ROUTE_CARDS, VIETNAM_ACCORDION,
                             VIETNAM_SIDEBAR, build_custom_accordion, build_custom_sidebar)
 from tanzania_routes import (TANZANIA_ROUTE_CARDS, TANZANIA_ACCORDION, TANZANIA_SIDEBAR)
+from spain_routes import (SPAIN_ROUTE_CARDS, SPAIN_ACCORDION, SPAIN_SIDEBAR)
 
 # ── Load template ─────────────────────────────────────────────────────────────
 with open("air-ambulance-dummy.html", "r", encoding="utf-8") as f:
@@ -302,14 +303,9 @@ COUNTRIES = [
         "cost_image": "madrid-spain-country.jpeg", "cost_image_alt": "Air Ambulance Spain Madrid Cost",
         "city_1": "Madrid", "city_2": "Barcelona",
         "dest_1": "Mumbai, India", "dest_2": "Dubai, UAE",
-        "route_cards": [
-            ("Madrid",    "Mumbai",    "Dedicated ICU air ambulance and medical escort services from Madrid to Mumbai, India, coordinating with leading super-specialty hospitals for seamless bed-to-bed patient transfer."),
-            ("Barcelona", "New Delhi", "Critical care air ambulance transfers from Barcelona to New Delhi, managing all international clearances, specialised medical crew, and ground ambulance logistics."),
-            ("Madrid",    "Dubai",     "ICU-equipped air ambulance and commercial airline stretcher services from Madrid to Dubai, UAE, with continuous patient monitoring and hospital coordination."),
-            ("Seville",   "London",    "Medical repatriation from Seville to London, UK. Commercial airline stretcher and dedicated air ambulance options with certified medical escort personnel."),
-            ("Madrid",    "New York",  "Transatlantic ICU air ambulance from Madrid to New York, USA, managing all flight clearances, medical crew deployment, and receiving hospital coordination."),
-            ("Barcelona", "Toronto",   "International medical evacuation from Barcelona to Toronto, Canada, with fully equipped ICU aircraft and seamless end-to-end patient care management."),
-        ]
+        "route_cards":    SPAIN_ROUTE_CARDS,
+        "accordion_data": SPAIN_ACCORDION,
+        "form_sidebar":   SPAIN_SIDEBAR,
     },
     {
         "country": "Bangladesh", "slug": "bangladesh",
