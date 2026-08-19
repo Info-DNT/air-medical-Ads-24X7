@@ -1,5 +1,7 @@
 import re
 import os
+from vietnam_routes import (VIETNAM_ROUTE_CARDS, VIETNAM_ACCORDION,
+                            VIETNAM_SIDEBAR, build_custom_accordion, build_custom_sidebar)
 
 # ── Load template ─────────────────────────────────────────────────────────────
 with open("air-ambulance-dummy.html", "r", encoding="utf-8") as f:
@@ -173,6 +175,7 @@ def build_page(cfg):
 
     # Routes section
     cards_html = "\n".join([route_card(o, d, desc) for o, d, desc in cfg["route_cards"]])
+    acc_html = build_custom_accordion(cfg["accordion_data"]) if "accordion_data" in cfg else ACCORDION_HTML
     new_routes = f"""    <section id="routes-section"
         class="py-16 bg-surface-container-low/40 border-b border-outline-variant/10 relative overflow-hidden">
         <div class="container mx-auto px-6 md:px-8 relative z-10">
@@ -191,11 +194,25 @@ def build_page(cfg):
                 </div>
             </div>
 
-            {ACCORDION_HTML}
+            {acc_html}
 
         </div>
     </section>"""
     h = re.sub(routes_re, new_routes + "\n\n", h, flags=re.DOTALL)
+
+    # Custom sidebar injection
+    if "form_sidebar" in cfg:
+        sidebar_html = build_custom_sidebar(cfg["form_sidebar"])
+        start = "<!-- Destinations Grid by Region"
+        end   = "<!-- Decorative icon"
+        sb_s = h.find(start)
+        sb_e = h.find(end)
+        if sb_s != -1 and sb_e != -1:
+            pre_deco    = h[:sb_e]
+            last_div    = pre_deco.rfind("</div>")
+            before_last = pre_deco[:last_div]
+            sy2_end     = before_last.rfind("</div>")
+            h = h[:sb_s] + sidebar_html + "\n" + h[sy2_end + 6:]
 
     # FAQs
     h = h.replace("insurance coordination for [COUNTRY/REGION]",   f"insurance coordination for {c}")
@@ -276,15 +293,10 @@ COUNTRIES = [
         "country_code": "VN", "schema_region": "Ho Chi Minh City",
         "cost_image": "vietnam-country.jfif", "cost_image_alt": "Air Ambulance Vietnam Cost",
         "city_1": "Ho Chi Minh City", "city_2": "Hanoi",
-        "dest_1": "Mumbai, India",    "dest_2": "Singapore",
-        "route_cards": [
-            ("Ho Chi Minh City", "Mumbai",    "ICU air ambulance and medical escort from Ho Chi Minh City to Mumbai, India. Fully managed bed-to-bed transfer with specialised crew and continuous patient monitoring."),
-            ("Hanoi",            "New Delhi", "Critical care air ambulance from Hanoi to New Delhi, coordinating international clearances, specialised medical crew deployment, and ground ambulance logistics."),
-            ("Da Nang",          "Dubai",     "Emergency air ambulance from Da Nang to Dubai, UAE. ICU-equipped aircraft, flight medical escort, and full hospital coordination for seamless international transfer."),
-            ("Ho Chi Minh City", "Singapore", "Short-haul ICU air ambulance from Ho Chi Minh City to Singapore, connecting patients to world-class medical facilities with rapid dispatch and flight clearance."),
-            ("Hanoi",            "Bangkok",   "Medical repatriation from Hanoi to Bangkok, Thailand. Commercial airline stretcher or dedicated air ambulance options with certified medical escort personnel."),
-            ("Ho Chi Minh City", "Sydney",    "Long-haul international medical evacuation from Ho Chi Minh City to Sydney, Australia, with continuous ICU monitoring and full end-to-end care coordination."),
-        ]
+        "dest_1": "Singapore",        "dest_2": "Bangkok",
+        "route_cards":    VIETNAM_ROUTE_CARDS,
+        "accordion_data": VIETNAM_ACCORDION,
+        "form_sidebar":   VIETNAM_SIDEBAR,
     },
     {
         "country": "Spain", "slug": "spain",
