@@ -2,6 +2,7 @@ import re
 import os
 from vietnam_routes import (VIETNAM_ROUTE_CARDS, VIETNAM_ACCORDION,
                             VIETNAM_SIDEBAR, build_custom_accordion, build_custom_sidebar)
+from tanzania_routes import (TANZANIA_ROUTE_CARDS, TANZANIA_ACCORDION, TANZANIA_SIDEBAR)
 
 # ── Load template ─────────────────────────────────────────────────────────────
 with open("air-ambulance-dummy.html", "r", encoding="utf-8") as f:
@@ -202,7 +203,7 @@ def build_page(cfg):
 
     # Custom sidebar injection
     if "form_sidebar" in cfg:
-        sidebar_html = build_custom_sidebar(cfg["form_sidebar"])
+        sidebar_html = build_custom_sidebar(cfg["form_sidebar"], cfg["country"])
         start = "<!-- Destinations Grid by Region"
         end   = "<!-- Decorative icon"
         sb_s = h.find(start)
@@ -277,14 +278,9 @@ COUNTRIES = [
         "cost_image": "tanzania-country.jpeg", "cost_image_alt": "Air Ambulance Tanzania Cost",
         "city_1": "Dar es Salaam", "city_2": "Zanzibar",
         "dest_1": "Mumbai, India",  "dest_2": "Dubai, UAE",
-        "route_cards": [
-            ("Dar es Salaam", "Mumbai",    "Dedicated ICU air ambulance and flight medical escort from Dar es Salaam to Mumbai, coordinating with leading Indian super-specialty hospitals for seamless bed-to-bed transfer."),
-            ("Dar es Salaam", "New Delhi", "Critical care air ambulance transfers from Dar es Salaam to New Delhi, managing all international clearances, medical crew deployment, and ground ambulance logistics."),
-            ("Dar es Salaam", "Dubai",     "ICU-equipped air ambulance and commercial airline stretcher services from Dar es Salaam to Dubai, providing continuous patient monitoring and hospital coordination."),
-            ("Zanzibar",      "Chennai",   "Emergency medical repatriation from Zanzibar to Chennai, India. Fully managed bed-to-bed transfer with specialised medical crew and rapid flight clearance."),
-            ("Arusha",        "Singapore", "Long-haul ICU air ambulance from Arusha to Singapore, coordinating with world-class specialist centres for complex medical cases requiring advanced treatment."),
-            ("Dar es Salaam", "London",    "International medical repatriation from Dar es Salaam to London, UK. Commercial airline stretcher and dedicated air ambulance options with full escort services."),
-        ]
+        "route_cards":    TANZANIA_ROUTE_CARDS,
+        "accordion_data": TANZANIA_ACCORDION,
+        "form_sidebar":   TANZANIA_SIDEBAR,
     },
     {
         "country": "Vietnam", "slug": "vietnam",
