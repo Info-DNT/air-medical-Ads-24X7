@@ -184,7 +184,7 @@ def build_page(cfg):
                     Providing dedicated bed-to-bed ICU air ambulance and commercial airline stretcher services across all major international medical corridors from {c} with seamless end-to-end medical transportation.
                 </p>
             </div>
-            <div id="popular-routes">
+            <div id="popular-routes" class="mb-14">
                 <h3 class="font-headline text-lg font-black text-primary mb-6 uppercase tracking-wider">Most Requested Transfer Routes</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 {cards_html}
