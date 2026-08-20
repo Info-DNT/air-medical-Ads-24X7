@@ -16,11 +16,11 @@ from vietnam_routes import auto_desc, accordion_item, build_custom_sidebar
 
 # ── Inbound sidebar helper (reverses direction: dest → country) ───────────────
 def _li_inbound(dest, anchor, country="Bangladesh"):
-    """Renders 'UAE to Bangladesh' instead of 'Bangladesh to UAE'."""
+    """Renders 'UAE to Bangladesh' instead of 'Bangladesh to UAE' with crisp styling."""
     return (
-        f'                                        <li class="flex items-center gap-1">'
+        f'                                        <li class="flex items-center gap-1 min-w-0">'
         f'<span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span>'
-        f'<a href="#{anchor}" class="hover:text-secondary hover:underline transition-all">{dest} to {country}</a></li>'
+        f'<a href="#{anchor}" title="Air Ambulance from {dest} to {country}" class="hover:text-secondary hover:underline transition-all leading-tight text-[9px] font-semibold text-slate-200">{dest} to {country}</a></li>'
     )
 
 
@@ -33,7 +33,7 @@ def build_inbound_sidebar(groups, country="Bangladesh"):
             f'                                <!-- {label} -->\n'
             f'                                <div>\n'
             f'                                    <a href="#{anchor}" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">{label}</a>\n'
-            f'                                    <ul class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">\n'
+            f'                                    <ul class="grid grid-cols-3 gap-x-2 gap-y-1 text-[9px] text-slate-200 font-semibold">\n'
             f'{items}\n'
             f'                                    </ul>\n'
             f'                                </div>'
@@ -54,16 +54,16 @@ WA = "https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Ai
 
 BANGLADESH_SIDEBAR = [
     ("Middle East & GCC", "region-asia", [
-        "UAE",          "Saudi Arabia",  "Qatar",
-        "Oman",         "Kuwait",        "Bahrain",
+        "UAE",          "Oman",          "Qatar",
+        "Kuwait",       "Bahrain",       "Saudi Arabia",
     ]),
     ("India & South Asia", "region-asia", [
         "India",        "Maldives",      "Nepal",
         "Myanmar",
     ]),
     ("Southeast & East Asia", "region-asia", [
-        "Malaysia",     "Singapore",     "Thailand",
-        "China",        "South Korea",   "Japan",
+        "Malaysia",     "Japan",         "Thailand",
+        "China",        "Singapore",     "South Korea",
     ]),
     ("Europe & UK", "region-europe-usa", [
         "UK",           "Germany",       "Italy",
