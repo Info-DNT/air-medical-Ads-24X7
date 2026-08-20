@@ -14,6 +14,37 @@ import re
 import os
 from vietnam_routes import auto_desc, accordion_item, build_custom_sidebar
 
+# ── Inbound sidebar helper (reverses direction: dest → country) ───────────────
+def _li_inbound(dest, anchor, country="Bangladesh"):
+    """Renders 'UAE to Bangladesh' instead of 'Bangladesh to UAE'."""
+    return (
+        f'                                        <li class="flex items-center gap-1">'
+        f'<span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span>'
+        f'<a href="#{anchor}" class="hover:text-secondary hover:underline transition-all">{dest} to {country}</a></li>'
+    )
+
+
+def build_inbound_sidebar(groups, country="Bangladesh"):
+    """Same structure as build_custom_sidebar but uses _li_inbound for direction."""
+    divs = []
+    for label, anchor, dests in groups:
+        items = "\n".join(_li_inbound(d, anchor, country) for d in dests)
+        divs.append(
+            f'                                <!-- {label} -->\n'
+            f'                                <div>\n'
+            f'                                    <a href="#{anchor}" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">{label}</a>\n'
+            f'                                    <ul class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">\n'
+            f'{items}\n'
+            f'                                    </ul>\n'
+            f'                                </div>'
+        )
+    return (
+        '                            <!-- Destinations Grid by Region \u2014 3 columns, no scroll -->\n'
+        '                            <div class="space-y-2">\n\n'
+        + "\n\n".join(divs)
+        + '\n                            </div>'
+    )
+
 # ── WhatsApp CTA ───────────────────────────────────────────────────────────────
 WA = "https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
 
@@ -233,8 +264,8 @@ def build_all_route_cards():
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def inject_sidebar(html, country="Bangladesh"):
-    """Replace the sidebar destinations grid."""
-    sidebar_html = build_custom_sidebar(BANGLADESH_SIDEBAR, country)
+    """Replace the sidebar destinations grid (inbound: 'UAE to Bangladesh')."""
+    sidebar_html = build_inbound_sidebar(BANGLADESH_SIDEBAR, country)
 
     # Matches the wrapping div that contains the grid — bounded by the sentinel comments
     pattern = re.compile(
@@ -260,62 +291,47 @@ def inject_sidebar(html, country="Bangladesh"):
     return html
 
 
-def inject_route_cards(html):
-    """Replace all cards inside <div id=\"popular-routes\"> … </div>."""
+def inject_routes_section(html):
+    """Replace the entire <section id="routes-section" ...> </section> block with clean route cards and accordions."""
     cards_html = build_all_route_cards()
-    grid_open  = '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">'
-    grid_close = '</div>'
-
-    # Find the popular-routes div and replace its inner grid
-    pop_pattern = re.compile(
-        r'(<div id="popular-routes"[^>]*>.*?'
-        r'<h3[^>]*>Most Requested Transfer Routes</h3>\s*'
-        r'<div class="grid[^"]*grid-cols-1[^"]*">)'
-        r'.*?'
-        r'(</div>\s*</div>)',   # closes the grid then popular-routes
-        re.DOTALL,
-    )
-    replacement = (
-        r'\g<1>'
-        '\n' + cards_html + '\n'
-        r'                </div>'   # close grid
-        '\n            </div>'      # close popular-routes
-    )
-    result, n = re.subn(pop_pattern, replacement, html, count=1)
-    if n:
-        return result
-
-    print("  WARNING: popular-routes grid not found — route cards unchanged.")
-    return html
-
-
-def inject_accordions(html):
-    """Replace everything between the accordion sentinel comments."""
     acc_html = build_all_accordions()
 
-    # Sentinel: <!-- Region Accordion: … --> blocks, terminated before </div> that
-    # closes the container
+    new_section = (
+        '<!-- SECTION START: Critical Global Transfer Routes (MUST maintain 100% design and class parity) -->\n'
+        '    <!-- Critical Global Transfer Routes from Bangladesh Section -->\n'
+        '    <section id="routes-section"\n'
+        '        class="py-16 bg-surface-container-low/40 border-b border-outline-variant/10 relative overflow-hidden">\n'
+        '        <div class="container mx-auto px-6 md:px-8 relative z-10">\n'
+        '            <div class="text-center max-w-3xl mx-auto mb-12">\n'
+        '                <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tighter">\n'
+        '                    Critical Global Transfer Routes from Bangladesh\n'
+        '                </h2>\n'
+        '                <p class="text-on-surface-variant font-body leading-relaxed text-sm">\n'
+        '                    Providing dedicated bed-to-bed ICU air ambulance and commercial airline stretcher services across all major international medical corridors from Bangladesh with seamless end-to-end medical transportation.\n'
+        '                </p>\n'
+        '            </div>\n'
+        '            <div id="popular-routes" class="mb-14">\n'
+        '                <h3 class="font-headline text-lg font-black text-primary mb-6 uppercase tracking-wider">Most Requested Transfer Routes</h3>\n'
+        '                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">\n'
+        + cards_html + '\n'
+        '                </div>\n'
+        '            </div>\n\n'
+        + acc_html + '\n\n'
+        '        </div>\n'
+        '    </section>'
+    )
+
     pattern = re.compile(
-        r'(<!-- Region Accordion:.*?)'   # first accordion start
-        r'(</div>\s*</div>\s*</div>\s*</section>)',  # section close
-        re.DOTALL,
+        r'(?:<!-- SECTION START: Critical Global Transfer Routes.*?\n\s*)?'
+        r'<section id="routes-section"[^>]*>.*?</section>',
+        re.DOTALL
     )
-    replacement = acc_html + '\n\n        ' + r'\g<2>'
-    result, n = re.subn(pattern, replacement, html, count=1)
+
+    result, n = re.subn(pattern, new_section, html, count=1)
     if n:
         return result
 
-    # Narrower fallback — find first accordion block
-    narrow = re.compile(
-        r'<!-- Region Accordion:.*?'
-        r'(?=\s*</div>\s*</div>\s*</div>\s*</section>)',
-        re.DOTALL,
-    )
-    result, n = re.subn(narrow, acc_html + '\n\n        ', html, count=1)
-    if n:
-        return result
-
-    print("  WARNING: accordion sentinel not found — accordions unchanged.")
+    print("  WARNING: routes-section tag not found — routes section unchanged.")
     return html
 
 
@@ -341,8 +357,7 @@ def process(path):
     original_len = len(html)
 
     html = inject_sidebar(html)
-    html = inject_route_cards(html)
-    html = inject_accordions(html)
+    html = inject_routes_section(html)
 
     with open(path, "w", encoding="utf-8") as f:
         f.write(html)
@@ -361,3 +376,4 @@ if __name__ == "__main__":
         process(t)
     print()
     print("Done. Only air-ambulance-bangladesh.html was modified.")
+
