@@ -1,0 +1,363 @@
+"""
+bangladesh_routes.py
+====================
+Route data and HTML injector for air-ambulance-bangladesh.html.
+
+Pattern mirrors vietnam_routes.py / spain_routes.py.
+Only air-ambulance-bangladesh.html is modified (root + uae-only-deploy).
+
+Run:
+    python bangladesh_routes.py
+"""
+
+import re
+import os
+from vietnam_routes import auto_desc, accordion_item, build_custom_sidebar
+
+# ── WhatsApp CTA ───────────────────────────────────────────────────────────────
+WA = "https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 1.  SIDEBAR  (Hero left-panel — "X → Bangladesh" inbound routes)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+BANGLADESH_SIDEBAR = [
+    ("Middle East & GCC", "region-asia", [
+        "UAE",          "Saudi Arabia",  "Qatar",
+        "Oman",         "Kuwait",        "Bahrain",
+    ]),
+    ("India & South Asia", "region-asia", [
+        "India",        "Maldives",      "Nepal",
+        "Myanmar",
+    ]),
+    ("Southeast & East Asia", "region-asia", [
+        "Malaysia",     "Singapore",     "Thailand",
+        "China",        "South Korea",   "Japan",
+    ]),
+    ("Europe & UK", "region-europe-usa", [
+        "UK",           "Germany",       "Italy",
+        "France",       "Türkiye",
+    ]),
+    ("North America", "region-europe-usa", [
+        "USA",          "Canada",
+    ]),
+    ("Oceania", "region-oceania", [
+        "Australia",
+    ]),
+    ("Africa", "region-africa", [
+        "Kenya",        "South Africa",
+    ]),
+]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 2.  MOST REQUESTED ROUTE CARDS  (28 individual cards)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+BANGLADESH_ROUTE_CARDS = [
+    # GCC / Middle East (11 cards)
+    ("Dubai",        "Dhaka",      auto_desc("Dubai",        "Dhaka")),
+    ("Dubai",        "Chattogram", auto_desc("Dubai",        "Chattogram")),
+    ("Abu Dhabi",    "Dhaka",      auto_desc("Abu Dhabi",    "Dhaka")),
+    ("Abu Dhabi",    "Chattogram", auto_desc("Abu Dhabi",    "Chattogram")),
+    ("Riyadh",       "Dhaka",      auto_desc("Riyadh",       "Dhaka")),
+    ("Jeddah",       "Dhaka",      auto_desc("Jeddah",       "Dhaka")),
+    ("Dammam",       "Dhaka",      auto_desc("Dammam",       "Dhaka")),
+    ("Doha",         "Dhaka",      auto_desc("Doha",         "Dhaka")),
+    ("Muscat",       "Dhaka",      auto_desc("Muscat",       "Dhaka")),
+    ("Muscat",       "Chattogram", auto_desc("Muscat",       "Chattogram")),
+    ("Kuwait City",  "Dhaka",      auto_desc("Kuwait City",  "Dhaka")),
+    # India (7 cards)
+    ("Kolkata",      "Dhaka",      auto_desc("Kolkata",      "Dhaka")),
+    ("Kolkata",      "Chattogram", auto_desc("Kolkata",      "Chattogram")),
+    ("Delhi",        "Dhaka",      auto_desc("Delhi",        "Dhaka")),
+    ("Chennai",      "Dhaka",      auto_desc("Chennai",      "Dhaka")),
+    ("Chennai",      "Chattogram", auto_desc("Chennai",      "Chattogram")),
+    ("Vellore",      "Dhaka",      auto_desc("Vellore",      "Dhaka")),
+    ("Bengaluru",    "Dhaka",      auto_desc("Bengaluru",    "Dhaka")),
+    # SE / East Asia (3 cards)
+    ("Kuala Lumpur", "Dhaka",      auto_desc("Kuala Lumpur", "Dhaka")),
+    ("Singapore",    "Dhaka",      auto_desc("Singapore",    "Dhaka")),
+    ("Bangkok",      "Dhaka",      auto_desc("Bangkok",      "Dhaka")),
+    # Europe (1 card)
+    ("London",       "Dhaka",      auto_desc("London",       "Dhaka")),
+    # Maldives (2 cards)
+    ("Malé",         "Dhaka",      auto_desc("Malé",         "Dhaka")),
+    ("Malé",         "Chattogram", auto_desc("Malé",         "Chattogram")),
+    # Americas (2 cards)
+    ("New York",     "Dhaka",      auto_desc("New York",     "Dhaka")),
+    ("Toronto",      "Dhaka",      auto_desc("Toronto",      "Dhaka")),
+    # Oceania (2 cards)
+    ("Sydney",       "Dhaka",      auto_desc("Sydney",       "Dhaka")),
+    ("Melbourne",    "Dhaka",      auto_desc("Melbourne",    "Dhaka")),
+]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 3.  ACCORDION DATA  (80 individual cards across 4 sections)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+BANGLADESH_ACCORDION = {
+    # ── Asia & Subcontinent (66 cards) ────────────────────────────────────────
+    "asia": [
+        # India (30 cards)
+        ("Kolkata",            "Dhaka"),   ("Kolkata",            "Chattogram"),
+        ("Delhi",              "Dhaka"),   ("Delhi",              "Chattogram"),
+        ("Gurugram",           "Dhaka"),   ("Noida",              "Dhaka"),
+        ("Chennai",            "Dhaka"),   ("Chennai",            "Chattogram"),
+        ("Vellore",            "Dhaka"),   ("Bengaluru",          "Dhaka"),
+        ("Hyderabad",          "Dhaka"),   ("Mumbai",             "Dhaka"),
+        ("Pune",               "Dhaka"),   ("Kochi",              "Dhaka"),
+        ("Thiruvananthapuram", "Dhaka"),   ("Coimbatore",         "Dhaka"),
+        ("Ahmedabad",          "Dhaka"),   ("Surat",              "Dhaka"),
+        ("Jaipur",             "Dhaka"),   ("Lucknow",            "Dhaka"),
+        ("Chandigarh",         "Dhaka"),   ("Patna",              "Dhaka"),
+        ("Bhubaneswar",        "Dhaka"),   ("Guwahati",           "Dhaka"),
+        ("Ranchi",             "Dhaka"),   ("Visakhapatnam",      "Dhaka"),
+        ("Nagpur",             "Dhaka"),   ("Indore",             "Dhaka"),
+        ("Bhopal",             "Dhaka"),   ("Rajkot",             "Dhaka"),
+        # GCC & Middle East (19 cards)
+        ("Dubai",              "Dhaka"),   ("Dubai",              "Chattogram"),
+        ("Abu Dhabi",          "Dhaka"),   ("Abu Dhabi",          "Chattogram"),
+        ("Sharjah",            "Dhaka"),   ("Sharjah",            "Chattogram"),
+        ("Riyadh",             "Dhaka"),   ("Riyadh",             "Chattogram"),
+        ("Jeddah",             "Dhaka"),   ("Jeddah",             "Chattogram"),
+        ("Dammam",             "Dhaka"),   ("Dammam",             "Chattogram"),
+        ("Doha",               "Dhaka"),
+        ("Muscat",             "Dhaka"),   ("Muscat",             "Chattogram"),
+        ("Salalah",            "Dhaka"),   ("Salalah",            "Chattogram"),
+        ("Kuwait City",        "Dhaka"),   ("Manama",             "Dhaka"),
+        # Southeast & East Asia (17 cards)
+        ("Kuala Lumpur",       "Dhaka"),   ("Singapore",          "Dhaka"),
+        ("Bangkok",            "Dhaka"),
+        ("Malé",               "Dhaka"),   ("Malé",               "Chattogram"),
+        ("Kathmandu",          "Dhaka"),
+        ("Yangon",             "Dhaka"),   ("Yangon",             "Chattogram"),
+        ("Beijing",            "Dhaka"),   ("Beijing",            "Chattogram"),
+        ("Guangzhou",          "Dhaka"),   ("Guangzhou",          "Chattogram"),
+        ("Seoul",              "Dhaka"),
+        ("Tokyo",              "Dhaka"),   ("Tokyo",              "Chattogram"),
+        ("Osaka",              "Dhaka"),   ("Osaka",              "Chattogram"),
+    ],
+
+    # ── USA, Canada & Europe (10 cards) ───────────────────────────────────────
+    "europe_usa": [
+        ("London",      "Dhaka"),   ("Manchester",  "Dhaka"),
+        ("Birmingham",  "Dhaka"),
+        ("Rome",        "Dhaka"),   ("Milan",       "Dhaka"),
+        ("Frankfurt",   "Dhaka"),   ("Paris",       "Dhaka"),
+        ("Istanbul",    "Dhaka"),
+        ("New York",    "Dhaka"),   ("Toronto",     "Dhaka"),
+    ],
+
+    # ── Africa (2 cards) ──────────────────────────────────────────────────────
+    "africa": [
+        ("Nairobi",       "Dhaka"),
+        ("Johannesburg",  "Dhaka"),
+    ],
+
+    # ── Oceania (2 cards) ─────────────────────────────────────────────────────
+    "oceania": [
+        ("Sydney",     "Dhaka"),
+        ("Melbourne",  "Dhaka"),
+    ],
+}
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HTML builders
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def build_route_card(origin, dest, desc):
+    """Single Most-Requested card (matches existing Bangladesh card HTML)."""
+    return (
+        f'                    <!-- Route Card: {origin} → {dest} -->\n'
+        f'                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">\n'
+        f'                        <div>\n'
+        f'                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">\n'
+        f'                                <div class="flex flex-col text-left">\n'
+        f'                                    <span class="leading-tight text-sm font-extrabold">{origin}</span>\n'
+        f'                                </div>\n'
+        f'                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>\n'
+        f'                                <div class="flex flex-col text-right">\n'
+        f'                                    <span class="leading-tight text-sm font-extrabold text-right">{dest}</span>\n'
+        f'                                </div>\n'
+        f'                            </div>\n'
+        f'                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">{desc}</p>\n'
+        f'                        </div>\n'
+        f'                        <div class="pt-4 border-t border-slate-100 flex justify-end">\n'
+        f'                            <a href="{WA}" target="_blank" rel="noopener noreferrer"\n'
+        f'                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">\n'
+        f'                                Get Quote on WhatsApp\n'
+        f'                                <span class="material-symbols-outlined text-xs">open_in_new</span>\n'
+        f'                            </a>\n'
+        f'                        </div>\n'
+        f'                    </div>'
+    )
+
+
+def build_accordion_section(rid, label, tid, routes):
+    """Full accordion block for one geographic region."""
+    cards = "\n".join(accordion_item(o, d) for o, d in routes)
+    return (
+        f'            <!-- Region Accordion: {label} -->\n'
+        f'            <div id="region-{rid}" class="mb-6 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden bg-white shadow-sm transition-all duration-300">\n'
+        f'                <button class="w-full px-6 py-5 flex items-center justify-between bg-slate-50/50 hover:bg-slate-50 transition-colors text-left focus:outline-none group"\n'
+        f'                    onclick="toggleRegion(\'{tid}\')">\n'
+        f'                    <span class="font-headline text-base md:text-lg font-black text-primary uppercase tracking-wide">{label}</span>\n'
+        f'                    <span class="material-symbols-outlined text-secondary text-2xl transform transition-transform duration-300 ease-in-out" id="icon-region-{rid}">keyboard_arrow_down</span>\n'
+        f'                </button>\n'
+        f'                <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-{rid}">\n'
+        f'                    <div class="p-6">\n'
+        f'                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">\n'
+        f'{cards}\n'
+        f'                        </div>\n'
+        f'                    </div>\n'
+        f'                </div>\n'
+        f'            </div>'
+    )
+
+
+def build_all_accordions():
+    return "\n\n".join([
+        build_accordion_section("asia",       "Asia & Subcontinent Routes", "asia",       BANGLADESH_ACCORDION["asia"]),
+        build_accordion_section("europe-usa", "USA, Canada & Europe Routes","europe-usa", BANGLADESH_ACCORDION["europe_usa"]),
+        build_accordion_section("africa",     "Africa Routes",              "africa",     BANGLADESH_ACCORDION["africa"]),
+        build_accordion_section("oceania",    "Oceania Routes",             "oceania",    BANGLADESH_ACCORDION["oceania"]),
+    ])
+
+
+def build_all_route_cards():
+    return "\n".join(build_route_card(o, d, desc) for o, d, desc in BANGLADESH_ROUTE_CARDS)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Injection helpers
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def inject_sidebar(html, country="Bangladesh"):
+    """Replace the sidebar destinations grid."""
+    sidebar_html = build_custom_sidebar(BANGLADESH_SIDEBAR, country)
+
+    # Matches the wrapping div that contains the grid — bounded by the sentinel comments
+    pattern = re.compile(
+        r'(<!-- Destinations Grid by Region.*?— 3 columns, no scroll -->)\s*'
+        r'<div class="space-y-2">.*?</div>'
+        r'(\s*</div>\s*<!-- end destinations grid -->)',
+        re.DOTALL,
+    )
+    # Try sentinel-based replacement first
+    if re.search(pattern, html):
+        return re.sub(pattern, lambda m: sidebar_html + m.group(2), html)
+
+    # Fallback: replace by the opening marker of the destinations grid
+    fallback = re.compile(
+        r'<!-- Destinations Grid by Region.*?</div>\s*</div>',
+        re.DOTALL,
+    )
+    result, n = re.subn(fallback, sidebar_html, html, count=1)
+    if n:
+        return result
+
+    print("  WARNING: sidebar injection marker not found — sidebar unchanged.")
+    return html
+
+
+def inject_route_cards(html):
+    """Replace all cards inside <div id=\"popular-routes\"> … </div>."""
+    cards_html = build_all_route_cards()
+    grid_open  = '<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">'
+    grid_close = '</div>'
+
+    # Find the popular-routes div and replace its inner grid
+    pop_pattern = re.compile(
+        r'(<div id="popular-routes"[^>]*>.*?'
+        r'<h3[^>]*>Most Requested Transfer Routes</h3>\s*'
+        r'<div class="grid[^"]*grid-cols-1[^"]*">)'
+        r'.*?'
+        r'(</div>\s*</div>)',   # closes the grid then popular-routes
+        re.DOTALL,
+    )
+    replacement = (
+        r'\g<1>'
+        '\n' + cards_html + '\n'
+        r'                </div>'   # close grid
+        '\n            </div>'      # close popular-routes
+    )
+    result, n = re.subn(pop_pattern, replacement, html, count=1)
+    if n:
+        return result
+
+    print("  WARNING: popular-routes grid not found — route cards unchanged.")
+    return html
+
+
+def inject_accordions(html):
+    """Replace everything between the accordion sentinel comments."""
+    acc_html = build_all_accordions()
+
+    # Sentinel: <!-- Region Accordion: … --> blocks, terminated before </div> that
+    # closes the container
+    pattern = re.compile(
+        r'(<!-- Region Accordion:.*?)'   # first accordion start
+        r'(</div>\s*</div>\s*</div>\s*</section>)',  # section close
+        re.DOTALL,
+    )
+    replacement = acc_html + '\n\n        ' + r'\g<2>'
+    result, n = re.subn(pattern, replacement, html, count=1)
+    if n:
+        return result
+
+    # Narrower fallback — find first accordion block
+    narrow = re.compile(
+        r'<!-- Region Accordion:.*?'
+        r'(?=\s*</div>\s*</div>\s*</div>\s*</section>)',
+        re.DOTALL,
+    )
+    result, n = re.subn(narrow, acc_html + '\n\n        ', html, count=1)
+    if n:
+        return result
+
+    print("  WARNING: accordion sentinel not found — accordions unchanged.")
+    return html
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Main
+# ═══════════════════════════════════════════════════════════════════════════════
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+TARGETS = [
+    os.path.join(BASE, "air-ambulance-bangladesh.html"),
+    os.path.join(BASE, "uae-only-deploy", "air-ambulance-bangladesh.html"),
+]
+
+
+def process(path):
+    if not os.path.exists(path):
+        print(f"  SKIP (not found): {path}")
+        return
+
+    with open(path, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    original_len = len(html)
+
+    html = inject_sidebar(html)
+    html = inject_route_cards(html)
+    html = inject_accordions(html)
+
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(html)
+
+    delta = len(html) - original_len
+    print(f"  OK  {os.path.relpath(path, BASE)}  (delta {delta:+,} bytes)")
+
+
+if __name__ == "__main__":
+    print("Bangladesh Routes Injector")
+    print("=" * 50)
+    print(f"  Route cards : {len(BANGLADESH_ROUTE_CARDS)}")
+    print(f"  Accordion   : {sum(len(v) for v in BANGLADESH_ACCORDION.values())} cards across {len(BANGLADESH_ACCORDION)} sections")
+    print()
+    for t in TARGETS:
+        process(t)
+    print()
+    print("Done. Only air-ambulance-bangladesh.html was modified.")
