@@ -90,6 +90,32 @@ def make_paths_relative_root(h):
     return h
 
 
+def deduplicate_col2(html, phone_raw):
+    col2_match = re.search(r'(<h5[^>]*>\s*Global Helpline Numbers.*?</h5>\s*<div[^>]*>)(.*?)(</div>\s*</div>)', html, re.DOTALL | re.IGNORECASE)
+    if not col2_match:
+        return html
+    
+    header_part = col2_match.group(1)
+    links_part = col2_match.group(2)
+    footer_part = col2_match.group(3)
+    
+    clean_raw = phone_raw.replace('+', '').replace('-', '').replace(' ', '')
+    
+    links = re.findall(r'(\s*<a\s+[^>]*href=["\']tel:([^"\']+)["\'][^>]*>.*?</a>)', links_part, re.DOTALL | re.IGNORECASE)
+    
+    filtered_links = []
+    for full_a, href in links:
+        clean_href = href.replace('+', '').replace('-', '').replace(' ', '')
+        if clean_href != clean_raw:
+            filtered_links.append(full_a.strip())
+            
+    new_links_part = "\n                    ".join(filtered_links)
+    new_col2_block = f"{header_part}\n                    {new_links_part}\n                {footer_part}"
+    
+    return html[:col2_match.start()] + new_col2_block + html[col2_match.end():]
+
+
+
 # ── Core page builder ─────────────────────────────────────────────────────────
 def build_page(cfg):
     c   = cfg["country"]
@@ -264,9 +290,13 @@ def build_page(cfg):
         'class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-3 tracking-tighter"'
     )
 
+    # ── Deduplicate Column 2 Global Helpline Numbers (remove primary helpline) ──
+    h = deduplicate_col2(h, pr)
+
     # ── Normalise all /ads/ absolute paths to root-relative ──────────────────
     h = make_paths_relative_root(h)
     return h
+
 
 
 # ── Country configs ───────────────────────────────────────────────────────────
@@ -297,7 +327,7 @@ COUNTRIES = [
     },
     {
         "country": "Spain", "slug": "spain",
-        "phone_raw": "+34900123456", "phone_display": "+34 900 123 456", "phone_prefix": "+34",
+        "phone_raw": "+18335186535", "phone_display": "+1 833-518-6535", "phone_prefix": "+1",
         "capital": "Madrid", "cities": "Madrid, Barcelona, Valencia, Seville, Malaga, Bilbao",
         "country_code": "ES", "schema_region": "Comunidad de Madrid",
         "cost_image": "madrid-spain-country.jpeg", "cost_image_alt": "Air Ambulance Spain Madrid Cost",
@@ -309,7 +339,7 @@ COUNTRIES = [
     },
     {
         "country": "Bangladesh", "slug": "bangladesh",
-        "phone_raw": "+8801700123456", "phone_display": "+880 1700 123456", "phone_prefix": "+880",
+        "phone_raw": "+18335186535", "phone_display": "+1 833-518-6535", "phone_prefix": "+1",
         "capital": "Dhaka", "cities": "Dhaka, Chittagong, Sylhet, Khulna, Rajshahi",
         "country_code": "BD", "schema_region": "Dhaka Division",
         "cost_image": "dhaka-bangladesh-country.jpeg", "cost_image_alt": "Air Ambulance Bangladesh Dhaka Cost",
