@@ -4,7 +4,7 @@ This report provides a detailed breakdown of all links, scripts, stylesheets, an
 
 ## Summary
 
-Across all HTML pages in the `national/` directory, **no relative link or asset violations** were found. All resources are loaded using either absolute URLs (e.g., `https://...`) or root-relative absolute paths (e.g., `/ads/...`).
+Across all HTML pages in the `national/` directory, **all previous absolute `/ads/` paths have been successfully converted to relative paths (`../`)** as requested. This allows the pages to load their styling, scripts, and media resources relative to their nested folder structure.
 
 ---
 
@@ -13,35 +13,34 @@ Across all HTML pages in the `national/` directory, **no relative link or asset 
 | Path Type | Count |
 | --- | --- |
 | **Absolute/External (HTTP/HTTPS)** | 117 |
-| **Root-Relative/Absolute (starts with `/`)** | 20 |
-| **Relative (e.g. `assets/...`)** | 0 |
+| **Root-Relative/Absolute (starts with `/`)** | 0 |
+| **Relative (e.g. `../assets/...`)** | 20 |
 | **Special (Special protocols / hashes)** | 18 |
 
-### Root-Relative Paths (e.g. `/ads/...`)
-These paths are root-relative (absolute on the domain level):
+### Relative Paths Found (e.g. `../assets/...`)
 
 | Tag | Attribute | Path |
 | --- | --- | --- |
-| `<link>` | `href` | `/ads/styles.css` |
-| `<link>` | `href` | `/ads/assets/favicon-512x512.png` |
-| `<link>` | `href` | `/ads/assets/favicon-192x192.png` |
-| `<link>` | `href` | `/ads/assets/favicon.ico` |
-| `<link>` | `href` | `/ads/assets/favicon-512x512.png` |
-| `<img>` | `src` | `/ads/assets/air-medical-logo.png` |
-| `<img>` | `src` | `/ads/assets/logo/ISO logo.jpg` |
-| `<img>` | `src` | `/ads/assets/logo/FAA Logo.png` |
-| `<img>` | `src` | `/ads/assets/airport_jammu_jk.jpg.jpg` |
-| `<img>` | `src` | `/ads/assets/ground_to_air_transfer.jpg` |
-| `<img>` | `src` | `/ads/assets/commercial_airline_stretcher_service.jpg` |
-| `<img>` | `src` | `/ads/assets/flight medical escort.jfif` |
-| `<img>` | `src` | `/ads/assets/medical_aircraft_interior_icu.jpg` |
-| `<img>` | `src` | `/ads/assets/organ_transfer.jfif` |
-| `<img>` | `src` | `/ads/assets/medical tourism.jpeg` |
-| `<img>` | `src` | `/ads/assets/patient_transfer_cabin.jpg` |
-| `<img>` | `src` | `/ads/assets/air-medical-logo.png` |
-| `<img>` | `src` | `/ads/assets/payment_methods_banner.png` |
-| `<script>` | `src` | `/ads/supabase-config.js` |
-| `<script>` | `src` | `/ads/script.js` |
+| `<link>` | `href` | `../styles.css` |
+| `<link>` | `href` | `../assets/favicon-512x512.png` |
+| `<link>` | `href` | `../assets/favicon-192x192.png` |
+| `<link>` | `href` | `../assets/favicon.ico` |
+| `<link>` | `href` | `../assets/favicon-512x512.png` |
+| `<img>` | `src` | `../assets/air-medical-logo.png` |
+| `<img>` | `src` | `../assets/logo/ISO logo.jpg` |
+| `<img>` | `src` | `../assets/logo/FAA Logo.png` |
+| `<img>` | `src` | `../assets/airport_jammu_jk.jpg.jpg` |
+| `<img>` | `src` | `../assets/ground_to_air_transfer.jpg` |
+| `<img>` | `src` | `../assets/commercial_airline_stretcher_service.jpg` |
+| `<img>` | `src` | `../assets/flight medical escort.jfif` |
+| `<img>` | `src` | `../assets/medical_aircraft_interior_icu.jpg` |
+| `<img>` | `src` | `../assets/organ_transfer.jfif` |
+| `<img>` | `src` | `../assets/medical tourism.jpeg` |
+| `<img>` | `src` | `../assets/patient_transfer_cabin.jpg` |
+| `<img>` | `src` | `../assets/air-medical-logo.png` |
+| `<img>` | `src` | `../assets/payment_methods_banner.png` |
+| `<script>` | `src` | `../supabase-config.js` |
+| `<script>` | `src` | `../script.js` |
 
 ---
 
@@ -50,36 +49,35 @@ These paths are root-relative (absolute on the domain level):
 | Path Type | Count |
 | --- | --- |
 | **Absolute/External (HTTP/HTTPS)** | 137 |
-| **Root-Relative/Absolute (starts with `/`)** | 21 |
-| **Relative (e.g. `assets/...`)** | 0 |
+| **Root-Relative/Absolute (starts with `/`)** | 0 |
+| **Relative (e.g. `../assets/...`)** | 21 |
 | **Special (Special protocols / hashes)** | 19 |
 
-### Root-Relative Paths (e.g. `/ads/...`)
-These paths are root-relative (absolute on the domain level):
+### Relative Paths Found (e.g. `../assets/...`)
 
 | Tag | Attribute | Path |
 | --- | --- | --- |
-| `<link>` | `href` | `/ads/styles.css` |
-| `<link>` | `href` | `/ads/assets/favicon-512x512.png` |
-| `<link>` | `href` | `/ads/assets/favicon-192x192.png` |
-| `<link>` | `href` | `/ads/assets/favicon.ico` |
-| `<link>` | `href` | `/ads/assets/favicon-512x512.png` |
-| `<img>` | `src` | `/ads/assets/air-medical-logo.png` |
-| `<img>` | `src` | `/ads/assets/logo/ISO logo.jpg` |
-| `<img>` | `src` | `/ads/assets/logo/FAA Logo.png` |
-| `<img>` | `src` | `/ads/assets/Air ambulance 24X7.jpeg` |
-| `<img>` | `src` | `/ads/assets/Guwati-Assam.jfif` |
-| `<img>` | `src` | `/ads/assets/ground_to_air_transfer.jpg` |
-| `<img>` | `src` | `/ads/assets/commercial_airline_stretcher_service.jpg` |
-| `<img>` | `src` | `/ads/assets/flight medical escort.jfif` |
-| `<img>` | `src` | `/ads/assets/medical_aircraft_interior_icu.jpg` |
-| `<img>` | `src` | `/ads/assets/organ_transfer.jfif` |
-| `<img>` | `src` | `/ads/assets/medical tourism.jpeg` |
-| `<img>` | `src` | `/ads/assets/patient_transfer_cabin.jpg` |
-| `<img>` | `src` | `/ads/assets/air-medical-logo.png` |
-| `<img>` | `src` | `/ads/assets/payment_methods_banner.png` |
-| `<script>` | `src` | `/ads/supabase-config.js` |
-| `<script>` | `src` | `/ads/script.js` |
+| `<link>` | `href` | `../styles.css` |
+| `<link>` | `href` | `../assets/favicon-512x512.png` |
+| `<link>` | `href` | `../assets/favicon-192x192.png` |
+| `<link>` | `href` | `../assets/favicon.ico` |
+| `<link>` | `href` | `../assets/favicon-512x512.png` |
+| `<img>` | `src` | `../assets/air-medical-logo.png` |
+| `<img>` | `src` | `../assets/logo/ISO logo.jpg` |
+| `<img>` | `src` | `../assets/logo/FAA Logo.png` |
+| `<img>` | `src` | `../assets/Air ambulance 24X7.jpeg` |
+| `<img>` | `src` | `../assets/Guwati-Assam.jfif` |
+| `<img>` | `src` | `../assets/ground_to_air_transfer.jpg` |
+| `<img>` | `src` | `../assets/commercial_airline_stretcher_service.jpg` |
+| `<img>` | `src` | `../assets/flight medical escort.jfif` |
+| `<img>` | `src` | `../assets/medical_aircraft_interior_icu.jpg` |
+| `<img>` | `src` | `../assets/organ_transfer.jfif` |
+| `<img>` | `src` | `../assets/medical tourism.jpeg` |
+| `<img>` | `src` | `../assets/patient_transfer_cabin.jpg` |
+| `<img>` | `src` | `../assets/air-medical-logo.png` |
+| `<img>` | `src` | `../assets/payment_methods_banner.png` |
+| `<script>` | `src` | `../supabase-config.js` |
+| `<script>` | `src` | `../script.js` |
 
 ---
 
@@ -88,32 +86,31 @@ These paths are root-relative (absolute on the domain level):
 | Path Type | Count |
 | --- | --- |
 | **Absolute/External (HTTP/HTTPS)** | 75 |
-| **Root-Relative/Absolute (starts with `/`)** | 20 |
-| **Relative (e.g. `assets/...`)** | 0 |
+| **Root-Relative/Absolute (starts with `/`)** | 0 |
+| **Relative (e.g. `../assets/...`)** | 20 |
 | **Special (Special protocols / hashes)** | 18 |
 
-### Root-Relative Paths (e.g. `/ads/...`)
-These paths are root-relative (absolute on the domain level):
+### Relative Paths Found (e.g. `../assets/...`)
 
 | Tag | Attribute | Path |
 | --- | --- | --- |
-| `<link>` | `href` | `/ads/styles.css` |
-| `<link>` | `href` | `/ads/assets/favicon-512x512.png` |
-| `<link>` | `href` | `/ads/assets/favicon-192x192.png` |
-| `<link>` | `href` | `/ads/assets/favicon.ico` |
-| `<link>` | `href` | `/ads/assets/favicon-512x512.png` |
-| `<img>` | `src` | `/ads/assets/air-medical-logo.png` |
-| `<img>` | `src` | `/ads/assets/logo/ISO logo.jpg` |
-| `<img>` | `src` | `/ads/assets/logo/FAA Logo.png` |
-| `<img>` | `src` | `/ads/assets/airport_port_blair_andaman.jpg.jpg` |
-| `<img>` | `src` | `/ads/assets/ground_to_air_transfer.jpg` |
-| `<img>` | `src` | `/ads/assets/commercial_airline_stretcher_service.jpg` |
-| `<img>` | `src` | `/ads/assets/flight medical escort.jfif` |
-| `<img>` | `src` | `/ads/assets/medical_aircraft_interior_icu.jpg` |
-| `<img>` | `src` | `/ads/assets/organ_transfer.jfif` |
-| `<img>` | `src` | `/ads/assets/medical tourism.jpeg` |
-| `<img>` | `src` | `/ads/assets/patient_transfer_cabin.jpg` |
-| `<img>` | `src` | `/ads/assets/air-medical-logo.png` |
-| `<img>` | `src` | `/ads/assets/payment_methods_banner.png` |
-| `<script>` | `src` | `/ads/supabase-config.js` |
-| `<script>` | `src` | `/ads/script.js` |
+| `<link>` | `href` | `../styles.css` |
+| `<link>` | `href` | `../assets/favicon-512x512.png` |
+| `<link>` | `href` | `../assets/favicon-192x192.png` |
+| `<link>` | `href` | `../assets/favicon.ico` |
+| `<link>` | `href` | `../assets/favicon-512x512.png` |
+| `<img>` | `src` | `../assets/air-medical-logo.png` |
+| `<img>` | `src` | `../assets/logo/ISO logo.jpg` |
+| `<img>` | `src` | `../assets/logo/FAA Logo.png` |
+| `<img>` | `src` | `../assets/airport_port_blair_andaman.jpg.jpg` |
+| `<img>` | `src` | `../assets/ground_to_air_transfer.jpg` |
+| `<img>` | `src` | `../assets/commercial_airline_stretcher_service.jpg` |
+| `<img>` | `src` | `../assets/flight medical escort.jfif` |
+| `<img>` | `src` | `../assets/medical_aircraft_interior_icu.jpg` |
+| `<img>` | `src` | `../assets/organ_transfer.jfif` |
+| `<img>` | `src` | `../assets/medical tourism.jpeg` |
+| `<img>` | `src` | `../assets/patient_transfer_cabin.jpg` |
+| `<img>` | `src` | `../assets/air-medical-logo.png` |
+| `<img>` | `src` | `../assets/payment_methods_banner.png` |
+| `<script>` | `src` | `../supabase-config.js` |
+| `<script>` | `src` | `../script.js` |
