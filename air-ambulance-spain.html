@@ -238,7 +238,13 @@
                     class="h-9 md:h-14 w-auto object-contain" />
             </a>
 
-            <div class="flex items-center animate-fade-in-down">
+            <div class="flex items-center gap-3 md:gap-5 animate-fade-in-down">
+                <!-- Language Toggle Button -->
+                <button id="lang-toggle-btn" onclick="toggleLanguage()"
+                    aria-label="Switch language between English and Spanish"
+                    class="flex items-center gap-1 px-3 py-1.5 rounded-full border border-primary/20 bg-surface-container-low hover:bg-primary hover:text-white hover:border-primary font-headline font-black text-[10px] uppercase tracking-widest text-primary transition-all duration-200 select-none">
+                    <span id="lang-toggle-label">ES</span>
+                </button>
                 <!-- SECTION START: Top Navbar Persistent Call Button (Keep styles identical across pages) -->
                 <!-- Mobile & Desktop Persistent Emergency Button -->
                 <a href="tel:+448002294751" onclick="return gtag_report_phone_conversion(this.href);"
@@ -285,10 +291,10 @@
                             class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                         </div>
                         <div class="relative z-10">
-                            <h1 class="font-headline text-xl font-extrabold leading-tight mb-3">
+                            <h1 id="hero-h1" class="font-headline text-xl font-extrabold leading-tight mb-3">
                                 24X7 Air Ambulance in Spain | Medical Evacuation &amp; Repatriation
                             </h1>
-                            <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+                            <p id="hero-desc" class="text-xs text-slate-300 mb-4 leading-relaxed">
                                 Global bed-to-bed medical repatriation and patient transfer services from Spain to destinations worldwide. With rapid coordination, experienced medical crews, and fully equipped transport options, we provide safe and reliable transfers from major cities and regions across Spain, including Madrid, Barcelona, Valencia, Seville, Málaga, Bilbao, Alicante, Tenerife, and the Canary Islands.
                             </p>
                                                         <!-- Destinations Grid by Region — 3 columns, no scroll -->
@@ -296,90 +302,90 @@
 
                                 <!-- Europe & UK -->
                                 <div>
-                                    <a href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Europe & UK</a>
+                                    <a id="region-label-europe" href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Europe & UK</a>
                                     <ul class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to UK</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to France</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Germany</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Netherlands</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Belgium</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Italy</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Portugal</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Switzerland</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Ireland</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-uk" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to UK</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-france" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to France</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-germany" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Germany</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-netherlands" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Netherlands</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-belgium" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Belgium</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-italy" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Italy</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-portugal" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Portugal</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-switzerland" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Switzerland</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-ireland" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Ireland</a></li>
                                     </ul>
                                 </div>
 
                                 <!-- Middle East & GCC -->
                                 <div>
-                                    <a href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Middle East & GCC</a>
+                                    <a id="region-label-mideast" href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Middle East & GCC</a>
                                     <ul class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to UAE</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Saudi Arabia</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Qatar</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Kuwait</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Oman</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-uae" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to UAE</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-ksa" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Saudi Arabia</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-qatar" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Qatar</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-kuwait" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Kuwait</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-oman" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Oman</a></li>
                                     </ul>
                                 </div>
 
                                 <!-- Asia & Subcontinent -->
                                 <div>
-                                    <a href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Asia & Subcontinent</a>
+                                    <a id="region-label-asia" href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Asia & Subcontinent</a>
                                     <ul class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to India</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Pakistan</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Bangladesh</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Thailand</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Singapore</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-india" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to India</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-pakistan" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Pakistan</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-bangladesh" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Bangladesh</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-thailand" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Thailand</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-singapore" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Singapore</a></li>
                                     </ul>
                                 </div>
 
                                 <!-- North Africa -->
                                 <div>
-                                    <a href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">North Africa</a>
+                                    <a id="region-label-nafric" href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">North Africa</a>
                                     <ul class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Morocco</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Algeria</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Tunisia</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Egypt</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-morocco" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Morocco</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-algeria" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Algeria</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-tunisia" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Tunisia</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-egypt" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Egypt</a></li>
                                     </ul>
                                 </div>
 
                                 <!-- Africa -->
                                 <div>
-                                    <a href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Africa</a>
+                                    <a id="region-label-africa" href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Africa</a>
                                     <ul class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Kenya</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Nigeria</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to South Africa</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-kenya" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Kenya</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-nigeria" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Nigeria</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-safrica" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to South Africa</a></li>
                                     </ul>
                                 </div>
 
                                 <!-- USA & Canada -->
                                 <div>
-                                    <a href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">USA & Canada</a>
+                                    <a id="region-label-usaca" href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">USA & Canada</a>
                                     <ul class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to USA</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Canada</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-usa" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to USA</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-canada" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Canada</a></li>
                                     </ul>
                                 </div>
 
                                 <!-- Latin America -->
                                 <div>
-                                    <a href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Latin America</a>
+                                    <a id="region-label-latam" href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Latin America</a>
                                     <ul class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Mexico</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Brazil</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Argentina</a></li>
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Colombia</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-mexico" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Mexico</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-brazil" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Brazil</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-argentina" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Argentina</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-colombia" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Colombia</a></li>
                                     </ul>
                                 </div>
 
                                 <!-- Oceania -->
                                 <div>
-                                    <a href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Oceania</a>
+                                    <a id="region-label-oce" href="#popular-routes" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Oceania</a>
                                     <ul class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Australia</a></li>
+                                        <li class="flex items-center gap-1"><span class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a id="route-side-australia" href="#popular-routes" class="hover:text-secondary hover:underline transition-all">Spain to Australia</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -395,16 +401,16 @@
                     <!-- Right Panel: White / Quote Form -->
                     <div class="p-5 md:p-10 bg-white">
                         <div class="mb-5 text-center">
-                            <h3 class="font-headline text-lg sm:text-xl font-extrabold text-primary mb-1">
+                            <h3 id="form-heading" class="font-headline text-lg sm:text-xl font-extrabold text-primary mb-1">
                                 Request an Air Ambulance Quote
                             </h3>
-                            <p class="text-slate-500 text-[10px] sm:text-[11px] font-semibold leading-normal">
+                            <p id="form-subheading" class="text-slate-500 text-[10px] sm:text-[11px] font-semibold leading-normal">
                                 No obligation &bull; Confidential assessment &bull; Response within 30 minutes
                             </p>
                         </div>
                         <form class="space-y-4" id="quote-form">
                             <div class="animate-fade-in-up delay-100">
-                                <label
+                                <label id="form-label-name"
                                     class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">Full
                                     Name</label>
                                 <input type="text" name="name" required
@@ -415,9 +421,8 @@
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div class="animate-fade-in-up delay-200">
-                                    <label
-                                        class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">Phone
-                                        Number</label>
+                                    <label id="form-label-phone"
+                                        class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">Phone Number</label>
                                     <input type="tel" name="phone" required pattern="\+?[0-9]{8,15}"
                                         title="Please enter your complete phone number including your country code (at least 8 digits total)"
                                         oninput="this.value = this.value.replace(/[^0-9+]/g, '')"
@@ -425,9 +430,8 @@
                                         placeholder="+1 Enter your number">
                                 </div>
                                 <div class="animate-fade-in-up delay-300">
-                                    <label
-                                        class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">Email
-                                        Address</label>
+                                    <label id="form-label-email"
+                                        class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">Email Address</label>
                                     <input type="email" name="email"
                                         class="w-full bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 text-primary font-body text-[12px] placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 focus:bg-white transition-all"
                                         placeholder="Enter your email id (Optional)">
@@ -436,17 +440,15 @@
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label
-                                        class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">From
-                                        (Location)</label>
+                                    <label id="form-label-from"
+                                        class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">From (Location)</label>
                                     <input type="text" name="from_location" required
                                         class="w-full bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 text-primary font-body text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 focus:bg-white transition-all"
                                         placeholder="e.g. Madrid, Barcelona">
                                 </div>
                                 <div>
-                                    <label
-                                        class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">To
-                                        (Location)</label>
+                                    <label id="form-label-to"
+                                        class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">To (Location)</label>
                                     <input type="text" name="to_location" required
                                         class="w-full bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 text-primary font-body text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 focus:bg-white transition-all"
                                         placeholder="e.g. Mumbai, India, Dubai, UAE">
@@ -454,9 +456,8 @@
                             </div>
 
                             <div>
-                                <label
-                                    class="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2">Required
-                                    Air Ambulance Service</label>
+                                <label id="form-label-service"
+                                    class="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2">Required Air Ambulance Service</label>
                                 <select
                                     class="w-full px-4 py-3 bg-surface-container-low border-transparent rounded-xl focus:ring-2 focus:ring-secondary focus:bg-white transition-all font-body text-sm appearance-none cursor-pointer hover:bg-surface-container-high"
                                     name="service" required>
@@ -478,7 +479,7 @@
                                 <button
                                     class="w-full bg-secondary text-white py-4 rounded-lg font-headline font-black uppercase tracking-[0.2em] text-xs hover:bg-primary transition-all duration-300 shadow-xl shadow-secondary/20 pulse-motif relative overflow-hidden group"
                                     type="submit">
-                                    <span class="relative z-10">REQUEST QUOTE</span>
+                                    <span id="form-submit-btn" class="relative z-10">REQUEST QUOTE</span>
                                     <div
                                         class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                                     </div>
@@ -505,10 +506,10 @@
                         <img src="assets/logo/ISO logo.jpg" alt="ISO 9001:2015 Certified"
                             class="w-full h-full object-contain rounded-lg" />
                     </div>
-                    <h3
+                    <h3 id="cert-faa-title" id="cert-iso-title"
                         class="font-headline font-black text-primary text-sm uppercase tracking-wide leading-tight mb-3">
                         ISO 9001:2015 CERTIFIED</h3>
-                    <p class="text-on-surface-variant text-sm leading-relaxed max-w-sm">
+                    <p id="cert-iso-desc" class="text-on-surface-variant text-sm leading-relaxed max-w-sm">
                         Internationally recognized quality management certification, ensuring consistent processes,
                         safety standards, and reliable patient handling across every mission.
                     </p>
@@ -525,7 +526,7 @@
                     <h3
                         class="font-headline font-black text-primary text-sm uppercase tracking-wide leading-tight mb-3">
                         FAA-APPROVED MEDICAL EQUIPMENT</h3>
-                    <p class="text-on-surface-variant text-sm leading-relaxed max-w-sm">
+                    <p id="cert-faa-desc" class="text-on-surface-variant text-sm leading-relaxed max-w-sm">
                         All onboard medical equipment is approved for in-flight use &mdash; ensuring safety,
                         reliability, and performance even at high altitudes.
                     </p>
@@ -539,9 +540,9 @@
     <section id="global-network-section" class="py-12 bg-surface-container-low/30 border-y border-outline-variant/5">
         <div class="container mx-auto px-6 md:px-8">
             <div class="text-center max-w-5xl mx-auto mb-12 scroll-reveal">
-                <h2 class="font-headline text-2xl md:text-3xl font-extrabold text-primary mb-3 tracking-tight">Connected
+                <h2 id="network-heading" class="font-headline text-2xl md:text-3xl font-extrabold text-primary mb-3 tracking-tight">Connected
                     to Leading Hospitals Globally</h2>
-                <p class="text-on-surface-variant font-body leading-relaxed">Trusted by hospitals, healthcare
+                <p id="network-subheading" class="text-on-surface-variant font-body leading-relaxed">Trusted by hospitals, healthcare
                     institutions, corporations, government agencies, and embassies worldwide.</p>
             </div>
 
@@ -553,7 +554,7 @@
                         class="material-symbols-outlined text-3xl text-secondary mb-3 block group-hover:scale-110 transition-transform">apartment</span>
                     <div class="font-headline text-2xl md:text-4xl font-black text-primary mb-1"><span
                             class="stat-number" data-target="17000">0</span>+</div>
-                    <p class="text-on-surface-variant text-xs font-black uppercase tracking-widest">Medical Transfers Coordinated
+                    <p id="stat-label-1" class="text-on-surface-variant text-xs font-black uppercase tracking-widest">Medical Transfers Coordinated
                     </p>
                 </div>
 
@@ -564,7 +565,7 @@
                         class="material-symbols-outlined text-3xl text-secondary mb-3 block group-hover:scale-110 transition-transform">handshake</span>
                     <div class="font-headline text-2xl md:text-4xl font-black text-primary mb-1"><span
                             class="stat-number" data-target="100">0</span>+</div>
-                    <p class="text-on-surface-variant text-xs font-black uppercase tracking-widest">Global Hospital & Ground Partners
+                    <p id="stat-label-2" class="text-on-surface-variant text-xs font-black uppercase tracking-widest">Global Hospital & Ground Partners
                     </p>
                 </div>
 
@@ -574,7 +575,7 @@
                     <span
                         class="material-symbols-outlined text-3xl text-secondary mb-3 block group-hover:scale-110 transition-transform">support_agent</span>
                     <div class="font-headline text-2xl md:text-4xl font-black text-primary mb-1">24X7</div>
-                    <p class="text-on-surface-variant text-xs font-black uppercase tracking-widest">Spain Command Center
+                    <p id="stat-label-3" class="text-on-surface-variant text-xs font-black uppercase tracking-widest">Spain Command Center
                     </p>
                 </div>
 
@@ -585,7 +586,7 @@
                         class="material-symbols-outlined text-3xl text-secondary mb-3 block group-hover:scale-110 transition-transform">public</span>
                     <div class="font-headline text-2xl md:text-4xl font-black text-primary mb-1"><span
                             class="stat-number" data-target="100">0</span>+</div>
-                    <p class="text-on-surface-variant text-xs font-black uppercase tracking-widest">Countries Covered</p>
+                    <p id="stat-label-4" class="text-on-surface-variant text-xs font-black uppercase tracking-widest">Countries Covered</p>
                 </div>
             </div>
         </div>
@@ -596,10 +597,10 @@
         <div class="container mx-auto px-6 md:px-8 relative z-10">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-14 scroll-reveal">
-                <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-3 tracking-tighter">
+                <h2 id="transfer-heading" class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-3 tracking-tighter">
                     How We Transfer Your Loved Ones
                 </h2>
-                <p class="text-on-surface-variant font-body text-sm leading-relaxed mb-4">
+                <p id="transfer-subheading" class="text-on-surface-variant font-body text-sm leading-relaxed mb-4">
                     A simple, transparent, and clinical-first process to reduce anxiety and ensure a safe, bed-to-bed journey.
                 </p>
                 <div class="w-16 h-1 bg-secondary mx-auto rounded-full"></div>
@@ -617,8 +618,8 @@
                         <div class="w-12 h-12 rounded-full bg-primary text-white font-headline font-black text-base flex items-center justify-center mb-4 shadow-lg shadow-primary/20 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
                             1
                         </div>
-                        <h4 class="font-headline font-bold text-primary text-base mb-2">Emergency Call</h4>
-                        <p class="text-on-surface-variant font-body text-xs leading-relaxed">
+                        <h4 id="step1-title" class="font-headline font-bold text-primary text-base mb-2">Emergency Call</h4>
+                        <p id="step1-desc" class="text-on-surface-variant font-body text-xs leading-relaxed">
                             Contact our 24X7 hotline. Speak directly to a medical coordinator.
                         </p>
                     </div>
@@ -628,8 +629,8 @@
                         <div class="w-12 h-12 rounded-full bg-primary text-white font-headline font-black text-base flex items-center justify-center mb-4 shadow-lg shadow-primary/20 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
                             2
                         </div>
-                        <h4 class="font-headline font-bold text-primary text-base mb-2">Medical Assessment</h4>
-                        <p class="text-on-surface-variant font-body text-xs leading-relaxed">
+                        <h4 id="step2-title" class="font-headline font-bold text-primary text-base mb-2">Medical Assessment</h4>
+                        <p id="step2-desc" class="text-on-surface-variant font-body text-xs leading-relaxed">
                             Our clinical team reviews the patient's condition and flight needs within minutes.
                         </p>
                     </div>
@@ -639,8 +640,8 @@
                         <div class="w-12 h-12 rounded-full bg-primary text-white font-headline font-black text-base flex items-center justify-center mb-4 shadow-lg shadow-primary/20 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
                             3
                         </div>
-                        <h4 class="font-headline font-bold text-primary text-base mb-2">Clearance &amp; Coordination</h4>
-                        <p class="text-on-surface-variant font-body text-xs leading-relaxed">
+                        <h4 id="step3-title" class="font-headline font-bold text-primary text-base mb-2">Clearance &amp; Coordination</h4>
+                        <p id="step3-desc" class="text-on-surface-variant font-body text-xs leading-relaxed">
                             We secure fast permits, international clearances, and coordinate hospital beds.
                         </p>
                     </div>
@@ -650,8 +651,8 @@
                         <div class="w-12 h-12 rounded-full bg-primary text-white font-headline font-black text-base flex items-center justify-center mb-4 shadow-lg shadow-primary/20 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
                             4
                         </div>
-                        <h4 class="font-headline font-bold text-primary text-base mb-2">Bed-to-Bed Transfer</h4>
-                        <p class="text-on-surface-variant font-body text-xs leading-relaxed">
+                        <h4 id="step4-title" class="font-headline font-bold text-primary text-base mb-2">Bed-to-Bed Transfer</h4>
+                        <p id="step4-desc" class="text-on-surface-variant font-body text-xs leading-relaxed">
                             ICU flight transfer and fully managed medical ground ambulance supervision.
                         </p>
                     </div>
@@ -661,8 +662,8 @@
                         <div class="w-12 h-12 rounded-full bg-primary text-white font-headline font-black text-base flex items-center justify-center mb-4 shadow-lg shadow-primary/20 group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
                             5
                         </div>
-                        <h4 class="font-headline font-bold text-primary text-base mb-2">Safe Arrival</h4>
-                        <p class="text-on-surface-variant font-body text-xs leading-relaxed">
+                        <h4 id="step5-title" class="font-headline font-bold text-primary text-base mb-2">Safe Arrival</h4>
+                        <p id="step5-desc" class="text-on-surface-variant font-body text-xs leading-relaxed">
                             Direct handover of the patient to the receiving hospital's medical team.
                         </p>
                     </div>
@@ -677,26 +678,26 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
                 <!-- Text Content -->
                 <div class="scroll-reveal-left">
-                    <span class="text-xs font-black uppercase tracking-widest text-secondary mb-2 block">Transparent
+                    <span id="cost-badge" class="text-xs font-black uppercase tracking-widest text-secondary mb-2 block">Transparent
                         Pricing</span>
-                    <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-6 tracking-tighter">
+                    <h2 id="cost-heading" class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-6 tracking-tighter">
                         Air Ambulance &amp; Airline Stretcher Costs from Spain
                     </h2>
                     <div class="text-on-surface-variant font-body leading-relaxed space-y-4 text-sm">
-                        <p>
+                        <p id="cost-p1">
                             The cost of medical repatriation from Spain depends on the chosen transport configuration, the destination, and the level of ICU care required. We provide tailored medical transit options ranging from Dedicated ICU Air Ambulances for critical patients to highly cost-effective Commercial Airline Stretcher Services and Flight Medical Escorts for stable individuals. Every mission is custom-planned to align perfectly with the patient's precise medical needs.
                         </p>
-                        <p>
+                        <p id="cost-p2">
                             We deliver fully transparent, all-inclusive pricing for all international medical evacuations from Spain, with absolutely no hidden fees. Our pricing covers end-to-end medical logistics—including bedside-to-bedside ground ambulance transfers, specialised flight crews, medical clearance documentation, and airline coordination. Whether utilizing a private <a href="https://airmedical24x7.com/air-ambulance" class="text-secondary hover:underline font-bold"><strong>air ambulance</strong></a> or a commercial airline stretcher setup, we guarantee the highest global safety standards at competitive rates.
                         </p>
-                        <p>
+                        <p id="cost-p3">
                             We provide medical transfers from major cities in Spain, including <strong>Madrid, Barcelona, Valencia, Seville, Malaga, Bilbao</strong>, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.
                         </p>
-                        <p class="font-bold text-primary">
+                        <p id="cost-cta-text" class="font-bold text-primary">
                             Contact our Global Command Center 24X7 for a customised quote. Our dispatch team responds within 30 minutes.
                         </p>
                         <div class="pt-4">
-                            <a href="tel:+448002294751"
+                            <a id="cost-cta-btn" href="tel:+448002294751"
                                 class="inline-flex items-center gap-2 px-6 py-3.5 bg-secondary hover:bg-primary text-white font-headline text-xs font-black uppercase tracking-widest rounded-lg transition-all duration-300 shadow-md hover:shadow-lg">
                                 <span class="material-symbols-outlined text-sm">call</span>
                                 Call Spain Emergency Desk
@@ -723,36 +724,36 @@
         class="py-16 bg-surface-container-low/40 border-b border-outline-variant/10 relative overflow-hidden">
         <div class="container mx-auto px-6 md:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tighter">
+                <h2 id="services-heading" id="routes-heading" class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tighter">
                     Critical Global Transfer Routes from Spain
                 </h2>
-                <p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                <p id="routes-subheading" class="text-on-surface-variant font-body leading-relaxed text-sm">
                     Providing dedicated bed-to-bed ICU air ambulance and commercial airline stretcher services across all major international medical corridors from Spain with seamless end-to-end medical transportation.
                 </p>
             </div>
                         <div id="popular-routes" class="mb-14">
-                <h3 class="font-headline text-lg font-black text-primary mb-6 uppercase tracking-wider">Most Requested Transfer Routes</h3>
+                <h3 id="routes-popular-title" class="font-headline text-lg font-black text-primary mb-6 uppercase tracking-wider">Most Requested Transfer Routes</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                     <!-- Route Card: Spain -> United Kingdom -->
                     <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-1" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">United Kingdom</span>
+                                    <span id="rc-dest-1" class="leading-tight text-sm font-extrabold text-right">United Kingdom</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-1" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Bed-to-bed ICU air ambulance and medical escort services from Spain to the United Kingdom, ensuring continuous critical care monitoring, NHS hospital transfers, and seamless flight coordination.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-1">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -762,21 +763,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-2" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Germany</span>
+                                    <span id="rc-dest-2" class="leading-tight text-sm font-extrabold text-right">Germany</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-2" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Emergency air medical repatriation from Spain to Germany with specialized ICU flight doctors, advanced ventilation systems, and direct bed-to-bed hospital admission.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-2">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -786,21 +787,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-3" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">France</span>
+                                    <span id="rc-dest-3" class="leading-tight text-sm font-extrabold text-right">France</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-3" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Rapid medical air transfer and commercial stretcher services from Spain to France, offering dedicated medical flight crews and end-to-end ground ambulance transport.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-3">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -810,21 +811,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-4" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Netherlands</span>
+                                    <span id="rc-dest-4" class="leading-tight text-sm font-extrabold text-right">Netherlands</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-4" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Specialized medical repatriation from Spain to the Netherlands, providing continuous intensive care support and direct bedside transfers across Dutch medical facilities.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-4">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -834,21 +835,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-5" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Belgium</span>
+                                    <span id="rc-dest-5" class="leading-tight text-sm font-extrabold text-right">Belgium</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-5" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 ICU air ambulance and flight medical escort from Spain to Belgium, equipped for critical care transfers, pediatric care, and urgent hospital admissions.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-5">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -858,21 +859,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-6" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Ireland</span>
+                                    <span id="rc-dest-6" class="leading-tight text-sm font-extrabold text-right">Ireland</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-6" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Comprehensive medical flight repatriation from Spain to Ireland, facilitating direct air transfer, medical clearance, and bed-to-bed patient handover.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-6">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -882,21 +883,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-7" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Italy</span>
+                                    <span id="rc-dest-7" class="leading-tight text-sm font-extrabold text-right">Italy</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-7" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 24X7 ICU air ambulance services from Spain to Italy, ensuring real-time patient monitoring, specialized medical crews, and smooth hospital-to-hospital transit.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-7">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -906,21 +907,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-8" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Portugal</span>
+                                    <span id="rc-dest-8" class="leading-tight text-sm font-extrabold text-right">Portugal</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-8" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Fast-dispatch medical repatriation and air ambulance transport from Spain to Portugal, delivering full bedside-to-bedside care for critical and recovering patients.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-8">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -930,21 +931,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-9" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">United States</span>
+                                    <span id="rc-dest-9" class="leading-tight text-sm font-extrabold text-right">United States</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-9" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Transatlantic long-range air ambulance and commercial stretcher repatriation from Spain to the United States, complete with specialized flight physicians and critical care monitoring.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-9">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -954,21 +955,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-10" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Canada</span>
+                                    <span id="rc-dest-10" class="leading-tight text-sm font-extrabold text-right">Canada</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-10" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Long-range medical evacuation services from Spain to Canada, featuring fully equipped ICU aircraft, experienced flight nurses, and complete medical logistics.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-10">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -978,21 +979,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-11" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Middle East</span>
+                                    <span id="rc-dest-11" class="leading-tight text-sm font-extrabold text-right">Middle East</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-11" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 International air medical repatriation from Spain to key medical hubs across the Middle East, with multi-lingual flight teams and round-the-clock dispatch.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-11">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -1002,21 +1003,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-12" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Dubai, UAE</span>
+                                    <span id="rc-dest-12" class="leading-tight text-sm font-extrabold text-right">Dubai, UAE</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-12" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Direct ICU air ambulance and flight medical escort from Spain to Dubai, UAE, coordinating advanced hospital transfers and rapid bedside-to-bedside repatriation.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-12">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -1026,21 +1027,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-13" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">India</span>
+                                    <span id="rc-dest-13" class="leading-tight text-sm font-extrabold text-right">India</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-13" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Long-distance ICU air ambulance and commercial airline stretcher repatriation from Spain to India, ensuring continuous critical care and specialized medical teams.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-13">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -1050,21 +1051,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-14" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Manila, Philippines</span>
+                                    <span id="rc-dest-14" class="leading-tight text-sm font-extrabold text-right">Manila, Philippines</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-14" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Intercontinental medical repatriation from Spain to Manila, Philippines, providing end-to-end bed-to-bed care, airline stretcher arrangements, and medical flight escorts.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-14">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -1074,21 +1075,21 @@
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
-                                    <span class="leading-tight text-sm font-extrabold">Spain</span>
+                                    <span id="rc-org-15" class="leading-tight text-sm font-extrabold">Spain</span>
                                 </div>
                                 <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
                                 <div class="flex flex-col text-right">
-                                    <span class="leading-tight text-sm font-extrabold text-right">Australia</span>
+                                    <span id="rc-dest-15" class="leading-tight text-sm font-extrabold text-right">Australia</span>
                                 </div>
                             </div>
-                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                            <p id="rc-desc-15" class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
                                 Ultra-long-haul medical air transfer from Spain to Australia, utilizing state-of-the-art life support equipment, flight physicians, and seamless global flight logistics.
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex justify-end">
                             <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!" target="_blank" rel="noopener noreferrer"
                                 class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
-                                Get Quote on WhatsApp
+                                <span id="rc-btn-15">Get Quote on WhatsApp</span>
                                 <span class="material-symbols-outlined text-xs">open_in_new</span>
                             </a>
                         </div>
@@ -1097,9 +1098,7 @@
             </div>
 
 <div class="text-center max-w-5xl mx-auto mb-12 scroll-reveal">
-                <h2 class="font-headline text-4xl font-extrabold text-primary mb-4 tracking-tighter">
-                    17,000+ Families Have Trusted Us &mdash; Here Is What They Say
-                </h2>
+                <h2 id="testimonials-title" class="font-headline text-4xl font-extrabold text-primary mb-4 tracking-tighter">17,000+ Families Have Trusted Us &mdash; Here Is What They Say</h2>
                 <div class="w-24 h-1 bg-secondary mx-auto"></div>
             </div>
 
@@ -1490,17 +1489,17 @@
         <div class="container mx-auto px-6 md:px-8 relative z-10">
             <div class="flex flex-col md:flex-row gap-20">
                 <div class="md:w-1/3">
-                    <h2 class="font-headline text-4xl font-extrabold text-primary mb-6 leading-tight tracking-tighter">
+                    <h2 id="faq-heading" class="font-headline text-4xl font-extrabold text-primary mb-6 leading-tight tracking-tighter">
                         Frequently Asked Questions
                     </h2>
-                    <p class="text-on-surface-variant font-body mb-8">
+                    <p id="faq-subheading" class="text-on-surface-variant font-body mb-8">
                         Get clear answers about air ambulance costs, response times, and insurance coordination for Spain
                         departures.
                     </p>
                     <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
                         target="_blank" rel="noopener noreferrer nofollow"
                         class="inline-flex items-center gap-2 text-secondary font-black uppercase tracking-widest text-xs hover:gap-4 transition-all">
-                        Talk to an Expert
+                        <span id="faq-cta-btn">Talk to an Expert</span>
                         <span class="material-symbols-outlined">arrow_forward</span>
                     </a>
                 </div>
@@ -1510,13 +1509,13 @@
                     <div
                         class="faq-item bg-white rounded-xl border border-outline-variant/10 overflow-hidden transition-all duration-300">
                         <button class="w-full flex justify-between items-center p-6 text-left group">
-                            <span
+                            <span id="faq-q1"
                                 class="font-headline font-bold text-primary group-hover:text-secondary transition-colors">How much does an air ambulance from Spain to India cost?</span>
                             <span
                                 class="material-symbols-outlined transform transition-transform group-[.active]:rotate-180">expand_more</span>
                         </button>
                         <div
-                            class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
+                            id="faq-a1" class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
                             The cost of an air ambulance from Spain to India depends on the departure city, aircraft type, and the level of medical care required onboard. For stable patients, a commercial airline stretcher or flight medical escort is a more affordable option. Contact our team for a precise quote within 30 minutes.
                         </div>
                     </div>
@@ -1524,14 +1523,14 @@
                     <div
                         class="faq-item bg-white rounded-xl border border-outline-variant/10 overflow-hidden transition-all duration-300">
                         <button class="w-full flex justify-between items-center p-6 text-left group">
-                            <span
+                            <span id="faq-q2"
                                 class="font-headline font-bold text-primary group-hover:text-secondary transition-colors">Which
                                 cities in Spain do you cover for air ambulance services?</span>
                             <span
                                 class="material-symbols-outlined transform transition-transform group-[.active]:rotate-180">expand_more</span>
                         </button>
                         <div
-                            class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
+                            id="faq-a2" class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
                             We cover all major cities in Spain, including Madrid, Barcelona, Valencia, Seville, Malaga, Bilbao. Ground ambulance is coordinated from the patient's location to the nearest departure airport, with the full transfer managed by our operations team.
                         </div>
                     </div>
@@ -1539,14 +1538,14 @@
                     <div
                         class="faq-item bg-white rounded-xl border border-outline-variant/10 overflow-hidden transition-all duration-300">
                         <button class="w-full flex justify-between items-center p-6 text-left group">
-                            <span
+                            <span id="faq-q3"
                                 class="font-headline font-bold text-primary group-hover:text-secondary transition-colors">How
                                 quickly can an air ambulance be arranged from Spain?</span>
                             <span
                                 class="material-symbols-outlined transform transition-transform group-[.active]:rotate-180">expand_more</span>
                         </button>
                         <div
-                            class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
+                            id="faq-a3" class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
                             For dedicated ICU air ambulance, dispatch is typically within 4&ndash;6 hours of
                             confirmation. For commercial airline stretcher and flight medical escort, we work with
                             available flight schedules &mdash; usually same day or next day. Our team responds to all
@@ -1557,14 +1556,14 @@
                     <div
                         class="faq-item bg-white rounded-xl border border-outline-variant/10 overflow-hidden transition-all duration-300">
                         <button class="w-full flex justify-between items-center p-6 text-left group">
-                            <span
+                            <span id="faq-q4"
                                 class="font-headline font-bold text-primary group-hover:text-secondary transition-colors">Can
                                 I use insurance for air ambulance services from Spain?</span>
                             <span
                                 class="material-symbols-outlined transform transition-transform group-[.active]:rotate-180">expand_more</span>
                         </button>
                         <div
-                            class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
+                            id="faq-a4" class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
                             Many health insurance policies and international travel insurance plans include medical
                             evacuation coverage. We assist with insurance documentation and pre-authorization. Contact
                             our team with your policy details and we will confirm coverage and coordinate directly with
@@ -1575,7 +1574,7 @@
                     <div
                         class="faq-item bg-white rounded-xl border border-outline-variant/10 overflow-hidden transition-all duration-300">
                         <button class="w-full flex justify-between items-center p-6 text-left group">
-                            <span
+                            <span id="faq-q5"
                                 class="font-headline font-bold text-primary group-hover:text-secondary transition-colors">Is
                                 a flight medical escort sufficient or do I need a dedicated air ambulance from
                                 Spain?</span>
@@ -1583,7 +1582,7 @@
                                 class="material-symbols-outlined transform transition-transform group-[.active]:rotate-180">expand_more</span>
                         </button>
                         <div
-                            class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
+                            id="faq-a5" class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
                             This depends entirely on the patient's medical condition. For critical, unstable patients on
                             ventilator or ECMO support &mdash; a dedicated ICU air ambulance is mandatory. For stable
                             patients who can sit or lie on a stretcher &mdash; a commercial flight with medical escort
@@ -1595,14 +1594,14 @@
                     <div
                         class="faq-item bg-white rounded-xl border border-outline-variant/10 overflow-hidden transition-all duration-300">
                         <button class="w-full flex justify-between items-center p-6 text-left group">
-                            <span
+                            <span id="faq-q6"
                                 class="font-headline font-bold text-primary group-hover:text-secondary transition-colors">How
                                 is ground ambulance in Spain coordinated for air ambulance transfers?</span>
                             <span
                                 class="material-symbols-outlined transform transition-transform group-[.active]:rotate-180">expand_more</span>
                         </button>
                         <div
-                            class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
+                            id="faq-a6" class="faq-answer hidden p-6 pt-0 text-on-surface-variant text-sm border-t border-slate-50 leading-relaxed">
                             Our operations team coordinates a licensed ground ambulance from the patient's location
                             &mdash; hospital, home, or clinic &mdash; to the departure airport. The medical team travels
                             with the patient throughout, ensuring continuous care from bedside to aircraft.
@@ -1908,6 +1907,309 @@
         <span
             class="absolute inset-0 rounded-[9999px] bg-[#25D366]/30 animate-ping group-hover:animate-none -z-10"></span>
     </a>
+
+    <!-- Language Toggle Script -->
+    <script>
+        (function () {
+            'use strict';
+
+            // Current language state — default is English
+            let currentLang = 'en';
+
+            // ─────────────────────────────────────────────────────────────────
+            // TRANSLATION MAP
+            // Each key is a CSS selector (ID or class-targeted text node).
+            // Each value has { en: '...', es: '...' }
+            // ─────────────────────────────────────────────────────────────────
+            const translations = [
+
+                // ── Hero Left Panel ───────────────────────────────────────────
+                { sel: '#hero-h1',
+                  en: '24X7 Air Ambulance in Spain | Medical Evacuation & Repatriation',
+                  es: 'Ambulancia Aérea 24X7 en España | Evacuación y Repatriación Médica' },
+                { sel: '#hero-desc',
+                  en: 'Global bed-to-bed medical repatriation and patient transfer services from Spain to destinations worldwide. With rapid coordination, experienced medical crews, and fully equipped transport options, we provide safe and reliable transfers from major cities and regions across Spain, including Madrid, Barcelona, Valencia, Seville, Málaga, Bilbao, Alicante, Tenerife, and the Canary Islands.',
+                  es: 'Repatriación médica cama a cama y servicios de traslado de pacientes desde España a destinos en todo el mundo. Con coordinación rápida, tripulaciones médicas experimentadas y opciones de transporte totalmente equipadas, ofrecemos traslados seguros y fiables desde las principales ciudades y regiones de España, incluidas Madrid, Barcelona, Valencia, Sevilla, Málaga, Bilbao, Alicante, Tenerife y las Islas Canarias.' },
+
+                // Hero region headings
+                { sel: '#region-label-europe', en: 'Europe & UK',          es: 'Europa y Reino Unido' },
+                { sel: '#region-label-mideast', en: 'Middle East & GCC',   es: 'Oriente Medio y CCG' },
+                { sel: '#region-label-asia',   en: 'Asia & Subcontinent',  es: 'Asia y Subcontinente' },
+                { sel: '#region-label-nafric', en: 'North Africa',         es: 'Norte de África' },
+                { sel: '#region-label-africa', en: 'Africa',               es: 'África' },
+                { sel: '#region-label-usaca',  en: 'USA & Canada',         es: 'EE.UU. y Canadá' },
+                { sel: '#region-label-latam',  en: 'Latin America',        es: 'Latinoamérica' },
+                { sel: '#region-label-oce',    en: 'Oceania',              es: 'Oceanía' },
+
+                // ── Hero Right Panel: Quote Form ──────────────────────────────
+                { sel: '#form-heading',
+                  en: 'Request an Air Ambulance Quote',
+                  es: 'Solicitar Presupuesto de Ambulancia Aérea' },
+                { sel: '#form-subheading',
+                  en: 'No obligation • Confidential assessment • Response within 30 minutes',
+                  es: 'Sin compromiso • Evaluación confidencial • Respuesta en 30 minutos' },
+                { sel: '#form-label-name',     en: 'Full Name',            es: 'Nombre Completo' },
+                { sel: '#form-label-phone',    en: 'Phone Number',         es: 'Número de Teléfono' },
+                { sel: '#form-label-email',    en: 'Email Address',        es: 'Correo Electrónico' },
+                { sel: '#form-label-from',     en: 'From (Location)',      es: 'Desde (Ubicación)' },
+                { sel: '#form-label-to',       en: 'To (Location)',        es: 'Hacia (Ubicación)' },
+                { sel: '#form-label-service',  en: 'Required Air Ambulance Service', es: 'Servicio de Ambulancia Aérea Requerido' },
+                { sel: '#form-submit-btn',
+                  en: 'REQUEST QUOTE',
+                  es: 'SOLICITAR PRESUPUESTO' },
+
+                // ── Certifications Section ────────────────────────────────────
+                { sel: '#cert-iso-title',
+                  en: 'ISO 9001:2015 CERTIFIED',
+                  es: 'CERTIFICADO ISO 9001:2015' },
+                { sel: '#cert-iso-desc',
+                  en: 'Internationally recognized quality management certification, ensuring consistent processes, safety standards, and reliable patient handling across every mission.',
+                  es: 'Certificación de gestión de calidad reconocida internacionalmente, que garantiza procesos consistentes, estándares de seguridad y manejo fiable de pacientes en cada misión.' },
+                { sel: '#cert-faa-title',
+                  en: 'FAA-APPROVED MEDICAL EQUIPMENT',
+                  es: 'EQUIPAMIENTO MÉDICO APROBADO POR LA FAA' },
+                { sel: '#cert-faa-desc',
+                  en: 'All onboard medical equipment is approved for in-flight use — ensuring safety, reliability, and performance even at high altitudes.',
+                  es: 'Todo el equipo médico a bordo está aprobado para uso en vuelo, garantizando seguridad, fiabilidad y rendimiento incluso a grandes altitudes.' },
+
+                // ── Global Network Section ────────────────────────────────────
+                { sel: '#network-heading',
+                  en: 'Connected to Leading Hospitals Globally',
+                  es: 'Conectados con los Principales Hospitales del Mundo' },
+                { sel: '#network-subheading',
+                  en: 'Trusted by hospitals, healthcare institutions, corporations, government agencies, and embassies worldwide.',
+                  es: 'De confianza para hospitales, instituciones sanitarias, corporaciones, organismos gubernamentales y embajadas de todo el mundo.' },
+                { sel: '#stat-label-1', en: 'Medical Transfers Coordinated', es: 'Traslados Médicos Coordinados' },
+                { sel: '#stat-label-2', en: 'Global Hospital & Ground Partners', es: 'Socios Hospitalarios y Terrestres Globales' },
+                { sel: '#stat-label-3', en: 'Spain Command Center',           es: 'Centro de Mando España' },
+                { sel: '#stat-label-4', en: 'Countries Covered',             es: 'Países Cubiertos' },
+
+                // ── How We Transfer Section ───────────────────────────────────
+                { sel: '#transfer-heading',
+                  en: 'How We Transfer Your Loved Ones',
+                  es: 'Cómo Trasladamos a Sus Seres Queridos' },
+                { sel: '#transfer-subheading',
+                  en: 'A simple, transparent, and clinical-first process to reduce anxiety and ensure a safe, bed-to-bed journey.',
+                  es: 'Un proceso sencillo, transparente y con enfoque clínico para reducir la ansiedad y garantizar un traslado seguro de cama a cama.' },
+                { sel: '#step1-title', en: 'Emergency Call',             es: 'Llamada de Emergencia' },
+                { sel: '#step1-desc', en: 'Contact our 24X7 hotline. Speak directly to a medical coordinator.', es: 'Contacte nuestra línea directa 24X7. Hable directamente con un coordinador médico.' },
+                { sel: '#step2-title', en: 'Medical Assessment',         es: 'Evaluación Médica' },
+                { sel: '#step2-desc', en: "Our clinical team reviews the patient's condition and flight needs within minutes.", es: 'Nuestro equipo clínico revisa el estado del paciente y las necesidades del vuelo en minutos.' },
+                { sel: '#step3-title', en: 'Clearance & Coordination',   es: 'Permisos y Coordinación' },
+                { sel: '#step3-desc', en: 'We secure fast permits, international clearances, and coordinate hospital beds.', es: 'Obtenemos permisos rápidos, autorizaciones internacionales y coordinamos camas hospitalarias.' },
+                { sel: '#step4-title', en: 'Bed-to-Bed Transfer',        es: 'Traslado Cama a Cama' },
+                { sel: '#step4-desc', en: 'ICU flight transfer and fully managed medical ground ambulance supervision.', es: 'Traslado en vuelo UCI y supervisión completa de ambulancia terrestre médica.' },
+                { sel: '#step5-title', en: 'Safe Arrival',               es: 'Llegada Segura' },
+                { sel: '#step5-desc', en: "Direct handover of the patient to the receiving hospital's medical team.", es: 'Entrega directa del paciente al equipo médico del hospital receptor.' },
+
+                // ── Cost Section ──────────────────────────────────────────────
+                { sel: '#cost-badge',    en: 'Transparent Pricing',      es: 'Precios Transparentes' },
+                { sel: '#cost-heading',
+                  en: 'Air Ambulance & Airline Stretcher Costs from Spain',
+                  es: 'Costes de Ambulancia Aérea y Camilla en Avión desde España' },
+                { sel: '#cost-p1',
+                  en: 'The cost of medical repatriation from Spain depends on the chosen transport configuration, the destination, and the level of ICU care required. We provide tailored medical transit options ranging from Dedicated ICU Air Ambulances for critical patients to highly cost-effective Commercial Airline Stretcher Services and Flight Medical Escorts for stable individuals. Every mission is custom-planned to align perfectly with the patient\'s precise medical needs.',
+                  es: 'El coste de la repatriación médica desde España depende de la configuración de transporte elegida, el destino y el nivel de cuidados UCI necesarios. Ofrecemos opciones de tránsito médico personalizadas, desde Ambulancias Aéreas UCI dedicadas para pacientes críticos hasta Servicios de Camilla en Avión Comercial y Escoltas Médicos de Vuelo para personas estables, todo ello a precios muy competitivos.' },
+                { sel: '#cost-p2',
+                  en: 'We deliver fully transparent, all-inclusive pricing for all international medical evacuations from Spain, with absolutely no hidden fees.',
+                  es: 'Ofrecemos precios totalmente transparentes e integrales para todas las evacuaciones médicas internacionales desde España, sin cargos ocultos.' },
+                { sel: '#cost-p3',
+                  en: 'We provide medical transfers from major cities in Spain, including Madrid, Barcelona, Valencia, Seville, Malaga, Bilbao, to destinations across Europe, Asia, the Middle East, North America, and worldwide, ensuring seamless bedside-to-bedside patient transportation.',
+                  es: 'Realizamos traslados médicos desde las principales ciudades de España, incluidas Madrid, Barcelona, Valencia, Sevilla, Málaga y Bilbao, hacia destinos en Europa, Asia, Oriente Medio, América del Norte y en todo el mundo, garantizando un transporte paciente cama a cama sin interrupciones.' },
+                { sel: '#cost-cta-text',
+                  en: 'Contact our Global Command Center 24X7 for a customised quote. Our dispatch team responds within 30 minutes.',
+                  es: 'Contacte nuestro Centro de Mando Global 24X7 para un presupuesto personalizado. Nuestro equipo de despacho responde en 30 minutos.' },
+                { sel: '#cost-cta-btn',  en: 'Call Spain Emergency Desk', es: 'Llamar al Centro de Emergencias España' },
+
+                // ── Routes Section ────────────────────────────────────────────
+                { sel: '#routes-heading',
+                  en: 'Critical Global Transfer Routes from Spain',
+                  es: 'Rutas de Traslado Global Críticas desde España' },
+                { sel: '#routes-subheading',
+                  en: 'Providing dedicated bed-to-bed ICU air ambulance and commercial airline stretcher services across all major international medical corridors from Spain with seamless end-to-end medical transportation.',
+                  es: 'Proporcionamos ambulancias aéreas UCI cama a cama dedicadas y servicios de camilla en avión comercial en todos los principales corredores médicos internacionales desde España, con transporte médico integral sin interrupciones.' },
+                { sel: '#routes-popular-title', en: 'Most Requested Transfer Routes', es: 'Rutas de Traslado Más Solicitadas' },
+
+                // ── FAQ Section ───────────────────────────────────────────────
+                { sel: '#faq-heading',
+                  en: 'Frequently Asked Questions — Air Ambulance Spain',
+                  es: 'Preguntas Frecuentes — Ambulancia Aérea España' },
+                { sel: '#faq-q1', en: 'How much does an air ambulance from Spain to India cost?',
+                  es: '¿Cuánto cuesta una ambulancia aérea de España a India?' },
+                { sel: '#faq-a1',
+                  en: 'The cost of an air ambulance from Spain to India depends on the departure city, aircraft type, and the level of medical care required onboard. For stable patients, a commercial airline stretcher or flight medical escort is a more affordable option. Contact our team for a precise quote within 30 minutes.',
+                  es: 'El coste de una ambulancia aérea de España a India depende de la ciudad de salida, el tipo de aeronave y el nivel de atención médica requerido a bordo. Para pacientes estables, una camilla en avión comercial o un escolta médico de vuelo es una opción más asequible. Contacte nuestro equipo para un presupuesto preciso en 30 minutos.' },
+                { sel: '#faq-q2', en: 'Which cities in Spain do you cover for air ambulance services?',
+                  es: '¿Qué ciudades de España cubren para servicios de ambulancia aérea?' },
+                { sel: '#faq-a2',
+                  en: 'We cover all major cities in Spain, including Madrid, Barcelona, Valencia, Seville, Malaga, Bilbao. Ground ambulance is coordinated from the patient\'s location to the nearest departure airport, with the full transfer managed by our operations team.',
+                  es: 'Cubrimos todas las principales ciudades de España, incluidas Madrid, Barcelona, Valencia, Sevilla, Málaga y Bilbao. La ambulancia terrestre se coordina desde la ubicación del paciente hasta el aeropuerto de salida más cercano, con el traslado completo gestionado por nuestro equipo de operaciones.' },
+                { sel: '#faq-q3', en: 'How quickly can an air ambulance be arranged from Spain?',
+                  es: '¿Con qué rapidez se puede organizar una ambulancia aérea desde España?' },
+                { sel: '#faq-a3',
+                  en: 'For dedicated ICU air ambulance, dispatch is typically within 4-6 hours of confirmation. For commercial airline stretcher and flight medical escort, we work with available flight schedules — usually same day or next day. Our team responds to all enquiries within 30 minutes.',
+                  es: 'Para ambulancias aéreas UCI dedicadas, el despacho es típicamente dentro de 4-6 horas de la confirmación. Para camilla en avión comercial y escolta médico de vuelo, trabajamos con los horarios de vuelo disponibles, generalmente el mismo día o al siguiente. Nuestro equipo responde a todas las consultas en 30 minutos.' },
+                { sel: '#faq-q4', en: 'Can I use insurance for air ambulance services from Spain?',
+                  es: '¿Puedo usar seguro para los servicios de ambulancia aérea desde España?' },
+                { sel: '#faq-a4',
+                  en: 'Many health insurance policies and international travel insurance plans include medical evacuation coverage. We assist with insurance documentation and pre-authorization. Contact our team with your policy details and we will confirm coverage and coordinate directly with your insurer.',
+                  es: 'Muchas pólizas de seguro médico y planes de seguro de viaje internacional incluyen cobertura de evacuación médica. Ayudamos con la documentación del seguro y la preautorización. Contacte nuestro equipo con los detalles de su póliza y confirmaremos la cobertura y coordinaremos directamente con su aseguradora.' },
+                { sel: '#faq-q5', en: 'Is a flight medical escort sufficient or do I need a dedicated air ambulance from Spain?',
+                  es: '¿Es suficiente un escolta médico de vuelo o necesito una ambulancia aérea dedicada desde España?' },
+                { sel: '#faq-a5',
+                  en: "This depends entirely on the patient's medical condition. For critical, unstable patients on ventilator or ECMO support — a dedicated ICU air ambulance is mandatory. For stable patients who can sit or lie on a stretcher — a commercial flight with medical escort is safe and significantly more affordable. Our medical team assesses the patient's condition and recommends the right option.",
+                  es: 'Esto depende completamente del estado médico del paciente. Para pacientes críticos e inestables con soporte de ventilador o ECMO, una ambulancia aérea UCI dedicada es obligatoria. Para pacientes estables que pueden sentarse o acostarse en una camilla, un vuelo comercial con escolta médico es seguro y significativamente más asequible. Nuestro equipo médico evalúa el estado del paciente y recomienda la opción correcta.' },
+                { sel: '#faq-q6', en: 'How is ground ambulance in Spain coordinated for air ambulance transfers?',
+                  es: '¿Cómo se coordina la ambulancia terrestre en España para los traslados en ambulancia aérea?' },
+                { sel: '#faq-a6',
+                  en: "Our operations team coordinates a licensed ground ambulance from the patient's location — hospital, home, or clinic — to the departure airport. The medical team travels with the patient throughout, ensuring continuous care from bedside to aircraft.",
+                  es: 'Nuestro equipo de operaciones coordina una ambulancia terrestre autorizada desde la ubicación del paciente —hospital, domicilio o clínica— hasta el aeropuerto de salida. El equipo médico acompaña al paciente en todo momento, garantizando atención continua desde la cama hasta la aeronave.' },
+
+                // ── Services Section ──────────────────────────────────────────
+                { sel: '#services-heading',
+                  en: 'Air Ambulance Services We Provide in Spain',
+                  es: 'Servicios de Ambulancia Aérea que Proporcionamos en España' },
+                // ── Sidebar Route Links (33 items) ───────────────────────────
+                { sel: '#route-side-uk', en: 'Spain to UK', es: 'España al Reino Unido' },
+                { sel: '#route-side-france', en: 'Spain to France', es: 'España a Francia' },
+                { sel: '#route-side-germany', en: 'Spain to Germany', es: 'España a Alemania' },
+                { sel: '#route-side-netherlands', en: 'Spain to Netherlands', es: 'España a los Países Bajos' },
+                { sel: '#route-side-belgium', en: 'Spain to Belgium', es: 'España a Bélgica' },
+                { sel: '#route-side-italy', en: 'Spain to Italy', es: 'España a Italia' },
+                { sel: '#route-side-portugal', en: 'Spain to Portugal', es: 'España a Portugal' },
+                { sel: '#route-side-switzerland', en: 'Spain to Switzerland', es: 'España a Suiza' },
+                { sel: '#route-side-ireland', en: 'Spain to Ireland', es: 'España a Irlanda' },
+                { sel: '#route-side-uae', en: 'Spain to UAE', es: 'España a los EAU' },
+                { sel: '#route-side-ksa', en: 'Spain to Saudi Arabia', es: 'España a Arabia Saudita' },
+                { sel: '#route-side-qatar', en: 'Spain to Qatar', es: 'España a Qatar' },
+                { sel: '#route-side-kuwait', en: 'Spain to Kuwait', es: 'España a Kuwait' },
+                { sel: '#route-side-oman', en: 'Spain to Oman', es: 'España a Omán' },
+                { sel: '#route-side-india', en: 'Spain to India', es: 'España a la India' },
+                { sel: '#route-side-pakistan', en: 'Spain to Pakistan', es: 'España a Pakistán' },
+                { sel: '#route-side-bangladesh', en: 'Spain to Bangladesh', es: 'España a Bangladesh' },
+                { sel: '#route-side-thailand', en: 'Spain to Thailand', es: 'España a Tailandia' },
+                { sel: '#route-side-singapore', en: 'Spain to Singapore', es: 'España a Singapur' },
+                { sel: '#route-side-morocco', en: 'Spain to Morocco', es: 'España a Marruecos' },
+                { sel: '#route-side-algeria', en: 'Spain to Algeria', es: 'España a Argelia' },
+                { sel: '#route-side-tunisia', en: 'Spain to Tunisia', es: 'España a Túnez' },
+                { sel: '#route-side-egypt', en: 'Spain to Egypt', es: 'España a Egipto' },
+                { sel: '#route-side-kenya', en: 'Spain to Kenya', es: 'España a Kenia' },
+                { sel: '#route-side-nigeria', en: 'Spain to Nigeria', es: 'España a Nigeria' },
+                { sel: '#route-side-safrica', en: 'Spain to South Africa', es: 'España a Sudáfrica' },
+                { sel: '#route-side-usa', en: 'Spain to USA', es: 'España a EE. UU.' },
+                { sel: '#route-side-canada', en: 'Spain to Canada', es: 'España a Canadá' },
+                { sel: '#route-side-mexico', en: 'Spain to Mexico', es: 'España a México' },
+                { sel: '#route-side-brazil', en: 'Spain to Brazil', es: 'España a Brasil' },
+                { sel: '#route-side-argentina', en: 'Spain to Argentina', es: 'España a Argentina' },
+                { sel: '#route-side-colombia', en: 'Spain to Colombia', es: 'España a Colombia' },
+                { sel: '#route-side-australia', en: 'Spain to Australia', es: 'España a Australia' },
+
+                // ── Route Cards (15 cards) ───────────────────────────────────
+                // Card 1: Spain -> United Kingdom
+                { sel: '#rc-org-1', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-1', en: 'United Kingdom', es: 'Reino Unido' },
+                { sel: '#rc-desc-1', en: `Bed-to-bed ICU air ambulance and medical escort services from Spain to the United Kingdom, ensuring continuous critical care monitoring, NHS hospital transfers, and seamless flight coordination.`, es: `Servicios de ambulancia aérea de UCI y escolta médica de cama a cama desde España al Reino Unido, garantizando un monitoreo continuo de cuidados críticos, traslados a hospitales del NHS y una coordinación fluida del vuelo.` },
+                { sel: '#rc-btn-1', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 2: Spain -> Germany
+                { sel: '#rc-org-2', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-2', en: 'Germany', es: 'Alemania' },
+                { sel: '#rc-desc-2', en: `Emergency air medical repatriation from Spain to Germany with specialized ICU flight doctors, advanced ventilation systems, and direct bed-to-bed hospital admission.`, es: `Repatriación médica aérea de emergencia desde España a Alemania, con médicos de vuelo especializados en UCI, sistemas avanzados de ventilación y admisión hospitalaria directa de cama a cama.` },
+                { sel: '#rc-btn-2', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 3: Spain -> France
+                { sel: '#rc-org-3', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-3', en: 'France', es: 'Francia' },
+                { sel: '#rc-desc-3', en: `Rapid medical air transfer and commercial stretcher services from Spain to France, offering dedicated medical flight crews and end-to-end ground ambulance transport.`, es: `Traslado aéreo médico rápido y servicios de camilla en vuelos comerciales desde España a Francia, con equipos médicos de vuelo especializados y transporte en ambulancia terrestre de principio a fin.` },
+                { sel: '#rc-btn-3', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 4: Spain -> Netherlands
+                { sel: '#rc-org-4', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-4', en: 'Netherlands', es: 'Países Bajos' },
+                { sel: '#rc-desc-4', en: `Specialized medical repatriation from Spain to the Netherlands, providing continuous intensive care support and direct bedside transfers across Dutch medical facilities.`, es: `Repatriación médica especializada desde España a los Países Bajos, proporcionando apoyo continuo de cuidados intensivos y traslados directos junto a la cama del paciente entre centros médicos neerlandeses.` },
+                { sel: '#rc-btn-4', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 5: Spain -> Belgium
+                { sel: '#rc-org-5', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-5', en: 'Belgium', es: 'Bélgica' },
+                { sel: '#rc-desc-5', en: `ICU air ambulance and flight medical escort from Spain to Belgium, equipped for critical care transfers, pediatric care, and urgent hospital admissions.`, es: `Ambulancia aérea de UCI y escolta médica de vuelo desde España a Bélgica, equipada para traslados de cuidados críticos, atención pediátrica y admisiones hospitalarias urgentes.` },
+                { sel: '#rc-btn-5', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 6: Spain -> Ireland
+                { sel: '#rc-org-6', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-6', en: 'Ireland', es: 'Irlanda' },
+                { sel: '#rc-desc-6', en: `Comprehensive medical flight repatriation from Spain to Ireland, facilitating direct air transfer, medical clearance, and bed-to-bed patient handover.`, es: `Repatriación integral mediante vuelo médico desde España a Irlanda, facilitando el traslado aéreo directo, la autorización médica y la transferencia del paciente de cama a cama.` },
+                { sel: '#rc-btn-6', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 7: Spain -> Italy
+                { sel: '#rc-org-7', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-7', en: 'Italy', es: 'Italia' },
+                { sel: '#rc-desc-7', en: `24X7 ICU air ambulance services from Spain to Italy, ensuring real-time patient monitoring, specialized medical crews, and smooth hospital-to-hospital transit.`, es: `Servicios de ambulancia aérea de UCI las 24 horas, los 7 días de la semana, desde España a Italia, garantizando el monitoreo del paciente en tiempo real, equipos médicos especializados y un traslado fluido de hospital a hospital.` },
+                { sel: '#rc-btn-7', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 8: Spain -> Portugal
+                { sel: '#rc-org-8', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-8', en: 'Portugal', es: 'Portugal' },
+                { sel: '#rc-desc-8', en: `Fast-dispatch medical repatriation and air ambulance transport from Spain to Portugal, delivering full bedside-to-bedside care for critical and recovering patients.`, es: `Repatriación médica de despacho rápido y transporte en ambulancia aérea desde España a Portugal, proporcionando atención integral de cama a cama para pacientes en estado crítico y en recuperación.` },
+                { sel: '#rc-btn-8', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 9: Spain -> United States
+                { sel: '#rc-org-9', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-9', en: 'United States', es: 'Estados Unidos' },
+                { sel: '#rc-desc-9', en: `Transatlantic long-range air ambulance and commercial stretcher repatriation from Spain to the United States, complete with specialized flight physicians and critical care monitoring.`, es: `Ambulancia aérea transatlántica de largo alcance y repatriación en camilla de vuelo comercial desde España a Estados Unidos, con médicos de vuelo especializados y monitoreo de cuidados críticos.` },
+                { sel: '#rc-btn-9', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 10: Spain -> Canada
+                { sel: '#rc-org-10', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-10', en: 'Canada', es: 'Canadá' },
+                { sel: '#rc-desc-10', en: `Long-range medical evacuation services from Spain to Canada, featuring fully equipped ICU aircraft, experienced flight nurses, and complete medical logistics.`, es: `Servicios de evacuación médica de largo alcance desde España a Canadá, con aeronaves de UCI totalmente equipadas, enfermeros de vuelo experimentados y una gestión logística médica integral.` },
+                { sel: '#rc-btn-10', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 11: Spain -> Middle East
+                { sel: '#rc-org-11', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-11', en: 'Middle East', es: 'Oriente Medio' },
+                { sel: '#rc-desc-11', en: `International air medical repatriation from Spain to key medical hubs across the Middle East, with multi-lingual flight teams and round-the-clock dispatch.`, es: `Repatriación médica aérea internacional desde España a importantes centros médicos de todo Oriente Medio, con equipos de vuelo multilingües y servicio de coordinación disponible las 24 horas.` },
+                { sel: '#rc-btn-11', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 12: Spain -> Dubai, UAE
+                { sel: '#rc-org-12', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-12', en: 'Dubai, UAE', es: 'Dubái, EAU' },
+                { sel: '#rc-desc-12', en: `Direct ICU air ambulance and flight medical escort from Spain to Dubai, UAE, coordinating advanced hospital transfers and rapid bedside-to-bedside repatriation.`, es: `Ambulancia aérea de UCI y escolta médica de vuelo directa desde España a Dubái, EAU, coordinando traslados hospitalarios especializados y una rápida repatriación de cama a cama.` },
+                { sel: '#rc-btn-12', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 13: Spain -> India
+                { sel: '#rc-org-13', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-13', en: 'India', es: 'India' },
+                { sel: '#rc-desc-13', en: `Long-distance ICU air ambulance and commercial airline stretcher repatriation from Spain to India, ensuring continuous critical care and specialized medical teams.`, es: `Ambulancia aérea de UCI de larga distancia y repatriación en camilla de aerolínea comercial desde España a la India, garantizando cuidados críticos continuos y equipos médicos especializados.` },
+                { sel: '#rc-btn-13', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 14: Spain -> Manila, Philippines
+                { sel: '#rc-org-14', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-14', en: 'Manila, Philippines', es: 'Manila, Filipinas' },
+                { sel: '#rc-desc-14', en: `Intercontinental medical repatriation from Spain to Manila, Philippines, providing end-to-end bed-to-bed care, airline stretcher arrangements, and medical flight escorts.`, es: `Repatriación médica intercontinental desde España a Manila, Filipinas, proporcionando atención integral de cama a cama, coordinación de camilla en vuelos comerciales y escoltas médicas de vuelo.` },
+                { sel: '#rc-btn-14', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // Card 15: Spain -> Australia
+                { sel: '#rc-org-15', en: 'Spain', es: 'España' },
+                { sel: '#rc-dest-15', en: 'Australia', es: 'Australia' },
+                { sel: '#rc-desc-15', en: `Ultra-long-haul medical air transfer from Spain to Australia, utilizing state-of-the-art life support equipment, flight physicians, and seamless global flight logistics.`, es: `Traslado aéreo médico de ultra larga distancia desde España a Australia, utilizando equipos de soporte vital de última generación, médicos de vuelo y una gestión fluida de la logística de vuelos internacionales.` },
+                { sel: '#rc-btn-15', en: 'Get Quote on WhatsApp', es: 'Obtener Presupuesto en WhatsApp' },
+                // ── Additional Translated Elements ───────────────────────────
+                { sel: '#testimonials-title', en: '17,000+ Families Have Trusted Us — Here Is What They Say', es: 'Más de 17.000 familias han confiado en nosotros — Esto es lo que dicen' },
+                { sel: '#faq-subheading', en: 'Get clear answers about air ambulance costs, response times, and insurance coordination for Spain departures.', es: 'Obtenga respuestas claras sobre los costos de ambulancia aérea, los tiempos de respuesta y la coordinación de seguros para salidas desde España.' },
+                { sel: '#faq-cta-btn', en: 'Talk to an Expert', es: 'Hable con un experto' },
+
+
+            ];
+
+            // ─────────────────────────────────────────────────────────────────
+            // TOGGLE FUNCTION
+            // ─────────────────────────────────────────────────────────────────
+            window.toggleLanguage = function () {
+                currentLang = (currentLang === 'en') ? 'es' : 'en';
+
+                // Update html lang attribute
+                document.documentElement.lang = currentLang;
+
+                // Update button label — shows the NEXT language the user can switch TO
+                const btn = document.getElementById('lang-toggle-label');
+                if (btn) btn.textContent = (currentLang === 'en') ? 'ES' : 'EN';
+
+                // Swap all registered text nodes
+                translations.forEach(function (item) {
+                    const el = document.querySelector(item.sel);
+                    if (!el) return;
+                    el.textContent = item[currentLang];
+                });
+            };
+        })();
+    </script>
 
 </body>
 
