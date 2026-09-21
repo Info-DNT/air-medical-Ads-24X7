@@ -52,6 +52,13 @@
         return false;
       }
 
+      // Fetch visitor IP once, for inclusion in the call_click event below.
+      var callerIP = "unknown";
+      fetch('https://api.ipify.org?format=json')
+        .then(function (res) { return res.json(); })
+        .then(function (data) { if (data && data.ip) callerIP = data.ip; })
+        .catch(function () {});
+
       // GA4 call-button click tracking (pilot: Philippines + UAE pages)
       document.addEventListener('click', function (e) {
         var link = e.target.closest('a[href^="tel:"]');
@@ -59,7 +66,8 @@
           gtag('event', 'call_click', {
             phone_number: link.getAttribute('href').replace('tel:', ''),
             page_location: window.location.href,
-            page_title: document.title
+            page_title: document.title,
+            visitor_ip: callerIP
           });
         }
       });

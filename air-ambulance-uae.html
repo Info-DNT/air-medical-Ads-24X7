@@ -52,6 +52,13 @@
         return false;
       }
 
+      // Fetch visitor IP once, for inclusion in the call_click event below.
+      var callerIP = "unknown";
+      fetch('https://api.ipify.org?format=json')
+        .then(function (res) { return res.json(); })
+        .then(function (data) { if (data && data.ip) callerIP = data.ip; })
+        .catch(function () {});
+
       // GA4 call-button click tracking (pilot: Philippines + UAE pages)
       document.addEventListener('click', function (e) {
         var link = e.target.closest('a[href^="tel:"]');
@@ -59,7 +66,8 @@
           gtag('event', 'call_click', {
             phone_number: link.getAttribute('href').replace('tel:', ''),
             page_location: window.location.href,
-            page_title: document.title
+            page_title: document.title,
+            visitor_ip: callerIP
           });
         }
       });
@@ -309,7 +317,7 @@
                         </div>
                         <div class="relative z-10">
                             <h1 class="font-headline text-xl font-extrabold leading-tight mb-2">
-                                Air Ambulance in UAE 24X7 | Medical Evacuation &amp; Repatriation
+                                Air Ambulance in UAE | 24X7 Medical Evacuation &amp; Repatriation
                             </h1>
                             <p class="text-xs text-slate-300 mb-4 leading-relaxed">
     24X7 air ambulance, medical evacuation, and bed-to-bed medical repatriation services from the UAE to destinations worldwide. With rapid coordination, experienced medical crews, and fully equipped transport options, we provide safe and reliable patient transfers from Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain to destinations across Asia, Europe, the Middle East, Africa, North America, and beyond.
