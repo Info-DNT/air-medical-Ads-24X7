@@ -756,11 +756,17 @@
                                     <label
                                         class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">Phone
                                         Number</label>
-                                    <input type="tel" name="phone" required pattern="\+?[0-9]{8,15}"
-                                        title="Please enter your complete phone number including your country code (at least 8 digits total)"
-                                        oninput="this.value = this.value.replace(/[^0-9+]/g, '')"
-                                        class="w-full bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 text-primary font-body text-[11.5px] placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 focus:bg-white transition-all"
-                                        placeholder="+971 Enter your number">
+                                    <div class="w-full bg-gray-100 border border-gray-200 rounded-xl flex items-stretch overflow-hidden focus-within:ring-2 focus-within:ring-secondary/30 focus-within:border-secondary/40 focus-within:bg-white transition-all">
+                                        <input type="text" id="phone-code-badge" inputmode="tel" size="4"
+                                            title="Country calling code (edit if incorrect)"
+                                            class="flex items-center bg-transparent pl-4 pr-3 text-primary font-body text-[11.5px] font-bold border-r border-gray-300 focus:outline-none text-center"
+                                            value="+971">
+                                        <input type="tel" id="phone-national-input" inputmode="numeric" autocomplete="tel-national"
+                                            class="flex-1 min-w-0 bg-transparent px-4 py-3 text-primary font-body text-[11.5px] placeholder:text-gray-500 focus:outline-none"
+                                            placeholder="Phone Number">
+                                    </div>
+                                    <input type="hidden" name="phone" id="phone-input" pattern="\+?[0-9]{8,15}">
+                                    <p id="phone-error" class="hidden text-[10px] font-semibold text-red-600 mt-1.5"></p>
                                 </div>
                                 <div class="animate-fade-in-up delay-300">
                                     <label
@@ -6761,6 +6767,77 @@
             class="absolute inset-0 rounded-[9999px] bg-[#25D366]/30 animate-ping group-hover:animate-none -z-10"></span>
     </a>
 
+    <script>
+        (function () {
+            var form = document.getElementById('quote-form');
+            var badge = document.getElementById('phone-code-badge');
+            var national = document.getElementById('phone-national-input');
+            var hidden = document.getElementById('phone-input');
+            var errorEl = document.getElementById('phone-error');
+            if (!form || !badge || !national || !hidden) return;
+
+            function syncPhoneField() {
+                hidden.value = badge.value.trim() + national.value.trim();
+                if (typeof validatePhoneByCountry === 'function') {
+                    return validatePhoneByCountry(hidden);
+                }
+                var ok = /^\+?[0-9]{8,15}$/.test(hidden.value);
+                if (errorEl) {
+                    if (ok) {
+                        errorEl.classList.add('hidden');
+                    } else {
+                        errorEl.textContent = 'Please enter your complete phone number, including the country code (8-15 digits total).';
+                        errorEl.classList.remove('hidden');
+                    }
+                }
+                return ok;
+            }
+
+            badge.addEventListener('input', function () {
+                badge.value = badge.value.replace(/[^0-9+]/g, '');
+                if (badge.value && badge.value[0] !== '+') badge.value = '+' + badge.value;
+                badge.dataset.userEdited = 'true';
+                syncPhoneField();
+            });
+
+            national.addEventListener('input', function () {
+                national.value = national.value.replace(/[^0-9]/g, '');
+                syncPhoneField();
+            });
+            national.addEventListener('blur', syncPhoneField);
+
+            // Mirror the IP-detected country code (set on the hidden field by
+            // script.js) into the visible badge, unless the visitor already
+            // edited it themselves.
+            setTimeout(function () {
+                if (hidden.value && badge.dataset.userEdited !== 'true') {
+                    badge.value = hidden.value;
+                }
+                syncPhoneField();
+            }, 1200);
+
+            var submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function (e) {
+                    if (!national.value.trim()) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        if (errorEl) {
+                            errorEl.textContent = 'Please enter your phone number.';
+                            errorEl.classList.remove('hidden');
+                        }
+                        national.focus();
+                        return;
+                    }
+                    if (!syncPhoneField()) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        national.focus();
+                    }
+                });
+            }
+        })();
+    </script>
 </body>
 
 </html>
