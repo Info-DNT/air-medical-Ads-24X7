@@ -250,6 +250,23 @@
       ]
     }
     </script>
+    <!-- intl-tel-input: phone country-code dropdown -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/css/intlTelInput.css">
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/js/intlTelInput.min.js"></script>
+    <style>
+        .iti {
+            width: 100%;
+        }
+
+        /* Text-only country dropdown: dial code + arrow, no flag icon */
+        .iti__flag {
+            display: none !important;
+        }
+
+        .iti__selected-flag {
+            padding: 0 6px 0 12px;
+        }
+    </style>
 </head>
 
 <body class="bg-background text-on-surface font-body selection:bg-secondary selection:text-white pb-16 lg:pb-0">
@@ -587,11 +604,14 @@
                                     <label
                                         class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">Phone
                                         Number</label>
-                                    <input type="tel" name="phone" required pattern="\+?[0-9]{8,15}"
-                                        title="Please enter your complete phone number including your country code (at least 8 digits total)"
-                                        oninput="this.value = this.value.replace(/[^0-9+]/g, '')"
+                                    <input type="tel" id="phone" required
                                         class="w-full bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 text-primary font-body text-[11.5px] placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 focus:bg-white transition-all"
-                                        placeholder="+967 Enter your number">
+                                        placeholder="Phone Number">
+                                    <!-- Real field script.js and form submission read; kept separate so
+                                         script.js's own IP-detected prefill never touches the visible
+                                         intl-tel-input field above. -->
+                                    <input type="hidden" id="phone-hidden" name="phone">
+                                    <p id="phone-error" class="hidden text-[10px] font-semibold text-red-600 mt-1.5"></p>
                                 </div>
                                 <div class="animate-fade-in-up delay-300">
                                     <label
@@ -609,6 +629,9 @@
                                         class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">From
                                         (Location)</label>
                                     <input type="text" name="from_location" required
+                                        pattern="[A-Za-z\s'.-]+"
+                                        title="Please enter a location name using letters only"
+                                        oninput="this.value = this.value.replace(/[^A-Za-z\s'.-]/g, '')"
                                         class="w-full bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 text-primary font-body text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 focus:bg-white transition-all"
                                         placeholder="e.g. Sanaa, Aden">
                                 </div>
@@ -617,6 +640,9 @@
                                         class="block text-[10px] font-black uppercase tracking-widest text-primary/70 mb-2">To
                                         (Location)</label>
                                     <input type="text" name="to_location" required
+                                        pattern="[A-Za-z\s'.-]+"
+                                        title="Please enter a location name using letters only"
+                                        oninput="this.value = this.value.replace(/[^A-Za-z\s'.-]/g, '')"
                                         class="w-full bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 text-primary font-body text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary/30 focus:border-secondary/40 focus:bg-white transition-all"
                                         placeholder="e.g. Delhi, Istanbul">
                                 </div>
@@ -7243,6 +7269,232 @@
     <script src="supabase-config.js"></script>
 
     <script src="script.js"></script>
+
+    <script>
+        // Phone field: intl-tel-input country-code dropdown (text-only, no
+        // flags) + exact per-country digit-length validation.
+        (function () {
+            var input = document.getElementById('phone');
+            var hidden = document.getElementById('phone-hidden');
+            var errorEl = document.getElementById('phone-error');
+            if (!input || !hidden || typeof window.intlTelInput !== 'function') return;
+
+            var iti = window.intlTelInput(input, {
+                initialCountry: 'ye',
+                separateDialCode: true,
+                autoPlaceholder: 'off',
+                utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@23.8.0/build/js/utils.js'
+            });
+            input.placeholder = 'Phone Number';
+
+            var PHONE_LENGTH_BY_CALLING_CODE = {
+                '1': [10, 10], '7': [10, 10], '20': [10, 10],
+                '27': [9, 9], '30': [10, 10], '31': [9, 9],
+                '32': [8, 9], '33': [9, 9], '34': [9, 9],
+                '36': [8, 9], '39': [9, 11], '40': [9, 9],
+                '41': [9, 9], '43': [10, 11], '44': [10, 10],
+                '45': [8, 8], '46': [7, 9], '47': [8, 8],
+                '48': [9, 9], '49': [10, 11], '51': [9, 9],
+                '52': [10, 10], '53': [8, 8], '54': [10, 10],
+                '55': [10, 11], '56': [9, 9], '57': [10, 10],
+                '58': [10, 10], '60': [9, 10], '61': [9, 9],
+                '62': [9, 12], '63': [10, 10], '64': [8, 10],
+                '65': [8, 8], '66': [9, 9], '81': [10, 10],
+                '82': [9, 10], '84': [9, 10], '86': [11, 11],
+                '90': [10, 10], '91': [10, 10], '92': [10, 10],
+                '93': [9, 9], '94': [9, 9], '95': [8, 10],
+                '98': [10, 10], '211': [9, 9], '212': [9, 9],
+                '213': [9, 9], '216': [8, 8], '218': [9, 9],
+                '220': [7, 7], '221': [9, 9], '222': [8, 8],
+                '223': [8, 8], '224': [8, 9], '225': [8, 10],
+                '226': [8, 8], '227': [8, 8], '228': [8, 8],
+                '229': [8, 8], '230': [7, 7], '231': [7, 8],
+                '232': [8, 8], '233': [9, 9], '234': [7, 10],
+                '235': [8, 8], '236': [8, 8], '237': [9, 9],
+                '238': [7, 7], '239': [7, 7], '240': [9, 9],
+                '241': [7, 8], '242': [9, 9], '243': [9, 9],
+                '244': [9, 9], '245': [7, 7], '248': [7, 7],
+                '249': [9, 9], '250': [9, 9], '251': [9, 9],
+                '252': [8, 9], '253': [8, 8], '254': [9, 9],
+                '255': [9, 9], '256': [9, 9], '257': [8, 8],
+                '258': [8, 9], '260': [9, 9], '261': [9, 9],
+                '263': [9, 9], '264': [8, 9], '265': [8, 9],
+                '266': [8, 8], '267': [7, 8], '268': [7, 8],
+                '269': [7, 7], '351': [9, 9], '352': [6, 9],
+                '353': [9, 9], '354': [7, 9], '355': [8, 9],
+                '356': [8, 8], '357': [8, 8], '358': [9, 9],
+                '359': [8, 9], '370': [8, 8], '371': [8, 8],
+                '372': [7, 8], '373': [8, 8], '374': [8, 8],
+                '375': [9, 9], '376': [6, 6], '377': [8, 9],
+                '378': [6, 10], '380': [9, 9], '381': [8, 9],
+                '382': [8, 8], '383': [8, 8], '385': [8, 9],
+                '386': [8, 8], '387': [8, 8], '389': [8, 8],
+                '420': [9, 9], '421': [9, 9], '423': [7, 9],
+                '500': [5, 5], '501': [7, 7], '502': [8, 8],
+                '503': [8, 8], '504': [8, 8], '505': [8, 8],
+                '506': [8, 8], '507': [7, 8], '509': [8, 8],
+                '590': [9, 9], '591': [8, 8], '592': [7, 7],
+                '593': [9, 9], '594': [9, 9], '595': [9, 9],
+                '597': [7, 7], '598': [8, 9], '599': [7, 8],
+                '670': [7, 8], '672': [6, 6], '673': [7, 7],
+                '674': [7, 7], '675': [7, 8], '676': [5, 7],
+                '677': [5, 7], '678': [5, 7], '679': [7, 7],
+                '680': [7, 7], '685': [7, 7], '686': [8, 8],
+                '687': [6, 6], '689': [6, 6], '850': [8, 10],
+                '852': [8, 8], '853': [8, 8], '855': [8, 9],
+                '856': [8, 10], '880': [10, 10], '886': [9, 9],
+                '960': [7, 7], '961': [7, 8], '962': [9, 9],
+                '963': [9, 9], '964': [10, 10], '965': [7, 8],
+                '966': [9, 9], '967': [9, 9], '968': [7, 8],
+                '970': [9, 9], '971': [9, 9], '972': [9, 9],
+                '973': [8, 8], '974': [8, 8], '975': [8, 8],
+                '976': [8, 8], '977': [10, 10], '992': [9, 9],
+                '993': [8, 8], '994': [9, 9], '995': [9, 9],
+                '996': [9, 9], '998': [9, 9]
+            };
+
+            // Only digits (and formatting spaces the library itself inserts)
+            // may be typed into the national-number part of the field, and
+            // re-validate live as the visitor types, not just on blur.
+            input.addEventListener('input', function () {
+                var cleaned = input.value.replace(/[^0-9\s()-]/g, '');
+                if (cleaned !== input.value) {
+                    input.value = cleaned;
+                    return; // the resulting re-dispatched input event revalidates
+                }
+                validatePhone();
+            });
+
+            function validatePhone() {
+                var national = input.value.replace(/[^0-9]/g, '');
+                var dialCode = iti.getSelectedCountryData().dialCode;
+
+                if (national === '') {
+                    if (errorEl) errorEl.classList.add('hidden');
+                    return false;
+                }
+
+                var range = PHONE_LENGTH_BY_CALLING_CODE[dialCode];
+                // Known country: check the exact digit range ourselves, so we
+                // can show a precise "X-digit number" message. Unlisted
+                // country: fall back to intl-tel-input's own libphonenumber-
+                // based check (utils.js) so it's still validated, just with a
+                // more generic message.
+                var valid = range
+                    ? (national.length >= range[0] && national.length <= range[1])
+                    : (typeof iti.isValidNumber === 'function' ? iti.isValidNumber() : (national.length >= 6 && national.length <= 14));
+
+                if (errorEl) {
+                    if (valid) {
+                        errorEl.classList.add('hidden');
+                    } else if (range) {
+                        var expected = (range[0] === range[1]) ? (range[0] + '-digit') : (range[0] + '-' + range[1] + ' digit');
+                        errorEl.textContent = 'Enter a ' + expected + ' number after +' + dialCode + '.';
+                        errorEl.classList.remove('hidden');
+                    } else {
+                        errorEl.textContent = 'Please enter a valid phone number for the selected country.';
+                        errorEl.classList.remove('hidden');
+                    }
+                }
+                return valid;
+            }
+
+            function validatePhoneRequired() {
+                if (input.value.replace(/[^0-9]/g, '') === '') {
+                    if (errorEl) {
+                        errorEl.textContent = 'Please enter your phone number.';
+                        errorEl.classList.remove('hidden');
+                    }
+                    return false;
+                }
+                return validatePhone();
+            }
+
+            input.addEventListener('blur', validatePhoneRequired);
+
+            // script.js (shared) auto-fills the HIDDEN field's raw value with
+            // the IP-detected calling code once its network lookup resolves
+            // (timing varies). Poll for that bare "+<code>" value and hand it
+            // to intl-tel-input as soon as it appears.
+            (function () {
+                var attempts = 0;
+                var maxAttempts = 20; // ~6 seconds at 300ms
+                var syncTimer = setInterval(function () {
+                    attempts++;
+                    if (/^\+\d+$/.test(hidden.value)) {
+                        iti.setNumber(hidden.value);
+                        clearInterval(syncTimer);
+                    } else if (attempts >= maxAttempts) {
+                        clearInterval(syncTimer);
+                    }
+                }, 300);
+            })();
+
+            var form = document.getElementById('quote-form');
+            if (form) {
+                var submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.addEventListener('click', function (e) {
+                        if (!validatePhoneRequired()) {
+                            e.preventDefault();
+                            e.stopImmediatePropagation();
+                            input.focus();
+                            return;
+                        }
+                        // The real submitted value is the full international
+                        // number, held in the hidden field script.js/Supabase read.
+                        hidden.value = iti.getNumber();
+                    });
+                }
+            }
+        })();
+
+        // Email field: optional, but must look like a real email if filled in.
+        (function () {
+            var form = document.getElementById('quote-form');
+            var emailInput = form ? form.querySelector('input[name="email"]') : null;
+            if (!emailInput) return;
+
+            var errorEl = document.createElement('p');
+            errorEl.id = 'email-error';
+            errorEl.className = 'hidden text-[10px] font-semibold text-red-600 mt-1.5';
+            emailInput.insertAdjacentElement('afterend', errorEl);
+
+            var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            function validateEmail() {
+                var value = emailInput.value.trim();
+                if (value === '') {
+                    errorEl.classList.add('hidden');
+                    return true; // optional
+                }
+                var valid = EMAIL_RE.test(value);
+                if (valid) {
+                    errorEl.classList.add('hidden');
+                } else {
+                    errorEl.textContent = 'Please enter a valid email address, or leave this field blank.';
+                    errorEl.classList.remove('hidden');
+                }
+                return valid;
+            }
+
+            emailInput.addEventListener('blur', validateEmail);
+            emailInput.addEventListener('input', function () {
+                errorEl.classList.add('hidden');
+            });
+
+            var submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function (e) {
+                    if (!validateEmail()) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        emailInput.focus();
+                    }
+                });
+            }
+        })();
+    </script>
 
     <script>
         // Toggle regional collapsible sections
