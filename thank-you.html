@@ -31,6 +31,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script>
       gtag('event', 'conversion', {'send_to': 'AW-16644189187/QsdpCN7l9IQdEIPYyIA-'});
     </script>
+    <!-- OpenAI Ads lead event (sent via Supabase Edge Function; the real
+         OpenAI key lives server-side only, never in this page) -->
+    <script>
+      (function () {
+        var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR0aWlyZGltdGJta3ZyeXZxdGVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYxNDQ0MzksImV4cCI6MjA5MTcyMDQzOX0.MwOkE8tsM2itUhTxNJDDHPPPAxImjRS9Ch1ACWzdTmI";
+        fetch("https://dtiirdimtbmkvryvqten.supabase.co/functions/v1/openai-lead-event", {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+            "apikey": SUPABASE_ANON_KEY,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ source_url: window.location.href })
+        }).catch(function (err) {
+          console.warn("OpenAI Ads lead event failed:", err);
+        });
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thank You | Air Medical India</title>
