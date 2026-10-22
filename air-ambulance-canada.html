@@ -192,6 +192,83 @@
       ]
     }
     </script>
+    <style>
+        /* Emergency call banner: only the red background should blink, the
+           white text stays fully solid. The background lives on a ::before
+           layer so its opacity animates independently of the text. */
+        .call-banner-blink-bg {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .call-banner-blink-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            border-radius: inherit;
+            background-color: #b7102a;
+            opacity: 0.95;
+            animation: call-banner-blink 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .call-banner-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes call-banner-blink {
+            50% {
+                opacity: 0.35;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #home {
+                min-height: 0;
+            }
+
+            #home .hero-bg-mobile-top {
+                bottom: auto;
+                height: 300px;
+                background-position: top center;
+                transform: scale(1);
+            }
+
+            #home .call-banner-mobile {
+                width: fit-content;
+                max-width: 92%;
+                margin: 0 auto;
+                padding: 0.6rem 1.1rem;
+                border-radius: 0.75rem;
+            }
+
+            #home .call-banner-mobile h2,
+            #home .call-banner-mobile p {
+                display: block;
+                font-size: 1rem;
+                line-height: 1.4;
+                margin: 0;
+            }
+
+            #home .call-banner-mobile p {
+                margin-top: 0.25rem;
+            }
+
+            #home .call-banner-mobile .material-symbols-outlined {
+                font-size: 1rem;
+                vertical-align: -2px;
+            }
+
+            #home .call-banner-mobile br {
+                display: none;
+            }
+
+            #home .quote-form-mobile {
+                margin-top: 7rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-background text-on-surface font-body selection:bg-secondary selection:text-white pb-16 lg:pb-0">
@@ -221,286 +298,49 @@
         </div>
     </nav>
 
+    <!-- Mobile Ticker Carousel (End-to-End) -->
+    <div class="lg:hidden w-full overflow-hidden bg-[#b7102a] text-white py-2.5 relative mt-16">
+        <div class="flex whitespace-nowrap animate-marquee text-[12px] font-black uppercase tracking-wide">
+            <span class="px-4 flex items-center gap-2">✓ ISO Certified | ✓ 17,000+ Patients Assisted | ✓ 193+ Countries Served | ✓ 24X7 Emergency Response</span>
+            <span class="px-4 flex items-center gap-2">✓ ISO Certified | ✓ 17,000+ Patients Assisted | ✓ 193+ Countries Served | ✓ 24X7 Emergency Response</span>
+        </div>
+    </div>
+
     <!-- Hero -->
     <header
         class="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-8 overflow-hidden bg-primary-container"
         id="home">
 
         <!-- Background Image with Subtle Blur -->
-        <div class="absolute inset-0 bg-[url('assets/air_ambulance_aircraft_hero_image.png')] bg-cover bg-center parallax-bg scale-110 hero-bg-blur"
+        <div class="absolute inset-0 bg-cover bg-center parallax-bg hero-bg-mobile-top"
+            style="background-image: url('assets/Air Ambulance in Canada.png');"
             data-alt="dramatic close-up of a long-range medical transport aircraft on the tarmac, ready for emergency air medical dispatch.">
         </div>
 
-        <!-- Dark gradient overlay -->
-        <div class="absolute inset-0 bg-primary/75"></div>
-        <!-- Mobile Ticker Carousel (End-to-End) -->
-        <div class="lg:hidden w-full overflow-hidden bg-[#b7102a] text-white py-2.5 z-20 relative mb-6">
-            <div class="flex whitespace-nowrap animate-marquee text-[12px] font-black uppercase tracking-wide">
-                <span class="px-4 flex items-center gap-2">✓ ISO Certified | ✓ 17,000+ Patients Assisted | ✓ 193+ Countries Served | ✓ 24X7 Emergency Response</span>
-                <span class="px-4 flex items-center gap-2">✓ ISO Certified | ✓ 17,000+ Patients Assisted | ✓ 193+ Countries Served | ✓ 24X7 Emergency Response</span>
-            </div>
-        </div>
+        <!-- Dark gradient overlay removed for clarity -->
+        <div class="absolute inset-0"></div>
 
-        <!-- Centered 2-Panel Form Card -->
-        <div class="container mx-auto px-4 md:px-8 relative z-10 w-full">
-            <div
-                class="max-w-4xl mx-auto bg-surface-container-lowest rounded-2xl shadow-[0_40px_80px_rgba(0,53,95,0.40)] overflow-hidden border border-white/10">
-                <div class="grid grid-cols-1 lg:grid-cols-2">
+        <!-- Side-by-Side Floating Cards -->
+        <div class="container mx-auto px-4 md:px-8 relative z-10 w-full max-w-7xl">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-16 pt-2 md:pt-10">
 
-                    <!-- Left Panel: Navy / Info -->
-                    <div
-                        class="bg-primary p-8 md:p-10 text-white hidden lg:flex flex-col justify-start relative overflow-hidden group">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                        </div>
-                        <div class="relative z-10">
-                            <h1 class="font-headline text-xl font-extrabold leading-tight mb-3">
-                                Air Ambulance in Canada | 24X7 Medical Evacuation & Repatriation
-                            </h1>
-                            <p class="text-xs text-slate-300 mb-4 leading-relaxed">
-                                Global bed-to-bed medical repatriation from Toronto, Vancouver, Calgary, Edmonton, Montréal, Ottawa, and Winnipeg. Rapid dispatch with a fully equipped medical crew.
-                            </p>
-                            <!-- Destinations Grid by Region — 3 columns, no scroll -->
-                            <div class="space-y-2">
-
-                                <!-- Asia & Subcontinent -->
-                                <div>
-                                    <a href="#region-asia" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Asia &amp; Subcontinent</a>
-                                    <ul
-                                        class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            India</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Pakistan</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Indonesia</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Japan</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Vietnam</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            China</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Bangladesh</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Nepal</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Thailand</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            South Korea</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Myanmar</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Cambodia</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Sri Lanka</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Philippines</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Malaysia</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Singapore</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Taiwan</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-asia" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Maldives</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Middle East & Central Asia -->
-                                <div>
-                                    <a href="#region-middle-east" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Middle East &amp; Central Asia</a>
-                                    <ul
-                                        class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            UAE</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Saudi Arabia</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Oman</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Qatar</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Kuwait</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Bahrain</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Egypt</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Lebanon</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Jordan</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Iraq</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Uzbekistan</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Kazakhstan</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Sudan</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Kyrgyzstan</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Tajikistan</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Azerbaijan</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Armenia</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Georgia</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-middle-east" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Iran</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- USA, UK & Europe -->
-                                <div>
-                                    <a href="#region-europe-usa" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">USA, UK &amp; Europe</a>
-                                    <ul
-                                        class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            USA</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            UK</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Germany</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Norway</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Switzerland</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            France</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Netherlands</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Ireland</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Denmark</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Italy</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Spain</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Russia</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Ukraine</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-europe-usa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Portugal</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Oceania -->
-                                <div>
-                                    <a href="#region-oceania" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Oceania</a>
-                                    <ul
-                                        class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-oceania" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Australia</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-oceania" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            New Zealand</a></li>
-                                    </ul>
-                                </div>
-
-                                <!-- Africa -->
-                                <div>
-                                    <a href="#region-africa" class="region-link text-[8px] font-black uppercase tracking-[0.18em] text-white underline mb-1 hover:text-secondary block">Africa</a>
-                                    <ul
-                                        class="grid grid-cols-3 gap-x-2 gap-y-0.5 text-[9px] text-slate-200 font-semibold">
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-africa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Ethiopia</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-africa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Kenya</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-africa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Nigeria</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-africa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Ghana</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-africa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Tanzania</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-africa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Uganda</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-africa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Rwanda</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-africa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            South Africa</a></li>
-                                        <li class="flex items-center gap-1"><span
-                                                class="w-1 h-1 rounded-full bg-secondary flex-shrink-0"></span><a href="#region-africa" class="hover:text-secondary hover:underline transition-all">Canada to
-                                            Cameroon</a></li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- Decorative icon -->
-                        <div
-                            class="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-20 transition-opacity duration-500 group-hover:scale-110 transform">
-                            <span class="material-symbols-outlined text-[200px]">support_agent</span>
-                        </div>
-                    </div>
-
-                    <!-- Right Panel: White / Quote Form -->
-                    <div class="p-5 md:p-10 bg-white">
-                        <div class="mb-5 text-center">
+                <!-- Left Panel: Emergency Call -->
+                <a href="tel:+18337257598"
+                    class="call-banner-mobile call-banner-blink-bg backdrop-blur-sm p-6 md:p-16 rounded-3xl shadow-2xl border border-white/20 w-full lg:w-[55%] text-center lg:text-left transform transition-transform hover:scale-[1.02] block">
+                    <span class="call-banner-text">
+                        <h2 class="font-headline text-2xl md:text-4xl font-extrabold text-white leading-tight mb-4 whitespace-nowrap">
+                            Emergency Helpline Number
+                        </h2>
+                        <p class="font-headline text-3xl md:text-5xl font-extrabold text-white leading-tight flex items-center justify-center lg:justify-start gap-3">
+                            <span class="material-symbols-outlined text-3xl md:text-5xl">call</span>
+                            +1 833-725-7598
+                        </p>
+                    </span>
+                </a>
+                <!-- Right Panel: White / Quote Form -->
+                <div
+                    class="quote-form-mobile p-6 md:p-10 bg-white rounded-3xl shadow-2xl w-full lg:w-[45%] lg:max-w-md">
+                    <div class="mb-5 text-center">
                             <h3 class="font-headline text-lg sm:text-xl font-extrabold text-primary mb-1">
                                 Request an Air Ambulance Quote
                             </h3>
@@ -591,9 +431,8 @@
                                 </button>
                             </div>
                         </form>
-                    </div>
-
                 </div>
+
             </div>
         </div>
     </header>
@@ -638,6 +477,20 @@
                 </div>
 
             </div>
+        </div>
+    </section>
+
+    <!-- Canada Medical Repatriation Intro Section -->
+    <section class="py-12 bg-white border-b border-outline-variant/10">
+        <div class="container mx-auto px-6 md:px-8 max-w-4xl text-center scroll-reveal">
+            <h2 class="font-headline text-2xl md:text-3xl font-extrabold text-primary mb-4 tracking-tight">
+                Air Ambulance in Canada | 24X7 Medical Evacuation &amp; Repatriation
+            </h2>
+            <p class="text-on-surface-variant font-body text-sm md:text-base leading-relaxed">
+                Global bed-to-bed medical repatriation from <strong>Toronto, Vancouver, Calgary, Edmonton,
+                    Montr&eacute;al, Ottawa, and Winnipeg</strong>. Rapid dispatch with a fully equipped medical
+                crew.
+            </p>
         </div>
     </section>
 
@@ -784,9 +637,9 @@
                 <div class="scroll-reveal-left order-1 lg:order-2">
                     <span class="text-xs font-black uppercase tracking-widest text-secondary mb-2 block">24X7 Canada
                         Medical Flights</span>
-                    <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tighter">
+                    <h1 class="font-headline text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tighter">
                         Air Ambulance Canada: Emergency Medical Flights for Critical Care
-                    </h2>
+                    </h1>
                     <p class="text-on-surface-variant font-body text-sm leading-relaxed mb-4">
                         When a patient needs medical transportation over a long distance, arranging the right level
                         of care during the journey is essential. Air Medical 24X7 helps families, hospitals, and
