@@ -33,6 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'Main';
     };
 
+    // Hashes a normalized string with SHA-256 and returns lowercase hex,
+    // for matching leads to ad clicks without sending raw PII.
+    const sha256Hex = async (value) => {
+        const encoded = new TextEncoder().encode(value);
+        const digest = await crypto.subtle.digest('SHA-256', encoded);
+        return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
+    };
+
     // --- 1. CORE ANIMATION ENGINE (Intersection Observer) ---
     const observerOptions = {
         root: null,
@@ -230,6 +238,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (error) throw error;
+
+                // Hash the lead's email/phone for OpenAI Ads match data, and hand
+                // them to the thank-you page via sessionStorage (never sent raw).
+                try {
+                    const hashedUser = {};
+                    const emailVal = (payload.email || '').trim().toLowerCase();
+                    if (emailVal) hashedUser.emails_sha256 = [await sha256Hex(emailVal)];
+                    const phoneVal = (payload.phone || '').replace(/[^0-9]/g, '').replace(/^0+/, '');
+                    if (phoneVal.length >= 8 && phoneVal.length <= 15) hashedUser.phone_numbers_sha256 = [await sha256Hex(phoneVal)];
+                    let visitorId = localStorage.getItem('am_visitor_id');
+                    if (!visitorId) {
+                        visitorId = crypto.randomUUID();
+                        localStorage.setItem('am_visitor_id', visitorId);
+                    }
+                    hashedUser.external_ids_sha256 = [await sha256Hex(visitorId)];
+                    if (Object.keys(hashedUser).length) {
+                        sessionStorage.setItem('am_lead_user', JSON.stringify(hashedUser));
+                    }
+                } catch (hashError) {
+                    console.warn('Lead hashing failed (non-blocking):', hashError);
+                }
 
                 // Success redirect
                 const redirectPath = window.location.pathname.includes('/zone/') ? '../thank-you' : 'thank-you';
