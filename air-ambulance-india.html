@@ -3,44 +3,20 @@
 <html lang="en">
 
 <head>
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "y8ut5a17d8");
-    </script>
-    <!-- End Microsoft Clarity -->
-    <!-- Google tag (gtag.js) -->
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-KG4BQ6SM');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16644189187"></script>
+    <!-- dataLayer + gtag stub stay synchronous so onclick handlers (tel:
+         links) and config/event calls below can queue immediately; the
+         actual GTM/gtag.js/Clarity/OpenAI network scripts are deferred
+         further down until first interaction. -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'AW-16644189187');
-    </script>
 
-    <!-- Event snippet for Submit lead form conversion page -->
-    <script>
+        // Event snippet for Submit lead form conversion page
         gtag('event', 'conversion', { 'send_to': 'AW-16644189187/2h1uCN7Hy-gaEIPYyIA-' });
-    </script>
 
-    <!-- Google Ads Phone Call Conversion Tracking -->
-    <script>
+        // Google Ads Phone Call Conversion Tracking
         gtag('event', 'conversion', { 'send_to': 'AW-16644189187/0lpMCLfy1-gaEIPYyIA-' });
 
         function gtag_report_phone_conversion(url) {
@@ -51,7 +27,8 @@
             };
             gtag('event', 'conversion', {
                 'send_to': 'AW-16644189187/0lpMCLfy1-gaEIPYyIA-',
-                'event_callback': callback
+                'event_callback': callback,
+                'event_timeout': 1500
             });
             return false;
         }
@@ -76,9 +53,55 @@
             }
         });
     </script>
-    <!-- OpenAI Ads Pixel -->
-    <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"49rLrUkSxD88P1nYEShTpv",debug:true});</script>
-    <!-- End OpenAI Ads Pixel -->
+
+    <!-- Defer GTM, gtag.js, Microsoft Clarity and the OpenAI pixel until
+         the visitor's first scroll/tap/keypress, or after 3.5s, whichever
+         comes first — instead of blocking the initial page load. -->
+    <script>
+        (function () {
+            var fired = false;
+
+            function loadTracking() {
+                if (fired) return;
+                fired = true;
+
+                // Google Tag Manager
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({
+                        'gtm.start': new Date().getTime(), event: 'gtm.js'
+                    }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-KG4BQ6SM');
+
+                // Google tag (gtag.js) - loaded once, drives all AW- IDs via dataLayer.
+                var gtagScript = document.createElement('script');
+                gtagScript.async = true;
+                gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16644189187';
+                document.head.appendChild(gtagScript);
+
+                // Microsoft Clarity
+                (function (c, l, a, r, i, t, y) {
+                    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+                    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+                })(window, document, "clarity", "script", "y8ut5a17d8");
+
+                // OpenAI Ads Pixel
+                !function (w, d, s, u) {
+                    if (w.oaiq) return; var q = function () { q.q.push(arguments) }; q.q = []; w.oaiq = q;
+                    var j = d.createElement(s); j.async = 1; j.src = u;
+                    var f = d.getElementsByTagName(s)[0]; f.parentNode.insertBefore(j, f)
+                }(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+                oaiq("init", { pixelId: "49rLrUkSxD88P1nYEShTpv", debug: true });
+            }
+
+            ['scroll', 'touchstart', 'keydown', 'pointerdown'].forEach(function (evt) {
+                window.addEventListener(evt, loadTracking, { once: true, passive: true });
+            });
+            setTimeout(loadTracking, 3500);
+        })();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Air Ambulance India | Medical Flight | Air Medical 24x7</title>
@@ -87,13 +110,16 @@
     <meta name="keywords"
         content="Air Ambulance Services in India, Air Ambulance India, Domestic Air Ambulance India, ICU Flight India, Medical Evacuation India, Air Ambulance Delhi, Air Ambulance Mumbai, Air Ambulance Bangalore" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&icon_names=apartment,arrow_forward,bed,call,chevron_left,chevron_right,connecting_airports,expand_more,handshake,keyboard_arrow_down,medical_services,monitor_heart,open_in_new,public,star,support_agent,trending_flat&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" as="image" href="assets/Delhi_airport.webp" fetchpriority="high" />
     <!-- Page-specific: on mobile, shrink the hero to a short top photo strip
          (instead of a full-screen background behind the whole stacked layout)
          and shrink the call banner to a compact one-line strip, so the hero
@@ -360,8 +386,9 @@
         <div class="container mx-auto px-4 md:px-8 flex justify-between items-center h-16 md:h-20">
             <a href="https://airmedical24x7.com/"
                 class="flex items-center animate-fade-in-left cursor-pointer hover:opacity-80 transition-opacity">
-                <img src="assets/air-medical-logo.png"
+                <img src="assets/air-medical-logo.webp"
                     alt="Air Medical India &ndash; Best Air Ambulance Service in India"
+                    width="300" height="150" fetchpriority="high"
                     class="h-9 md:h-14 w-auto object-contain" />
             </a>
 
@@ -385,7 +412,7 @@
         id="home">
 
         <!-- Background Image with Subtle Blur -->
-        <div class="absolute inset-0 bg-[url('assets/Delhi_airport.jfif')] bg-cover bg-center parallax-bg scale-110 hero-bg-mobile-top"
+        <div class="absolute inset-0 bg-[url('assets/Delhi_airport.webp')] bg-cover bg-center parallax-bg scale-110 hero-bg-mobile-top"
             data-alt="Air Ambulance at Indira Gandhi International Airport New Delhi">
         </div>
 
@@ -536,7 +563,8 @@
                     data-delay="100">
                     <div
                         class="w-[74px] h-[74px] rounded-lg bg-white shadow-sm flex items-center justify-center border border-primary/5 mb-4">
-                        <img src="assets/logo/ISO logo.jpg" alt="ISO 9001:2015 Certified"
+                        <img src="assets/logo/ISO logo.webp" alt="ISO 9001:2015 Certified"
+                            width="150" height="150" loading="lazy"
                             class="w-full h-full object-contain rounded-lg" />
                     </div>
                     <h3
@@ -553,7 +581,8 @@
                     data-delay="200">
                     <div
                         class="w-[74px] h-[74px] rounded-lg bg-white shadow-sm flex items-center justify-center border border-primary/5 mb-4">
-                        <img src="assets/logo/FAA Logo.png" alt="FAA-Approved Medical Equipment"
+                        <img src="assets/logo/FAA Logo.webp" alt="FAA-Approved Medical Equipment"
+                            width="150" height="150" loading="lazy"
                             class="w-full h-full object-contain rounded-lg" />
                     </div>
                     <h3
@@ -767,7 +796,8 @@
                     <div
                         class="aspect-[16/10] bg-primary rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 group max-w-xl mx-auto lg:mx-0">
                         <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            src="assets/Delhi_airport.jfif" alt="Air Ambulance Services in India" />
+                            src="assets/Delhi_airport.webp" alt="Air Ambulance Services in India"
+                            width="1200" height="634" loading="lazy" />
                     </div>
                 </div>
             </div>
@@ -6667,7 +6697,7 @@
                     <!-- Air Ambulance -->
                     <div
                         class="min-w-[85vw] md:min-w-[400px] snap-center group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer shadow-xl">
-                        <img src="assets/ground_to_air_transfer.jpg"
+                        <img src="assets/ground_to_air_transfer.webp" width="480" height="480" loading="lazy"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             alt="Air Ambulance">
                         <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent">
@@ -6687,7 +6717,7 @@
                     <!-- Airline Stretcher Services -->
                     <div
                         class="min-w-[85vw] md:min-w-[400px] snap-center group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer shadow-xl">
-                        <img src="assets/commercial_airline_stretcher_service.jpg"
+                        <img src="assets/commercial_airline_stretcher_service.webp" width="480" height="480" loading="lazy"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             alt="Airline Stretcher Services">
                         <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent">
@@ -6707,7 +6737,7 @@
                     <!-- Flight Medical Escort Services -->
                     <div
                         class="min-w-[85vw] md:min-w-[400px] snap-center group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer shadow-xl">
-                        <img src="assets/flight medical escort.jfif"
+                        <img src="assets/flight medical escort.webp" width="480" height="480" loading="lazy"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             alt="Flight Medical Escort Services">
                         <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent">
@@ -6727,7 +6757,7 @@
                     <!-- ECMO Transfer Services -->
                     <div
                         class="min-w-[85vw] md:min-w-[400px] snap-center group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer shadow-xl">
-                        <img src="assets/medical_aircraft_interior_icu.jpg"
+                        <img src="assets/medical_aircraft_interior_icu.webp" width="480" height="480" loading="lazy"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             alt="ECMO Transfer Services">
                         <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent">
@@ -6747,7 +6777,7 @@
                     <!-- Organ Transplant Assistance -->
                     <div
                         class="min-w-[85vw] md:min-w-[400px] snap-center group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer shadow-xl">
-                        <img src="assets/organ_transfer.jfif"
+                        <img src="assets/organ_transfer.webp" width="480" height="480" loading="lazy"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             alt="Organ Transplant Assistance">
                         <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent">
@@ -6767,7 +6797,7 @@
                     <!-- Medical Tourism -->
                     <div
                         class="min-w-[85vw] md:min-w-[400px] snap-center group relative h-[500px] rounded-2xl overflow-hidden cursor-pointer shadow-xl">
-                        <img src="assets/medical tourism.jpeg"
+                        <img src="assets/medical tourism.webp" width="480" height="480" loading="lazy"
                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             alt="Medical Tourism">
                         <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent">
@@ -6801,7 +6831,8 @@
                     <div
                         class="aspect-[16/10] bg-primary rounded-xl overflow-hidden shadow-xl hover:shadow-2xl rotate-1 hover:rotate-0 transition-all duration-700 group max-w-xl mx-auto lg:mx-0">
                         <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            src="assets/patient_transfer_cabin.jpg" alt="Air Medical 24X7 India clinical team" />
+                            src="assets/patient_transfer_cabin.webp" alt="Air Medical 24X7 India clinical team"
+                            width="1024" height="576" loading="lazy" />
                     </div>
                 </div>
 
@@ -7469,8 +7500,9 @@
                 <div class="flex justify-between items-center mb-4">
                     <a href="https://airmedical24x7.com/"
                         class="flex items-center gap-3 group cursor-pointer hover:opacity-80 transition-opacity">
-                        <img src="assets/air-medical-logo.png"
+                        <img src="assets/air-medical-logo.webp"
                             alt="Air Medical India &ndash; Air Ambulance Service in India"
+                            width="300" height="150" loading="lazy"
                             class="h-12 w-auto object-contain brightness-0 invert" />
                     </a>
                     <a onclick="return gtag_report_phone_conversion(this.href);" href="tel:0008000504740"
@@ -7632,7 +7664,7 @@
             <div class="flex items-center justify-center w-full md:w-1/3 order-1 md:order-2">
                 <!-- Payment Methods -->
                 <div class="relative group px-4 md:px-0 flex justify-center w-full">
-                    <img src="assets/payment_methods_banner.png" alt="Accepted Payment Methods"
+                    <img src="assets/payment_methods_banner.webp" alt="Accepted Payment Methods" width="560" height="79" loading="lazy"
                         class="w-full max-w-[200px] md:max-w-[260px] lg:max-w-[280px] h-auto object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.25)] transition-all duration-500" />
                 </div>
                 <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse hidden md:block"></div>
@@ -7653,11 +7685,79 @@
     </footer>
 
 
-    <!-- Supabase SDK & Configuration -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase-config.js"></script>
-
     <script src="script.js"></script>
+
+    <!-- Lazy-load Turnstile + Supabase only once the visitor actually
+         touches the quote form, instead of on every page load. A capture-
+         phase submit guard holds the real submit (handled by script.js)
+         until both are actually ready, so a fast submit can't race past
+         them and hit script.js's "Supabase/CAPTCHA undefined" alerts. -->
+    <script>
+        (function () {
+            var form = document.getElementById('quote-form');
+            if (!form) return;
+            var depsPromise = null;
+            var depsReady = false;
+
+            function loadScript(src) {
+                return new Promise(function (resolve, reject) {
+                    var s = document.createElement('script');
+                    s.src = src;
+                    s.onload = resolve;
+                    s.onerror = reject;
+                    document.body.appendChild(s);
+                });
+            }
+
+            function loadFormDependencies() {
+                if (depsPromise) return depsPromise;
+
+                // Turnstile auto-scans the DOM for .cf-turnstile on load and
+                // renders the widget for this form.
+                var turnstileLoaded = loadScript('https://challenges.cloudflare.com/turnstile/v0/api.js');
+
+                // Supabase client, pinned to an exact version; config.js
+                // depends on the `supabase` global, so load it after.
+                var supabaseLoaded = loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0')
+                    .then(function () { return loadScript('supabase-config.js'); });
+
+                depsPromise = Promise.all([turnstileLoaded, supabaseLoaded])
+                    .then(function () { depsReady = true; })
+                    .catch(function () { depsReady = true; }); // don't block submit forever if a CDN fails
+                return depsPromise;
+            }
+
+            form.addEventListener('focusin', loadFormDependencies, { once: true });
+            form.addEventListener('touchstart', loadFormDependencies, { once: true, passive: true });
+
+            // Capture phase runs before script.js's own (bubble-phase) submit
+            // handler, so it can pause the real submit until deps are ready.
+            form.addEventListener('submit', function (e) {
+                if (depsReady) return;
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                var submitBtn = form.querySelector('button[type="submit"]');
+                var originalText = submitBtn ? submitBtn.innerHTML : '';
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = 'Loading...';
+                }
+
+                loadFormDependencies().then(function () {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    }
+                    if (form.requestSubmit) {
+                        form.requestSubmit(submitBtn || undefined);
+                    } else {
+                        form.submit();
+                    }
+                });
+            }, true);
+        })();
+    </script>
 
     <script>
         // Country-aware phone number length validation (page-specific).
