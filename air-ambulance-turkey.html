@@ -385,8 +385,8 @@
         id="home">
 
         <!-- Background Image with Subtle Blur -->
-        <div class="absolute inset-0 bg-[url('assets/air_ambulance_aircraft_hero_image.webp')] bg-cover bg-center parallax-bg scale-110 hero-bg-mobile-top"
-            data-alt="Air Ambulance Services in Turkey – ICU-equipped air ambulance aircraft">
+        <div class="absolute inset-0 bg-[url('assets/air-ambulance-turkey-istanbul-airport-hero.webp')] bg-cover bg-[position:80%_center] parallax-bg hero-bg-mobile-top"
+            data-alt="Air Ambulance Services in Turkey – medical team transferring a patient to an ICU-equipped air ambulance jet at Istanbul Airport">
         </div>
 
         <!-- Dark gradient overlay removed for clarity -->
@@ -7715,19 +7715,23 @@
             validatePhoneByCountry(hidden);
         }
 
-        // Re-validate once the IP-based country code has been auto-filled by
-        // script.js (that assignment doesn't fire an 'input' event on its own),
-        // and mirror the detected code into the visible badge.
+        // Turkey page: the country code defaults to +90 (Turkey) regardless of
+        // the visitor's IP. script.js still writes an IP-detected code into the
+        // hidden field, so rebuild it from the visible badge (+90 unless the
+        // visitor edited it) instead of mirroring the detected code.
         (function () {
-            var phoneInput = document.getElementById('phone-input');
             var badge = document.getElementById('phone-code-badge');
-            if (!phoneInput) return;
-            setTimeout(function () {
-                if (badge && phoneInput.value && badge.dataset.userEdited !== 'true') {
-                    badge.value = phoneInput.value;
-                }
-                validatePhoneByCountry(phoneInput);
-            }, 1200);
+            var national = document.getElementById('phone-national-input');
+            var hidden = document.getElementById('phone-input');
+            if (!badge || !national || !hidden) return;
+            function applyDefaultCode() {
+                if (badge.dataset.userEdited !== 'true') badge.value = '+90';
+                // Only validate once digits are typed, so no error shows on load.
+                if (national.value.trim()) syncPhoneField();
+                else hidden.value = badge.value.trim();
+            }
+            applyDefaultCode();
+            setTimeout(applyDefaultCode, 1200);
         })();
 
         // Block submission on an invalid/empty phone number before the form's
