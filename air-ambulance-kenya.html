@@ -175,6 +175,20 @@
             }
         }
 
+        /* Desktop hero: start the photo below the nav bar instead of behind it,
+           so the full jet (nose to tail) and the crew fit without being
+           cropped. The strip behind the nav stays white. */
+        @media (min-width: 769px) {
+            #home {
+                background-color: #ffffff;
+            }
+
+            #home .hero-bg-kenya {
+                top: 81px;
+                background-position: center 30%;
+            }
+        }
+
         /* Kenya services tabs: only the active panel shows (the panels use
            display:flex, which would otherwise override the hidden attribute) */
         .svc-panel[hidden] {
@@ -408,8 +422,8 @@
         id="home">
 
         <!-- Background Image with Subtle Blur -->
-        <div class="absolute inset-0 bg-[url('assets/air_ambulance_aircraft_hero_image.webp')] bg-cover bg-center parallax-bg hero-bg-mobile-top"
-            data-alt="Air Ambulance Services in Kenya – ICU-equipped air ambulance jet and medical crew ready for a patient transfer at sunrise">
+        <div class="absolute inset-0 bg-[url('assets/air-ambulance-kenya-patient-loading-hero.webp')] bg-cover bg-center parallax-bg hero-bg-mobile-top hero-bg-kenya"
+            data-alt="Air Ambulance Services in Kenya – medical crew loading a stretcher patient with ICU monitoring equipment onto an air ambulance jet">
         </div>
 
         <!-- Dark gradient overlay removed for clarity -->
@@ -767,7 +781,7 @@
                         <figure
                             class="relative h-full aspect-[16/10] lg:aspect-auto lg:min-h-[360px] rounded-2xl overflow-hidden bg-primary shadow-[0_30px_60px_-25px_rgba(0,53,95,0.5)]">
                             <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-                                style="object-position: 64% 50%;" src="assets/international-medical-repatriation.webp" alt="Medical team moving a stretcher patient to an air ambulance jet – air ambulance services in Kenya" width="1672" height="941"
+                                style="object-position: 55% 50%;" src="assets/air-ambulance-kenya-stretcher-loading.webp" alt="Medical crew loading a stretcher patient with oxygen and ICU monitors into an air ambulance jet – air ambulance services in Kenya" width="1535" height="1024"
                                 loading="lazy" decoding="async" />
                         </figure>
                         <span
