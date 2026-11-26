@@ -230,6 +230,12 @@
       ]
     }
     </script>
+    <style>
+        /* Route cards: soft entrance (same as the Colombia page) */
+        .route-card { animation: route-in 0.35s ease both; }
+        @keyframes route-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+        @media (prefers-reduced-motion: reduce) { .route-card { animation: none; } }
+    </style>
 </head>
 
 <body class="bg-background text-on-surface font-body selection:bg-secondary selection:text-white pb-16 lg:pb-0">
@@ -943,10 +949,12 @@
 
             <!-- Most Requested Transfer Routes -->
             <div id="popular-routes" class="mb-14">
-                <h3 class="font-headline text-lg font-black text-primary mb-6 uppercase tracking-wider">Most Requested Transfer Routes</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <h3 class="flex items-center gap-3 font-headline text-xl md:text-2xl font-extrabold text-primary mb-6 uppercase tracking-wide">
+                    <span class="w-1.5 h-7 rounded-full bg-secondary flex-shrink-0"></span>Most Requested Transfer Routes
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Route Card: New York City → New Delhi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -971,7 +979,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles, California → New York City -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -996,7 +1004,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York City → Dubai -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1021,7 +1029,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York City → Paris -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1046,7 +1054,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles, California → Manila -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1071,7 +1079,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Mexico City → San Francisco, California -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1096,7 +1104,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles, California → Mumbai -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1121,7 +1129,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Honolulu, Hawaii → Los Angeles, California -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1146,7 +1154,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston, Texas → Mexico City -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1171,7 +1179,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago, Illinois → Riyadh -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1196,7 +1204,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Seattle, Washington → Tokyo -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1221,7 +1229,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston, Texas → Karachi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1246,7 +1254,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Miami, Florida → Madrid -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1271,7 +1279,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York City → Cape Town -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1296,7 +1304,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco, California → Hong Kong -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1321,7 +1329,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Mexico City → New York City -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1346,7 +1354,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York City → Beijing -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1371,7 +1379,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York City → Istanbul -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1396,7 +1404,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York City → Lagos -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1421,7 +1429,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, District of Columbia → Cairo -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1446,7 +1454,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York City → Dhaka -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1483,9 +1491,9 @@
                 </button>
                 <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-asia">
                     <div class="p-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Route Card: Seattle → Kochi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1510,7 +1518,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Calicut / Kozhikode -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1535,7 +1543,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Seattle → Trivandrum -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1560,7 +1568,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Kannur -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1585,7 +1593,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Delhi NCR -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1610,7 +1618,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Mumbai -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1635,7 +1643,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Dallas / Fort Worth → Hyderabad -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1660,7 +1668,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Chennai -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1685,7 +1693,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Bengaluru -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1710,7 +1718,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Lucknow -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1735,7 +1743,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Kolkata -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1760,7 +1768,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Ahmedabad -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1785,7 +1793,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Newark → Amritsar -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1810,7 +1818,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Jaipur -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1835,7 +1843,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Coimbatore -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1860,7 +1868,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Seattle → Mangalore -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1885,7 +1893,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Boston → Goa -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1910,7 +1918,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Nagpur -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1935,7 +1943,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Patna -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1960,7 +1968,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Varanasi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -1985,7 +1993,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Bhubaneswar -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2010,7 +2018,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Ranchi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2035,7 +2043,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Dallas / Fort Worth → Indore -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2060,7 +2068,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Bhopal -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2085,7 +2093,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Boston → Pune -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2110,7 +2118,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Chandigarh -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2135,7 +2143,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Dhaka -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2160,7 +2168,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Chittagong -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2185,7 +2193,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Sylhet -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2210,7 +2218,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Rajshahi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2235,7 +2243,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Karachi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2260,7 +2268,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Lahore -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2285,7 +2293,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Islamabad -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2310,7 +2318,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Peshawar -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2335,7 +2343,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Multan -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2360,7 +2368,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Faisalabad -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2385,7 +2393,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Sialkot -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2410,7 +2418,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Manila -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2435,7 +2443,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Cebu -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2460,7 +2468,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Davao -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2485,7 +2493,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Kathmandu -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2510,7 +2518,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Pokhara -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2535,7 +2543,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Colombo -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2560,7 +2568,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Kandy -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2585,7 +2593,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Hong Kong -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2610,7 +2618,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Seattle → Tokyo -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2635,7 +2643,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Osaka -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2660,7 +2668,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Nagoya -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2685,7 +2693,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Seattle → Fukuoka -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2710,7 +2718,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Seattle → Sapporo -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2735,7 +2743,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Okinawa / Naha -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2760,7 +2768,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Seoul -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2785,7 +2793,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Busan -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2810,7 +2818,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Jeju -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2835,7 +2843,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Daegu -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2860,7 +2868,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Beijing -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2885,7 +2893,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Shanghai -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2910,7 +2918,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Guangzhou -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2935,7 +2943,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Shenzhen -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2960,7 +2968,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Chengdu -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -2985,7 +2993,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Chongqing -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3010,7 +3018,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Hangzhou -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3035,7 +3043,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Xiamen -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3060,7 +3068,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Nanjing -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3085,7 +3093,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Wuhan -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3110,7 +3118,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Qingdao -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3135,7 +3143,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Xi'an -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3160,7 +3168,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Kunming -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3185,7 +3193,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Zhengzhou -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3210,7 +3218,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Tianjin -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3235,7 +3243,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Dalian -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3260,7 +3268,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Shenyang -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3285,7 +3293,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Harbin -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3310,7 +3318,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Fuzhou -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3335,7 +3343,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Wenzhou -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3360,7 +3368,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Ningbo -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3385,7 +3393,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Taipei -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3410,7 +3418,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Kaohsiung -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3435,7 +3443,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Taichung -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3460,7 +3468,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Macau -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3485,7 +3493,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Ulaanbaatar -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3524,9 +3532,9 @@
                 </button>
                 <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-middle-east">
                     <div class="p-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Route Card: New York (JFK) → Istanbul -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3551,7 +3559,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Ankara -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3576,7 +3584,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Tashkent -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3601,7 +3609,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Samarkand -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3626,7 +3634,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Almaty -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3651,7 +3659,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Astana -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3676,7 +3684,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Bishkek -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3701,7 +3709,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Dushanbe -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3726,7 +3734,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Baku -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3751,7 +3759,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Yerevan -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3776,7 +3784,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Tbilisi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3801,7 +3809,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Kutaisi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3826,7 +3834,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Batumi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3851,7 +3859,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Riyadh -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3876,7 +3884,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Jeddah -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3901,7 +3909,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Dammam -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3926,7 +3934,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Dallas / Fort Worth → Muscat -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3951,7 +3959,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Dallas / Fort Worth → Salalah -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -3976,7 +3984,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Doha -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4001,7 +4009,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Newark → Kuwait City -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4026,7 +4034,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Bahrain / Manama -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4051,7 +4059,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Tehran -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4076,7 +4084,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Shiraz -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4101,7 +4109,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Beirut -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4126,7 +4134,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Amman -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4151,7 +4159,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Baghdad -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4176,7 +4184,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Moscow -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4201,7 +4209,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Saint Petersburg -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4226,7 +4234,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Ashgabat -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4251,7 +4259,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Minsk -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4290,9 +4298,9 @@
                 </button>
                 <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-europe-usa">
                     <div class="p-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Route Card: New York (JFK) → London -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4317,7 +4325,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Boston → Manchester -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4342,7 +4350,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Boston → Birmingham -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4367,7 +4375,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Paris -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4392,7 +4400,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Frankfurt -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4417,7 +4425,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Munich -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4442,7 +4450,7 @@
                         </div>
                     </div>
                     <!-- Route Card: San Francisco → Amsterdam -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4467,7 +4475,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Newark → Brussels -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4492,7 +4500,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Newark → Zurich -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4517,7 +4525,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Newark → Geneva -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4542,7 +4550,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Rome -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4567,7 +4575,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Milan -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4592,7 +4600,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Miami → Madrid -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4617,7 +4625,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Miami → Barcelona -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4642,7 +4650,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Warsaw -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4667,7 +4675,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Prague -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4692,7 +4700,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Brno -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4717,7 +4725,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Vienna -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4742,7 +4750,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Budapest -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4767,7 +4775,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Sofia -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4792,7 +4800,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Bucharest -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4817,7 +4825,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Boston → Athens -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4842,7 +4850,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Chicago → Belgrade -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4867,7 +4875,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Tiranë -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4892,7 +4900,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Toronto -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4917,7 +4925,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Seattle → Vancouver -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4942,7 +4950,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Boston → Montréal -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4967,7 +4975,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Miami → Mexico City -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -4992,7 +5000,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Miami → São Paulo -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5017,7 +5025,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Miami → Rio de Janeiro -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5042,7 +5050,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Miami → Buenos Aires -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5067,7 +5075,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Houston → Bogotá -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5106,9 +5114,9 @@
                 </button>
                 <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-oceania">
                     <div class="p-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Route Card: Los Angeles → Fiji -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5133,7 +5141,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Los Angeles → Papua New Guinea -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5172,9 +5180,9 @@
                 </button>
                 <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-africa">
                     <div class="p-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Route Card: Washington, D.C. → Cairo -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5199,7 +5207,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Alexandria -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5224,7 +5232,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Luxor -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5249,7 +5257,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Addis Ababa -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5274,7 +5282,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Nairobi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5299,7 +5307,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Mombasa -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5324,7 +5332,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Lagos -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5349,7 +5357,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Abuja -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5374,7 +5382,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Accra -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5399,7 +5407,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Kumasi -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5424,7 +5432,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Dar es Salaam -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5449,7 +5457,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Zanzibar -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5474,7 +5482,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Kampala / Entebbe -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5499,7 +5507,7 @@
                         </div>
                     </div>
                     <!-- Route Card: Washington, D.C. → Kigali -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5524,7 +5532,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Johannesburg -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
@@ -5549,7 +5557,7 @@
                         </div>
                     </div>
                     <!-- Route Card: New York (JFK) → Cape Town -->
-                    <div class="bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
                                 <div class="flex flex-col text-left">
