@@ -33,11 +33,11 @@
     <!-- End OpenAI Ads Pixel -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Air Ambulance Services Kuwait | ICU Medical Evacuation 24X7</title>
+    <title>Air Ambulance in Kuwait | ICU Medical Evacuation Services 24X7</title>
     <meta name="description"
-        content="24×7 Emergency Air Ambulance Services across Kuwait. ICU medical evacuation, Repatriation, patient transfer, stretcher, and medical escort services. Quote in 30 minutes." />
+        content="24X7 bed-to-bed ICU air ambulance in Kuwait, airline stretcher, and medical evacuation and repatriation from Kuwait City, Hawalli, Salmiya, Ahmadi &amp; Jahra, emergency dispatch worldwide." />
     <meta name="keywords"
-        content="Air Ambulance Kuwait, air ambulance cost Kuwait, Air Ambulance Kuwait City, private air ambulance Kuwait, Medical Evacuation Kuwait, Emergency Air Ambulance Kuwait, ICU Air Ambulance Kuwait, Air Ambulance Kuwait to India, Flight Medical Escort Kuwait, Airline Stretcher Kuwait, ECMO Transfer Kuwait, Medical Repatriation Kuwait, Patient Transfer Kuwait, Critical Care Transport Kuwait">
+        content="Air Ambulance Kuwait, Air Ambulance in Kuwait, Air Ambulance Services in Kuwait, International Air Ambulance Kuwait, Medical Evacuation Kuwait, Emergency Air Ambulance Kuwait, Air Ambulance from Kuwait, Air Ambulance to Kuwait, Medical Repatriation Kuwait, 24/7 Air Ambulance Kuwait, Emergency Medical Flights Kuwait, Private Air Ambulance Kuwait, International Medical Evacuation from Kuwait, International Patient Transfer Kuwait">
     <meta name="robots" content="index, follow" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -312,9 +312,11 @@
 
             #home .hero-bg-kuwait {
                 top: 80px;
-                /* No extra zoom: the photo just covers the area below the nav. */
+                /* No extra zoom: the photo just covers the area below the nav.
+                   Crop anchored low so the crew and stretcher are never cut;
+                   any trimming comes from the night sky at the top. */
                 background-size: cover;
-                background-position: center center;
+                background-position: center 85%;
             }
         }
 
@@ -380,8 +382,8 @@
 
         <!-- Background Image with Subtle Blur -->
         <div class="absolute inset-0 bg-cover bg-center parallax-bg hero-bg-mobile-top hero-bg-kuwait"
-            style="background-image: url('assets/air-ambulance-jet-stretcher-crew-hero.webp');"
-            data-alt="dramatic close-up of a long-range medical transport aircraft on the tarmac, ready for emergency air medical dispatch.">
+            style="background-image: url('assets/air-ambulance-jet-night-hangar-stretcher-hero.webp');"
+            data-alt="Medical crew wheeling a stretcher patient to an air ambulance jet outside a hangar at night.">
         </div>
 
         <!-- Dark gradient overlay removed for clarity -->
@@ -572,11 +574,11 @@
                 </div>
                 <!-- Image Content -->
                 <div class="scroll-reveal-right">
-                    <div class="aspect-video bg-primary rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 group w-full border border-outline-variant/10">
-                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            src="assets/international-medical-repatriation.webp"
-                            alt="Medical team moving a stretcher patient to an air ambulance jet &ndash; air ambulance in Kuwait"
-                            width="1672" height="941" loading="lazy" decoding="async" />
+                    <div class="bg-primary rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 group w-full border border-outline-variant/10">
+                        <img class="block w-full h-auto"
+                            src="assets/air-ambulance-medical-team-stretcher-patient-aircraft-cabin.webp"
+                            alt="Doctors and nurses moving a stretcher patient through an air ambulance cabin &ndash; air ambulance in Kuwait"
+                            width="1200" height="800" loading="lazy" decoding="async" />
                     </div>
                 </div>
             </div>
@@ -767,11 +769,11 @@
                 </div>
                 <!-- Image Content -->
                 <div class="scroll-reveal-right order-2 lg:order-1">
-                    <div class="aspect-video bg-primary rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 group w-full border border-outline-variant/10">
-                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            src="assets/in-flight_patient_monitoring.webp"
-                            alt="Flight paramedic monitoring an ICU patient on board &ndash; local and international air ambulance transfers in Kuwait"
-                            loading="lazy" decoding="async" />
+                    <div class="bg-primary rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 group w-full border border-outline-variant/10">
+                        <img class="block w-full h-auto"
+                            src="assets/air-ambulance-jet-cabin-doctor-patient-icu-care.webp"
+                            alt="Doctor caring for a patient on oxygen inside an ICU-equipped air ambulance jet &ndash; local and international air ambulance transfers in Kuwait"
+                            width="1200" height="802" loading="lazy" decoding="async" />
                     </div>
                 </div>
             </div>
@@ -878,9 +880,11 @@
                 <!-- Photo -->
                 <div class="scroll-reveal-right">
                     <div
-                        class="aspect-[16/10] bg-primary rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 group max-w-xl mx-auto lg:mx-0">
-                        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            src="assets/air_ambulance_patient_care.webp" alt="Air Ambulance Kuwait Pricing" />
+                        class="bg-primary rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700 group w-full">
+                        <img class="block w-full h-auto"
+                            src="assets/air-ambulance-icu-cabin-medical-crew-stretcher-patient.webp"
+                            alt="Medical crew preparing a stretcher patient inside an ICU air ambulance cabin &ndash; air ambulance costs from Kuwait"
+                            width="1200" height="654" loading="lazy" decoding="async" />
                     </div>
                 </div>
             </div>
@@ -901,7 +905,1384 @@
                 </p>
             </div>
 
-            <!-- ROUTES: Most Requested Transfer Routes and regional accordion go here once the Kuwait route lists are supplied. -->
+            <!-- Routes: most requested + regions -->
+            <div id="route-explorer">
+
+                <!-- Most Relevant Medical Repatriation Routes -->
+                <div id="popular-routes" class="mb-14">
+                    <h3 class="flex items-center gap-3 font-headline text-xl md:text-2xl font-extrabold text-primary mb-6 uppercase tracking-wide">
+                        <span class="w-1.5 h-7 rounded-full bg-secondary flex-shrink-0"></span>Most Relevant Medical Repatriation Routes
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Route Card: Kuwait City → Mumbai -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Mumbai</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait City to Mumbai. Medical evacuation with continuous monitoring, ventilator support, and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Kochi -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Kochi</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                High-standard ICU transfers and commercial medical escorts from Kuwait City to Kochi. Coordinating with major regional hospitals, specialists, and licensed ground emergency services for seamless bed-to-bed patient transport.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → New Delhi -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">New Delhi</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait City to New Delhi. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Cairo -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Cairo</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait City to Cairo. Medical evacuation with continuous monitoring, ventilator support, and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Manila -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Manila</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                High-standard ICU transfers and commercial medical escorts from Kuwait City to Manila. Coordinating with major regional hospitals, specialists, and licensed ground emergency services for seamless bed-to-bed patient transport.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Dhaka -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Dhaka</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait City to Dhaka. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Karachi -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Karachi</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait City to Karachi. Medical evacuation with continuous monitoring, ventilator support, and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → London -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">London</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                High-standard ICU transfers and commercial medical escorts from Kuwait City to London. Coordinating with major regional hospitals, specialists, and licensed ground emergency services for seamless bed-to-bed patient transport.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Dubai -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Dubai</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait City to Dubai. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Istanbul -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Istanbul</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait City to Istanbul. Medical evacuation with continuous monitoring, ventilator support, and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Frankfurt -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Frankfurt</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                High-standard ICU transfers and commercial medical escorts from Kuwait City to Frankfurt. Coordinating with major regional hospitals, specialists, and licensed ground emergency services for seamless bed-to-bed patient transport.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Chennai -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Chennai</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait City to Chennai. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Hyderabad -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Hyderabad</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait City to Hyderabad. Medical evacuation with continuous monitoring, ventilator support, and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Amman -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Amman</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                High-standard ICU transfers and commercial medical escorts from Kuwait City to Amman. Coordinating with major regional hospitals, specialists, and licensed ground emergency services for seamless bed-to-bed patient transport.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait City → Toronto -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait City</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Toronto</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait City to Toronto. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Regions -->
+                <div id="route-regions">
+
+                <!-- Region Accordion: South America Routes -->
+                <div id="region-south-america" class="route-region mb-6 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden bg-white shadow-sm transition-all duration-300">
+                    <button class="w-full px-6 py-5 flex items-center justify-between bg-slate-50/50 hover:bg-slate-50 transition-colors text-left focus:outline-none group"
+                        onclick="toggleRegion('south-america')">
+                        <span class="font-headline text-base md:text-lg font-black text-primary uppercase tracking-wide">South America Routes</span>
+                        <span class="material-symbols-outlined text-secondary text-2xl transform transition-transform duration-300 ease-in-out"
+                            id="icon-region-south-america">keyboard_arrow_down</span>
+                    </button>
+                    <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-south-america">
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Route Card: Kuwait → Brazil -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Brazil</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Long-haul ICU air ambulance and airline stretcher repatriation from Kuwait to Brazil, including medical escort, airport coordination, and bed-to-bed handover to the receiving hospital.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Argentina -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Argentina</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Argentina. Equipped for commercial airline stretcher conversions and long-range critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Colombia -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Colombia</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Long-haul ICU air ambulance and airline stretcher repatriation from Kuwait to Colombia, including medical escort, airport coordination, and bed-to-bed handover to the receiving hospital.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Chile -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Chile</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Chile. Equipped for commercial airline stretcher conversions and long-range critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Region Accordion: North America & Caribbean Routes -->
+                <div id="region-north-america" class="route-region mb-6 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden bg-white shadow-sm transition-all duration-300">
+                    <button class="w-full px-6 py-5 flex items-center justify-between bg-slate-50/50 hover:bg-slate-50 transition-colors text-left focus:outline-none group"
+                        onclick="toggleRegion('north-america')">
+                        <span class="font-headline text-base md:text-lg font-black text-primary uppercase tracking-wide">North America &amp; Caribbean Routes</span>
+                        <span class="material-symbols-outlined text-secondary text-2xl transform transition-transform duration-300 ease-in-out"
+                            id="icon-region-north-america">keyboard_arrow_down</span>
+                    </button>
+                    <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-north-america">
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Route Card: Kuwait → USA -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">USA</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait to the USA. Long-range medical evacuation with continuous monitoring and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Canada -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Canada</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Canada. Equipped for commercial airline stretcher conversions and long-range critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Mexico -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Mexico</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait to Mexico. Long-range medical evacuation with continuous monitoring and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Panama -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Panama</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Panama. Equipped for commercial airline stretcher conversions and long-range critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Region Accordion: Europe & UK Routes -->
+                <div id="region-europe" class="route-region mb-6 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden bg-white shadow-sm transition-all duration-300">
+                    <button class="w-full px-6 py-5 flex items-center justify-between bg-slate-50/50 hover:bg-slate-50 transition-colors text-left focus:outline-none group"
+                        onclick="toggleRegion('europe')">
+                        <span class="font-headline text-base md:text-lg font-black text-primary uppercase tracking-wide">Europe &amp; UK Routes</span>
+                        <span class="material-symbols-outlined text-secondary text-2xl transform transition-transform duration-300 ease-in-out"
+                            id="icon-region-europe">keyboard_arrow_down</span>
+                    </button>
+                    <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-europe">
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Route Card: Kuwait → United Kingdom -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">United Kingdom</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                ICU air ambulance and airline stretcher repatriation from Kuwait to the United Kingdom, including medical escort, airport coordination, and bed-to-bed handover to the receiving hospital.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Germany -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Germany</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Germany. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → France -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">France</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                ICU air ambulance and airline stretcher repatriation from Kuwait to France, including medical escort, airport coordination, and bed-to-bed handover to the receiving hospital.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Turkey -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Turkey</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Turkey. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Italy -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Italy</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                ICU air ambulance and airline stretcher repatriation from Kuwait to Italy, including medical escort, airport coordination, and bed-to-bed handover to the receiving hospital.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Netherlands -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Netherlands</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to the Netherlands. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Region Accordion: Middle East & Central Asia Routes -->
+                <div id="region-middle-east" class="route-region mb-6 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden bg-white shadow-sm transition-all duration-300">
+                    <button class="w-full px-6 py-5 flex items-center justify-between bg-slate-50/50 hover:bg-slate-50 transition-colors text-left focus:outline-none group"
+                        onclick="toggleRegion('middle-east')">
+                        <span class="font-headline text-base md:text-lg font-black text-primary uppercase tracking-wide">Middle East &amp; Central Asia Routes</span>
+                        <span class="material-symbols-outlined text-secondary text-2xl transform transition-transform duration-300 ease-in-out"
+                            id="icon-region-middle-east">keyboard_arrow_down</span>
+                    </button>
+                    <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-middle-east">
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Route Card: Kuwait → United Arab Emirates -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">United Arab Emirates</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Fast medical evacuation and ICU air ambulance transfers from Kuwait to the United Arab Emirates, with hospital-to-hospital coordination, medical clearances, and continuous in-flight critical care.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Saudi Arabia -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Saudi Arabia</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Regional ICU air ambulance and commercial airline stretcher services from Kuwait to Saudi Arabia, with rapid dispatch, ground ambulance coordination, and bed-to-bed transfer.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Jordan -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Jordan</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Fast medical evacuation and ICU air ambulance transfers from Kuwait to Jordan, with hospital-to-hospital coordination, medical clearances, and continuous in-flight critical care.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Egypt -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Egypt</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Regional ICU air ambulance and commercial airline stretcher services from Kuwait to Egypt, with rapid dispatch, ground ambulance coordination, and bed-to-bed transfer.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Turkey -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Turkey</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Fast medical evacuation and ICU air ambulance transfers from Kuwait to Turkey, with hospital-to-hospital coordination, medical clearances, and continuous in-flight critical care.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Pakistan -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Pakistan</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Regional ICU air ambulance and commercial airline stretcher services from Kuwait to Pakistan, with rapid dispatch, ground ambulance coordination, and bed-to-bed transfer.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Region Accordion: Asia & Subcontinent Routes -->
+                <div id="region-asia" class="route-region mb-6 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden bg-white shadow-sm transition-all duration-300">
+                    <button class="w-full px-6 py-5 flex items-center justify-between bg-slate-50/50 hover:bg-slate-50 transition-colors text-left focus:outline-none group"
+                        onclick="toggleRegion('asia')">
+                        <span class="font-headline text-base md:text-lg font-black text-primary uppercase tracking-wide">Asia &amp; Subcontinent Routes</span>
+                        <span class="material-symbols-outlined text-secondary text-2xl transform transition-transform duration-300 ease-in-out"
+                            id="icon-region-asia">keyboard_arrow_down</span>
+                    </button>
+                    <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-asia">
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Route Card: Kuwait → India -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">India</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait to India. Medical evacuation with continuous monitoring, ventilator support, and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Bangladesh -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Bangladesh</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Bangladesh. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Philippines -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Philippines</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait to the Philippines. Medical evacuation with continuous monitoring, ventilator support, and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Pakistan -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Pakistan</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Pakistan. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Sri Lanka -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Sri Lanka</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait to Sri Lanka. Medical evacuation with continuous monitoring, ventilator support, and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Nepal -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Nepal</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Nepal. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → China -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">China</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait to China. Medical evacuation with continuous monitoring, ventilator support, and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Singapore -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Singapore</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Singapore. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Region Accordion: Africa Routes -->
+                <div id="region-africa" class="route-region mb-6 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden bg-white shadow-sm transition-all duration-300">
+                    <button class="w-full px-6 py-5 flex items-center justify-between bg-slate-50/50 hover:bg-slate-50 transition-colors text-left focus:outline-none group"
+                        onclick="toggleRegion('africa')">
+                        <span class="font-headline text-base md:text-lg font-black text-primary uppercase tracking-wide">Africa Routes</span>
+                        <span class="material-symbols-outlined text-secondary text-2xl transform transition-transform duration-300 ease-in-out"
+                            id="icon-region-africa">keyboard_arrow_down</span>
+                    </button>
+                    <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-africa">
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Route Card: Kuwait → Egypt -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Egypt</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                ICU air ambulance and medical evacuation from Kuwait to Egypt, with airport coordination, medical clearances, and bed-to-bed transfer to the receiving facility.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → South Africa -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">South Africa</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to South Africa. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Kenya -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Kenya</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                ICU air ambulance and medical evacuation from Kuwait to Kenya, with airport coordination, medical clearances, and bed-to-bed transfer to the receiving facility.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Nigeria -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Nigeria</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to Nigeria. Equipped for commercial airline stretcher conversions and critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → Morocco -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Morocco</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                ICU air ambulance and medical evacuation from Kuwait to Morocco, with airport coordination, medical clearances, and bed-to-bed transfer to the receiving facility.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Region Accordion: Oceania Routes -->
+                <div id="region-oceania" class="route-region mb-6 border border-slate-200/60 dark:border-slate-800/60 rounded-2xl overflow-hidden bg-white shadow-sm transition-all duration-300">
+                    <button class="w-full px-6 py-5 flex items-center justify-between bg-slate-50/50 hover:bg-slate-50 transition-colors text-left focus:outline-none group"
+                        onclick="toggleRegion('oceania')">
+                        <span class="font-headline text-base md:text-lg font-black text-primary uppercase tracking-wide">Oceania Routes</span>
+                        <span class="material-symbols-outlined text-secondary text-2xl transform transition-transform duration-300 ease-in-out"
+                            id="icon-region-oceania">keyboard_arrow_down</span>
+                    </button>
+                    <div class="hidden transition-all duration-300 ease-in-out border-t border-slate-100" id="content-region-oceania">
+                        <div class="p-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Route Card: Kuwait → Australia -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">Australia</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Dedicated ICU air ambulance and commercial airline stretcher services from Kuwait to Australia. Long-range medical evacuation with continuous monitoring and full bed-to-bed logistics management.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Route Card: Kuwait → New Zealand -->
+                    <div class="route-card bg-white p-6 rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-secondary/25 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between font-headline font-black text-primary text-base mb-4">
+                                <div class="flex flex-col text-left">
+                                    <span class="leading-tight text-sm font-extrabold">Kuwait</span>
+                                </div>
+                                <span class="material-symbols-outlined text-secondary text-base flex-shrink-0 mx-2">trending_flat</span>
+                                <div class="flex flex-col text-right">
+                                    <span class="leading-tight text-sm font-extrabold text-right">New Zealand</span>
+                                </div>
+                            </div>
+                            <p class="text-on-surface-variant font-body leading-relaxed text-xs mb-6">
+                                Reliable patient repatriation and critical ICU air transport from Kuwait to New Zealand. Equipped for commercial airline stretcher conversions and long-range critical care escorts.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-end">
+                            <a href="https://wa.me/16593005200?text=I%20need%20Assistance%20with%20Patient%20Air%20Transfer.%20Please%20Assist!"
+                                target="_blank" rel="noopener noreferrer nofollow"
+                                class="px-5 py-2.5 bg-secondary text-white rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-md hover:shadow-lg flex items-center gap-1.5">
+                                Get Quote on WhatsApp
+                                <span class="material-symbols-outlined text-xs">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
     </section>
 
